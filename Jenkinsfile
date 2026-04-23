@@ -10,7 +10,7 @@ pipeline {
    stage('Checkout') {
      steps {
        git branch: 'main',
-       url: 'https://github.com/your-user/cicd-demo.git'
+       url: 'https://github.com/ganeshmotamarri-55/cicd-demo.git'
      }
    }
 
