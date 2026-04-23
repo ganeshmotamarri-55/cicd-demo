@@ -1,0 +1,275 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>RLC64Ky2uI5CUP9-gt-13315587-2026-03-09T12:33:10.704Z::pd.xml</types1:EntryId>
+      <types1:Name>SummarizerAgent</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that provides a concise, friendly summary of query agent's response to the user query, limited to under 300 tokens.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="dycmqeCO8McdnyA8CdMbgr"
+                  displayName="SummarizerAgent"
+                  name="SummarizerAgent"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that provides a concise, friendly summary of query agent's response to the user query, limited to under 300 tokens.</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Planner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="PlannerOut" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_Query_Request" type="reference">
+                  <options>
+                     <option name="referenceTo">GeminiConnection:GenerateContentRequestBody</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0BNr3j3wvwukTj4JucgxsM</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Configuration_Prompt" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Config_Parameters" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:GenerationConfig_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">30qf5eDsmAMhdaAX53MiWT</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Query_Agent_Response" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Email_Body" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Email_Subject" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+            </extData>
+            <flow id="s922e05da-8a3f-48ab-9eae-4c70d6c02d5d">
+               <start id="i7251f887-b7b3-4357-b78f-b690a8595508">
+                  <link id="mfk0qqog" targetId="a17MAawUYjIkOeVv7vGImAoE-me9omfcd"/>
+               </start>
+               <assignment id="a17MAawUYjIkOeVv7vGImAoE-me9omfcd">
+                  <title>Prepare Query Request</title>
+                  <operation source="field" to="temp.Tmp_Query_Agent_Response">input.Planner[1]/Attributes[1]/QueryAgentResponse</operation>
+                  <operation source="field" to="temp.Tmp_Email_Body">input.Planner[1]/Attributes[1]/EmailBody</operation>
+                  <operation source="formula" to="temp.Tmp_Config_Parameters">
+                     <expression language="XQuery">&lt;generationConfig&gt;
+      &lt;stopSequences&gt;???&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;1&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;300&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;0.2&lt;/temperature&gt;
+      &lt;topP&gt;0.2&lt;/topP&gt;
+      &lt;topK&gt;2&lt;/topK&gt;
+&lt;/generationConfig&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Tmp_Configuration_Prompt">
+                     <expression language="XQuery">' You are given an input text:" ' || 
+$temp.Tmp_Query_Agent_Response  || '"
+, which is a response to an e-mail from a customer: "' ||
+$temp.Tmp_Email_Body   || '"
+
+Generate a concise summary of the text. The response needs to be precise and presented in a friendly tone. Make sure that your response is relevant to the provided e-mail from the customer and can help the user solve the problem explained in the e-mail. Make sure that all information that could be helpful in solving the customer problem and is present in the input text is retained in your response. Make sure your response is complete and maximally 300 tokens long.  ???
+
+'
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Tmp_Query_Request">
+                     <expression language="XQuery">&lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt;{$temp.Tmp_Configuration_Prompt}  &lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+ &lt;generationConfig&gt;
+      &lt;stopSequences&gt;{$temp.Tmp_Config_Parameters[1]/stopSequences }&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;{$temp.Tmp_Config_Parameters[1]/candidateCount  }&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;{$temp.Tmp_Config_Parameters[1]/maxOutputTokens  }&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;{$temp.Tmp_Config_Parameters[1]/temperature  }&lt;/temperature&gt;
+      &lt;topP&gt;{$temp.Tmp_Config_Parameters[1]/topP  }&lt;/topP&gt;
+      &lt;topK&gt;{$temp.Tmp_Config_Parameters[1]/topK  }&lt;/topK&gt;
+   &lt;/generationConfig&gt;
+&lt;/Generate_Content_Request&gt;
+</expression>
+                  </operation>
+                  <link id="d3a90645d-1fbd-44f9-be0d-96c2041475c3" targetId="mev3isho"/>
+               </assignment>
+               <assignment id="a17MAawUYjIkOeVv7vGImAoE-me9omfcy">
+                  <title>Return Content from Response</title>
+                  <operation source="field"
+                             to="input.Planner[1]/Attributes[1]/SummarizerAgentResponse">output.text</operation>
+                  <operation source="field" to="output.PlannerOut">input.Planner</operation>
+                  <link id="lbbd1feba-3162-4b89-8f38-086fdf4fa407"
+                        targetId="a17MAawUYjIkOeVv7vGImAoE-md5qxiut"/>
+               </assignment>
+               <eventContainer id="mev3isho">
+                  <service id="a17MAawUYjIkOeVv7vGImAoE-me9omfcn">
+                     <title>Generate Content</title>
+                     <serviceName>GeminiConnection:Generate Content</serviceName>
+                     <serviceGUID>0BNr3j3wvwukTj4JucgxsM</serviceGUID>
+                     <serviceInput>
+                        <parameter name="model" source="field">input.Planner[1]/Attributes[1]/ModelVersion</parameter>
+                        <parameter name="requestBody" source="field">temp.Tmp_Query_Request</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mev3ishq">
+                     <link id="mev3ishr" targetId="mev3isho" type="containerLink"/>
+                  </flow>
+                  <flow id="mev3isht">
+                     <subflow id="mev3isib">
+                        <title>GenericErrorHandlerLLM</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true"/>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mev3isis" targetId="mev3isir"/>
+                     </subflow>
+                     <assignment id="mev3isir">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="mev3isj2" targetId="mev3isj0"/>
+                     </assignment>
+                     <jumpTo id="mev3isj0">
+                        <link id="mev3isj1" targetId="mev3isho"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mev3ishp" targetId="mev3ishq" type="containerLink"/>
+                  <link id="w123392a5-5b7d-464e-b4ae-d879fde5ae34"
+                        targetId="a17MAawUYjIkOeVv7vGImAoE-me9omfcy"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mev3ishn" interrupting="true">
+                        <link id="mev3ishs" targetId="mev3isht" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="a17MAawUYjIkOeVv7vGImAoE-md5qxiut">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>c8c464de-60f6-4160-9e1c-8de3d51f7da9</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Intent": "Query",
+	 "In_Query_Agent_Response": "Based on the information available, here's how to address the data discrepancies after IDMC sync: Troubleshooting Steps: 1. Verify Mapping Configurations: Double-check the mappings used in your synchronization jobs. Ensure that all fields are correctly mapped from source to target and that any transformations are functioning as expected. 2. Review Logs: Examine the logs generated during the sync process. Look for any error messages or warnings that might indicate the cause of the discrepancies. 3. Check Source and Target Data: Compare the data in the source and target systems to identify the specific records that are missing or incorrect. This will help you pinpoint the issue. 4. Rerun Sync Jobs: Try rerunning the sync jobs to see if the problem persists. This can help determine if the issue is temporary or ongoing. If the issue persists after these steps, further investigation may be needed. Consider the following: Data Volume: Large data volumes can sometimes cause issues. Check if the sync jobs are processing a significant amount of data. Network Issues: Network problems can interrupt the sync process. Ensure a stable network connection. System Resources: Verify that the systems involved have sufficient resources (CPU, memory, disk space) to handle the sync jobs. I wasn't able to find specific documentation on informatica.com that directly addresses this issue. However, the general troubleshooting steps above should help you identify and resolve the data discrepancies.",
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Hi Informatica Support, We’re running into a major issue with our IDMC setup. After the latest data synchronization, we noticed unexpected discrepancies between the source and target systems. Some records appear missing or incorrect, which is causing confusion and could lead to serious business problems. We’ve double-checked our configurations and logs but can’t figure out why this is happening. What we’ve tried: Verified mappings, checked logs, and reran sync jobs. This is urgent because we rely on accurate data for reporting and decision-making. Please help us get this resolved quickly. Thanks for your support, Adam Smith ",
+	 "In_Email_Subject": "erger",
+"In_Zendesk_Ticket_Number": "5"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>6495fa82-a207-4a23-9002-26c1af3409c6</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Intent": "Feedback",
+	 "In_Query_Agent_Response": "",
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Hi Informatica Support,I wanted to share some feedback regarding the error messages in the IDMC platform. While they usually identify that a problem occurred, sometimes the messages are a bit too vague, which makes troubleshooting longer than necessary. Improving the clarity of these messages could help users resolve issues faster.Thanks for your continuous efforts! Best regards, Anna Kowalska",
+	 "In_Email_Subject": "Feedback on Sync Job Error Messages",
+"In_Zendesk_Ticket_Number": "5"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f1dbef05-08fa-4ade-8cc1-69df118819a1</ns1:Id>
+               <ns1:Name>test3</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Intent": "Feature",
+	 "In_Query_Agent_Response": "",
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "abc",
+	 "In_Email_Subject": "abc",
+"In_Zendesk_Ticket_Number": 5,
+"In_Jira_Ticket_Link": "https://ai-agents-nearshore.atlassian.net/jira/servicedesk/projects/TESTAI/issues/?jql=project%20=%20TESTAI%20%20AND%20issueKey%20=%20TESTAI-34"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>dycmqeCO8McdnyA8CdMbgr</types1:GUID>
+      <types1:DisplayName>SummarizerAgent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.671Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

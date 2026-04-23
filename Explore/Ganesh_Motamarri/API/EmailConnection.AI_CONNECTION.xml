@@ -1,0 +1,78 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>HGVtsDaaabdvhxi-gt-13315445-2026-03-09T12:33:08.754Z::conn.xml</types1:EntryId>
+      <types1:Name>EmailConnection-2</types1:Name>
+      <types1:ParentFlowIds>PXyDQeH2PKDC0hC-gt-13315646-2026-03-09T12:33:11.669Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Email connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="EmailConnection"
+                     label="EmailConnection"
+                     name="EmailConnection-2">
+            <description>Email connection</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="hostName" value="smtp.gmail.com"/>
+               <attribute encrypted="false" name="port" value="465"/>
+               <attribute encrypted="false"
+                          name="testToAddress"
+                          value="test@example.com - change for e-mail address you want to use for testing the connection"/>
+               <attribute encrypted="false"
+                          name="fromAddress"
+                          value="example@example.com - use to set the sender address for this connection."/>
+            </attributes>
+            <consumers>
+               <consumer enabled="true" name="EmailListener" typeName="EmailListener">
+                  <description>Use this event source to read emails from an email server.</description>
+                  <attributes>
+                     <attribute encrypted="false" name="host" value="imap.gmail.com"/>
+                     <attribute encrypted="false" name="port" value="993"/>
+                     <attribute encrypted="false" name="copyTo" value=""/>
+                     <attribute encrypted="false" name="moveTo" value=""/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="otherConsumerAttributes" value=""/>
+                  </attributes>
+               </consumer>
+            </consumers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="false"
+                           cloudOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="Email"
+                           uuid="9a8a03d0-0437-46c4-bedf-70acb4173c1f">
+               <description>Provides connections to email host servers.</description>
+            </javaConnector>
+            <authentication type="$infa_basicform">
+               <attributes>
+                  <attribute encrypted="false" name="Authentication" value="Enable"/>
+                  <attribute encrypted="false"
+                             name="username"
+                             value="example@example.com - change for e-mail address you want to listen on"/>
+                  <attribute encrypted="true" name="password" value=""/>
+                  <attribute encrypted="false" name="security" value="SSL"/>
+                  <attribute encrypted="false" name="connectionTimeout" value="30000"/>
+               </attributes>
+            </authentication>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>1Kxuv8VY2UdkeJa32vKLo0</types1:GUID>
+      <types1:DisplayName>EmailConnection</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.739Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

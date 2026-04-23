@@ -1,0 +1,78 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>cmYsGuDoWn2sqeE-gt-5648805-2026-02-19T10:02:01.044Z::svc.xml</types1:EntryId>
+      <types1:Name>ServiceConnector1-5</types1:Name>
+      <types1:ParentFlowIds>SEEqclNE6Eaaaaa-gt-5614759-2026-02-19T10:06:23.717Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-19T10:02:01Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-19T10:21:45Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-19T10:11:44Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/ServiceConnector1_5/ServiceConnector1_5_svcDef.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="ServiceConnector1"
+                            label=""
+                            name="ServiceConnector1-5"
+                            uuid="fb8bdf2f-1df8-4bef-ad4f-b8d445a52ad3">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Update"
+                       maxRedirects="100"
+                       name="Update"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="TOTAL"
+                                required="false"
+                                testWith="88"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="CUSTOMER"
+                                required="false"
+                                testWith="4"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="http://localhost:9090/ords/ganesh/invoices/1"
+                                        verb="PUT">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>2QPyCztKAwciC5nyb3jWab</types1:GUID>
+      <types1:DisplayName>ServiceConnector1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.804Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

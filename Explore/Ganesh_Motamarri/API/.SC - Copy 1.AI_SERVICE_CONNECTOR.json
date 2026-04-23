@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "8KVRlmysAcxlDS0ROBosCU",
+    "name" : "SC - Copy 1",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Z6K0XV4KhPVEQrX-gt-5523138-2025-12-22T13:25:58.824Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : null,
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.524Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

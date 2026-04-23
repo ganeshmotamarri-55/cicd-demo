@@ -1,0 +1,598 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping110",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Aggregator"
+      },
+      {
+        "link" : "Aggregator -> Router",
+        "groupLink" : "DefaultGroup -> INPUT"
+      },
+      {
+        "link" : "Router -> Target",
+        "groupLink" : "Matched -> DefaultGroup"
+      },
+      {
+        "link" : "Router -> Target1",
+        "groupLink" : "DEFAULT1 -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "createTime" : "2026-01-30T11:05:33.686Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "TRANSACTION_ID"
+            },
+            "name" : "TRANSACTION_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ACCOUNT_NUMBER"
+            },
+            "name" : "ACCOUNT_NUMBER",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "NAME"
+            },
+            "name" : "NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CURRENT_BALANCE"
+            },
+            "name" : "CURRENT_BALANCE",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CREDITS"
+            },
+            "name" : "CREDITS",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DEBITS"
+            },
+            "name" : "DEBITS",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "TRANSACTION_DATE"
+            },
+            "name" : "TRANSACTION_DATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "ACCOUNT_STATUS"
+            },
+            "name" : "ACCOUNT_STATUS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@4An5mPlDt6Eg5jzrt6p0Y6",
+          "connectionName" : "conn_Ganesh_orcl",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "GANESH/BANK_STATEMENT",
+            "dbSchema" : "GANESH",
+            "label" : "BANK_STATEMENT",
+            "objectName" : "BANK_STATEMENT",
+            "path" : "GANESH/BANK_STATEMENT",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "TRANSACTION_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "TRANSACTION_ID",
+                "nativeName" : "TRANSACTION_ID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              },
+              {
+                "name" : "ACCOUNT_NUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "ACCOUNT_NUMBER",
+                "nativeName" : "ACCOUNT_NUMBER",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              },
+              {
+                "name" : "NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "NAME",
+                "nativeName" : "NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              },
+              {
+                "name" : "CURRENT_BALANCE",
+                "fieldType" : "CONNECTOR",
+                "label" : "CURRENT_BALANCE",
+                "nativeName" : "CURRENT_BALANCE",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              },
+              {
+                "name" : "CREDITS",
+                "fieldType" : "CONNECTOR",
+                "label" : "CREDITS",
+                "nativeName" : "CREDITS",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              },
+              {
+                "name" : "DEBITS",
+                "fieldType" : "CONNECTOR",
+                "label" : "DEBITS",
+                "nativeName" : "DEBITS",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              },
+              {
+                "name" : "TRANSACTION_DATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "TRANSACTION_DATE",
+                "nativeName" : "TRANSACTION_DATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              },
+              {
+                "name" : "ACCOUNT_STATUS",
+                "fieldType" : "CONNECTOR",
+                "label" : "ACCOUNT_STATUS",
+                "nativeName" : "ACCOUNT_STATUS",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/BANK_STATEMENT"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false",
+            "advancedFilterCondition" : "GANESH.BANK_STATEMENT.ACCOUNT_STATUS='Active'"
+          }
+        }
+      },
+      {
+        "createTime" : "2026-01-30T11:05:33.687Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@8VWR03hG1vYkQ9AeNjhkYR",
+          "connectionName" : "FF_TGT_Ganesh",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "Debita_Credits_Matched.csv",
+            "label" : "Debita_Credits_Matched.csv",
+            "path" : "Debita_Credits_Matched.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "createTime" : "2026-01-30T11:06:29.799Z",
+        "name" : "Aggregator",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "fields" : [
+          {
+            "name" : "Total_Credits",
+            "platformType" : {
+              "name" : "bigint"
+            },
+            "precision" : 19,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "sum(CREDITS)"
+          },
+          {
+            "name" : "Total_Debits",
+            "platformType" : {
+              "name" : "bigint"
+            },
+            "precision" : 19,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "sum(DEBITS)"
+          }
+        ],
+        "groupByFieldsList" : {
+          "fields" : [
+            {
+              "fieldName" : "ACCOUNT_NUMBER"
+            }
+          ]
+        }
+      },
+      {
+        "createTime" : "2026-01-30T11:44:23.665Z",
+        "name" : "Router",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "INPUT",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "DEFAULT1",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "Matched",
+            "output" : "true"
+          }
+        ],
+        "groupFilterConditions" : [
+          {
+            "advancedFilterCondition" : "Total_Credits=Total_Debits",
+            "name" : "Matched"
+          }
+        ]
+      },
+      {
+        "createTime" : "2026-01-30T11:45:02.959Z",
+        "name" : "Target1",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@8VWR03hG1vYkQ9AeNjhkYR",
+          "connectionName" : "FF_TGT_Ganesh",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "Debits_Credits_Overview.csv",
+            "label" : "Debits_Credits_Overview.csv",
+            "path" : "Debits_Credits_Overview.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-04-23 02:55:10 PDT"
+}

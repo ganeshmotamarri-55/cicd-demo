@@ -1,0 +1,265 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>sKKkhEuHWvJ4rsw-gt-3427714-2026-02-16T12:32:36.29Z::pd.xml</types1:EntryId>
+      <types1:Name>CAI</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-16T12:32:36Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-16T13:02:53Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-16T13:02:56Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.CAI/CAI.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="k5WIRbpCIspefB30h5BMIR"
+                  displayName="CAI"
+                  name="CAI"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="Test" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="XML_temp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="titulo_temp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="autor_temp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="anyo_temp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="precio_temp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="idioma_temp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="XML_Flattened_temp" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="row_count" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="normal">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="w45d3bdf9-7a49-45ab-88ff-e1c5004ceb44">
+               <start id="k8690e2d7-6bbe-4036-b960-251b0551673c">
+                  <link id="g618e2b1e-9d72-43ea-977e-a6c07f1e0d01"
+                        targetId="a1k5WIRbpCIspefB30h5BMIR-Assignmentb2ef3b66-5d5e-4e3b-ab2d-63ffb05d2458"/>
+               </start>
+               <assignment id="a1k5WIRbpCIspefB30h5BMIR-Assignmentb2ef3b66-5d5e-4e3b-ab2d-63ffb05d2458">
+                  <title>Assignment 1</title>
+                  <operation source="constant" to="temp.XML_temp">&lt;libreria&gt;   &lt;Libros&gt;       &lt;libro categoria="COOKING" codigo='1'&gt;         &lt;titulo leng="en"&gt;Everyday Italian&lt;/titulo&gt;         &lt;autor&gt;Giada De Laurentiis&lt;/autor&gt;         &lt;anyo&gt;2005&lt;/anyo&gt;         &lt;precio&gt;30.00&lt;/precio&gt;       &lt;/libro&gt;        &lt;libro categoria="CHILDREN" codigo='2'&gt;         &lt;titulo leng="en"&gt;Harry Potter&lt;/titulo&gt;         &lt;autor&gt;J K. Rowling&lt;/autor&gt;         &lt;anyo&gt;2005&lt;/anyo&gt;         &lt;precio&gt;29.99&lt;/precio&gt;       &lt;/libro&gt;        &lt;libro categoria="WEB" codigo='3'&gt;         &lt;titulo leng="en"&gt;XQuery Kick Start&lt;/titulo&gt;         &lt;autor&gt;James McGovern&lt;/autor&gt;         &lt;autor&gt;Per Bothner&lt;/autor&gt;         &lt;autor&gt;Kurt Cagle&lt;/autor&gt;         &lt;autor&gt;James Linn&lt;/autor&gt;         &lt;autor&gt;Vaidyanathan Nagarajan&lt;/autor&gt;         &lt;anyo&gt;2003&lt;/anyo&gt;         &lt;precio&gt;49.99&lt;/precio&gt;       &lt;/libro&gt;        &lt;libro categoria="WEB" codigo='4'&gt;         &lt;titulo leng="en"&gt;Learning XML&lt;/titulo&gt;         &lt;autor&gt;Erik T. Ray&lt;/autor&gt;         &lt;anyo&gt;2003&lt;/anyo&gt;         &lt;precio&gt;39.95&lt;/precio&gt;       &lt;/libro&gt;        &lt;libro categoria="COMEDY" codigo='5'&gt;         &lt;titulo leng="es"&gt;El hechizado por fuerza&lt;/titulo&gt;         &lt;autor&gt;Antonio de Zamora&lt;/autor&gt;         &lt;anyo&gt;2017&lt;/anyo&gt;         &lt;precio&gt;690.95&lt;/precio&gt;       &lt;/libro&gt;   &lt;/Libros&gt;    &lt;almacen&gt;     &lt;comprados&gt;       &lt;codigo&gt;1&lt;/codigo&gt;       &lt;codigo&gt;2&lt;/codigo&gt;       &lt;codigo&gt;5&lt;/codigo&gt;     &lt;/comprados&gt;     &lt;pendientes&gt;       &lt;codigo&gt;3&lt;/codigo&gt;       &lt;codigo&gt;4&lt;/codigo&gt;     &lt;/pendientes&gt;   &lt;/almacen&gt; &lt;/libreria&gt;</operation>
+                  <link id="w400d5ebf-064f-4896-9736-50f2c6add844"
+                        targetId="a1k5WIRbpCIspefB30h5BMIR-Assignmentebe019b5-8758-42ef-96d6-fcf36e25686c"/>
+               </assignment>
+               <assignment id="a1k5WIRbpCIspefB30h5BMIR-Assignmentebe019b5-8758-42ef-96d6-fcf36e25686c">
+                  <title>Assignment to XML_Flattened_temp</title>
+                  <operation source="formula" to="temp.XML_Flattened_temp">
+                     <expression language="XQuery">for $libro in $temp.XML_temp/libreria/Libros/libro
+for $autor in $libro/autor
+return
+&lt;row&gt;
+  &lt;titulo&gt;{data($libro/titulo)}&lt;/titulo&gt;
+  &lt;autor&gt;{data($autor)}&lt;/autor&gt;
+  &lt;anyo&gt;{data($libro/anyo)}&lt;/anyo&gt;
+  &lt;precio&gt;{data($libro/precio)}&lt;/precio&gt;
+  &lt;idioma&gt;{
+    if ($libro/titulo/@leng = "en") then "English"
+    else if ($libro/titulo/@leng = "es") then "Spanish"
+    else ""
+  }&lt;/idioma&gt;
+&lt;/row&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.row_count">
+                     <expression language="XQuery">count($temp.XML_Flattened_temp/row)</expression>
+                  </operation>
+                  <link id="eb0e6178f-7a69-4826-81cc-2fc7ec51d441"
+                        targetId="a1k5WIRbpCIspefB30h5BMIR-Loope46374e0-82b4-4a1d-b702-dd593801b26c"/>
+               </assignment>
+               <repeat id="a1k5WIRbpCIspefB30h5BMIR-Loope46374e0-82b4-4a1d-b702-dd593801b26c"
+                       title="Loop 1"
+                       type="While">
+                  <condition source="formula">
+                     <expression language="XQuery">$temp.row_count &gt; 0</expression>
+                  </condition>
+                  <flow id="c1bd13da7-3605-4d5e-ac0d-e55a4050924b">
+                     <assignment id="a1k5WIRbpCIspefB30h5BMIR-Assignment9eadfe03-6563-4b0a-bc94-5415dca36067">
+                        <title>Assignment to titulo_temp, autor_temp, etc,</title>
+                        <operation source="formula" to="temp.titulo_temp">
+                           <expression language="XQuery">$temp.XML_Flattened_temp /row[1]/titulo/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.autor_temp">
+                           <expression language="XQuery">$temp.XML_Flattened_temp /row[1]/autor/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.anyo_temp">
+                           <expression language="XQuery">$temp.XML_Flattened_temp /row[1]/anyo/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.precio_temp">
+                           <expression language="XQuery">$temp.XML_Flattened_temp /row[1]/precio/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.idioma_temp">
+                           <expression language="XQuery">$temp.XML_Flattened_temp /row[1]/idioma/text()</expression>
+                        </operation>
+                        <link id="cb851f942-9443-477e-b5a0-247fceead5bf"
+                              targetId="a1k5WIRbpCIspefB30h5BMIR-Create484b2cc9-b310-4ac7-8745-37a5eecbb19c"/>
+                     </assignment>
+                     <assignment id="a1k5WIRbpCIspefB30h5BMIR-Assignment7e241f84-a87f-4668-858e-5bde2b4c0b57">
+                        <title>Assignment to XML_Flattened_temp, row_count</title>
+                        <operation source="formula" to="temp.XML_Flattened_temp">
+                           <expression language="XQuery">$temp.XML_Flattened_temp /row[position() &gt; 1]
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.row_count">
+                           <expression language="XQuery">$temp.row_count - 1</expression>
+                        </operation>
+                     </assignment>
+                     <create id="a1k5WIRbpCIspefB30h5BMIR-Create484b2cc9-b310-4ac7-8745-37a5eecbb19c">
+                        <title>BOOKS_TABLE</title>
+                        <entityName>App-Ganesh-oracle-jdbc:BOOKS_TABLE</entityName>
+                        <createInput>
+                           <parameter name="TITULO" source="field" updatable="true">temp.titulo_temp</parameter>
+                        </createInput>
+                        <link id="abd23e7bf-18cd-422e-8b56-6d375b5df7f0"
+                              targetId="a1k5WIRbpCIspefB30h5BMIR-Assignment7e241f84-a87f-4668-858e-5bde2b4c0b57"/>
+                     </create>
+                  </flow>
+                  <link id="td4d40d7b-3f20-407e-9172-f1aab37c88ff"
+                        targetId="a1k5WIRbpCIspefB30h5BMIR-end-sb1e9b881-ce51-4e97-9aee-666b0d5e41fd"/>
+               </repeat>
+               <end id="a1k5WIRbpCIspefB30h5BMIR-end-sb1e9b881-ce51-4e97-9aee-666b0d5e41fd">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0d8333cc-812e-440e-ac8a-2b7d100b9c88</ns1:Id>
+               <ns1:Name>GG</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>73ea291f-9be8-4723-8044-93c25873bb7b</ns1:Id>
+               <ns1:Name>PQR</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>06b32d57-13db-4eb0-abaf-30bb1d179d43</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>647fc66f-9392-497b-a453-7e55a3cb582f</ns1:Id>
+               <ns1:Name>TestA</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e6c2ef80-ba22-4f73-8614-15ddd9b6a5e5</ns1:Id>
+               <ns1:Name>Testb</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7c2a7887-2c20-4977-9caa-091797126b0a</ns1:Id>
+               <ns1:Name>testC</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>13f437e8-2460-42cb-8ca5-47c657f96c0a</ns1:Id>
+               <ns1:Name>testd</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5fbb08cc-e125-45aa-9bc9-a8a66376a7f5</ns1:Id>
+               <ns1:Name>xyz</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:32:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:32:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>k5WIRbpCIspefB30h5BMIR</types1:GUID>
+      <types1:DisplayName>CAI</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.721Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,59 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oAXUCZ4nzYLnzYL-gt-1934969-2026-02-14T09:01:52.331Z::pd.xml</types1:EntryId>
+      <types1:Name>Process3-2</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-14T09:01:52Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-14T09:51:27Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-14T09:51:37Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process3-2/Process3-2.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="09SQd3zascKd0sAavk5xgJ"
+                  displayName="Process3"
+                  name="Process3-2"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="kf46c1e79-3b24-4493-82bb-fb55e31d0e90">
+               <start id="y5673e680-cfc6-4469-913c-29cd50462cac">
+                  <link id="g3edd9017-a792-46b0-a647-69f067ad5406"
+                        targetId="a109SQd3zascKd0sAavk5xgJ-end-x30633344-d0e7-42d5-b81d-e4a32f7d89d7"/>
+               </start>
+               <end id="a109SQd3zascKd0sAavk5xgJ-end-x30633344-d0e7-42d5-b81d-e4a32f7d89d7">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>09SQd3zascKd0sAavk5xgJ</types1:GUID>
+      <types1:DisplayName>Process3</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.702Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

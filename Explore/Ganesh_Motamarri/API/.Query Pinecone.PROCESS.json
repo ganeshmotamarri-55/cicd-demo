@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "3SJLxXYkBehgeZDdxt77a6",
+    "name" : "Query Pinecone",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BOAPbdutaaabbgd-gt-13315501-2026-03-09T12:33:09.544Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that searches for matches between input vectors and vectors in base Pinecone specified by the input parameters Index_Host_Pinecone, and returns results with metadata",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.527Z",
+  "objectRefs" : [ {
+    "id" : "6z7izhwk5IJjtjeSKmYFuO",
+    "name" : "PineconeConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "4XUxQ2Tp5OjG4ab-gt-13275748-2026-03-09T12:33:08.689Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Pinecone connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "48wXsDTsyCscFr16yxrsen",
+    "name" : "VectorMatchEntry_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6gg8vHWOMzeHbcj-gt-13315453-2026-03-09T12:33:08.793Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that provides all the information from the Pinecone vector matching",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "0n6qhvyIVgwlFmCA1wnzEx",
+    "name" : "Generic Error Handler",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "A5tIS7T1cnFKi9z-gt-13315463-2026-03-09T12:33:08.842Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that manages errors, processes different services as input, and returns appropriate error responses based on the service type and the error encountered, ensuring effective error handling and recovery",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

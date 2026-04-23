@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "61d2ghxxmWXjnHFM626N41",
+    "name" : "Guide4",
+    "type" : "GUIDE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "pC18ypmaaa-gt-5583426-2026-02-19T09:12:22.54Z::gt.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.544Z",
+  "objectRefs" : [ {
+    "id" : "594SCKdUTCTkni8tgk1t4Y",
+    "name" : "P_Customer_details",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "TVMTonQYWeIssjq-gt-4213346-2026-02-17T13:41:19.726Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

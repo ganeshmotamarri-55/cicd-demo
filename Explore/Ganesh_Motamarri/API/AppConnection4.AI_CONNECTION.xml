@@ -1,0 +1,68 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>4UEWglH8n55ErhN-gt-33594411-2026-01-30T12:30:05.389Z::conn.xml</types1:EntryId>
+      <types1:Name>AppConnection4</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-01-30T12:30:05Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-01-30T12:37:05Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-01-30T12:37:07Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/AppConnection4/AppConnection4.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppConnection4"
+                     label="AppConnection4"
+                     name="AppConnection4">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="hostName" value="10.182.1.73"/>
+               <attribute encrypted="false" name="port" value="25"/>
+               <attribute encrypted="false"
+                          name="testToAddress"
+                          value="gmotamarri@northcapconsulting.com"/>
+               <attribute encrypted="false"
+                          name="fromAddress"
+                          value="gmotamarri@axxeltechnologies.com"/>
+            </attributes>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="false"
+                           cloudOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="Email"
+                           uuid="9a8a03d0-0437-46c4-bedf-70acb4173c1f">
+               <description>Provides connections to email host servers.</description>
+            </javaConnector>
+            <authentication type="$infa_basicform">
+               <attributes>
+                  <attribute encrypted="false" name="Authentication" value="Enable"/>
+                  <attribute encrypted="false"
+                             name="username"
+                             value="gmotamarri@axxeltechnologies.com"/>
+                  <attribute encrypted="true" name="password" value=""/>
+                  <attribute encrypted="false" name="security" value="None"/>
+                  <attribute encrypted="false" name="connectionTimeout" value="30000"/>
+               </attributes>
+            </authentication>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>801avrN5XmThaw8rup5Uw3</types1:GUID>
+      <types1:DisplayName>AppConnection4</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.814Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "88ZDHHeAkeElSu6TUbJwKK",
+    "name" : "JiraTicketDescription_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "f2VR4109cjIw8jI-gt-13275772-2026-03-09T12:33:08.809Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that contains Jira ticket details",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.534Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "8gZPrBu7b48evDYjmfMnsI",
+    "name" : "Taskflow115Request",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "lOETyxKf3eFhBJQ-gt-7110093-2025-12-23T11:10:28.191Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This object was generated from [Taskflow1-15Request complex type] located in the [https://usw5.dm-us.informaticacloud.com/active-bpel/rt/Taskflow1-15?swagger.xsd] source XML schema.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.552Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

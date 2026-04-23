@@ -1,0 +1,64 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>T6JfOMWSwxF1T4W-gt-13315597-2026-03-09T12:33:10.734Z::po.xml</types1:EntryId>
+      <types1:Name>UberPlanner_PO</types1:Name>
+      <types1:ParentFlowIds>PXyDQeH2PKDC0hC-gt-13315646-2026-03-09T12:33:11.669Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that contains custom attributes for the Uber Planner</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="UberPlanner_PO"
+                        isByCopy="true"
+                        name="UberPlanner_PO">
+            <description>Process object that contains custom attributes for the Uber Planner</description>
+            <tags/>
+            <detail>
+               <field label="Planner"
+                      name="Planner"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label="Attribute"
+                      name="Attribute"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:Attributes_PO</option>
+                     <option name="guid">9HJYxfCIsERiOC2zBuTOKm</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label="Clarity"
+                      name="Clarity"
+                      nullable="true"
+                      required="false"
+                      type="boolean">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>jw7XOGYRecjcZay0Eh9IKJ</types1:GUID>
+      <types1:DisplayName>UberPlanner_PO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.806Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

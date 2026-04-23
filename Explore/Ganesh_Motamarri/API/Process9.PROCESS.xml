@@ -1,0 +1,174 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Hck5qbbfUryzfYt-gt-22729195-2026-04-13T09:17:08.548Z::pd.xml</types1:EntryId>
+      <types1:Name>Process9</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:GaneshMotamarri</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-04-13T09:17:09Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-13T10:05:46Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-04-13T10:05:52Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process9/Process9.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="g5TCu7HQxaPboGlIoJGz4b"
+                  displayName="Process9"
+                  name="Process9"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:GaneshMotamarri</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="File_Read" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Temp Content" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Age" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="job" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Writer" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">App-File-Writer:FileWriteTask</option>
+                     <option name="guid">9Ckc79CFowdh8PwmBzn2YI</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>GaneshMotamarri</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="nb3c1c5a4-fd26-4c3d-b77c-940f19a28d67">
+               <start id="q9d614cc2-6ff2-40e6-b35e-d572936fe856">
+                  <link id="wbddf356b-f7d4-4dc5-ac4f-d52c7c21fc6a"
+                        targetId="Assignment78b88b67-2ef1-4ab9-8e80-b29fa3dea8fa"/>
+               </start>
+               <assignment id="Assignment78b88b67-2ef1-4ab9-8e80-b29fa3dea8fa">
+                  <title>Assignment to File_Read, Counter</title>
+                  <operation source="formula" to="temp.File_Read">
+                     <expression language="XQuery">doc("file:///E:/Projects/Training/SrcFiles/CAI/Text.xml")/files/file</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Counter">
+                     <expression language="XQuery">let $count := count( $temp.File_Read )
+return $count</expression>
+                  </operation>
+                  <link id="iea53d15e-f080-4709-8d2c-2ca11228e55a"
+                        targetId="Assignment919d4bb8-6d61-47d8-b56f-a67f096fa3f0"/>
+               </assignment>
+               <assignment id="Assignment919d4bb8-6d61-47d8-b56f-a67f096fa3f0">
+                  <title>Assignment to Temp Content, ID, etc,</title>
+                  <operation source="formula" to="temp.Temp Content">
+                     <expression language="XQuery">fn:subsequence($temp.File_Read/files/file/id, $temp.Counter,1)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.ID">
+                     <expression language="XQuery">string(fn:subsequence($temp.File_Read/files/file/id, 1, 1))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Name">
+                     <expression language="XQuery">string(fn:subsequence($temp.File_Read/files/file/name, $temp.Counter, 1))</expression>
+                  </operation>
+                  <link id="u4f35458e-00a0-46fd-a0bc-5ec3ccb9f84a"
+                        targetId="Assignmentc67984b1-f640-4010-961e-3fef1e571123"/>
+               </assignment>
+               <assignment id="Assignmentc67984b1-f640-4010-961e-3fef1e571123">
+                  <title>Assignment to File_Writer[1]/fileName, File_Writer[1]/format, etc,</title>
+                  <operation source="constant" to="temp.File_Writer[1]/fileName">Test.csv</operation>
+                  <operation source="constant" to="temp.File_Writer[1]/format">PlainText</operation>
+                  <operation source="formula" to="temp.File_Writer[1]/content">
+                     <expression language="XQuery">$temp.ID</expression>
+                  </operation>
+                  <link id="s1a799ba2-5340-4369-b3fc-7a1c00de4f01"
+                        targetId="Service5198c39c-3f8c-4801-835a-72bf8f5d77fb"/>
+               </assignment>
+               <service id="Service5198c39c-3f8c-4801-835a-72bf8f5d77fb">
+                  <title>FileWriter</title>
+                  <serviceName>App-File-Writer:FileWriter</serviceName>
+                  <serviceGUID>9Ckc79CFowdh8PwmBzn2YI</serviceGUID>
+                  <serviceInput>
+                     <parameter name="fileWriteTask" source="field">temp.File_Writer</parameter>
+                  </serviceInput>
+                  <link id="nbc1a139c-77e2-465b-a77d-6a38fc703f9a"
+                        targetId="end-v16445291-8c04-4a5d-ab6d-e575eb44e76f"/>
+               </service>
+               <end id="end-v16445291-8c04-4a5d-ab6d-e575eb44e76f">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>1bfcc046-7f39-46ea-a65a-745f15db5f94</ns1:Id>
+               <ns1:Name>Ss</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-04-13T09:22:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-04-13T09:22:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>g5TCu7HQxaPboGlIoJGz4b</types1:GUID>
+      <types1:DisplayName>Process9</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.777Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

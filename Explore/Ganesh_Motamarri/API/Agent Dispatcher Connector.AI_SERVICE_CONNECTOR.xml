@@ -1,0 +1,89 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>TVShsZvPP8KnBQ9-gt-13275764-2026-03-09T12:33:08.773Z::svc.xml</types1:EntryId>
+      <types1:Name>Agent_Dispatcher_Connector</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Service connector for customer support Agent dispatcher</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="Agent Dispatcher Connector"
+                            label=""
+                            name="Agent_Dispatcher_Connector"
+                            uuid="9f1a0292-8066-4140-baeb-806bb24e9a7d">
+            <description>Service connector for customer support Agent dispatcher</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Dispatcher"
+                       maxRedirects="100"
+                       name="Dispatcher"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Dispatcher: Executes the specific agent at run time</description>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="Planner"
+                                required="false"
+                                testWith="&lt;Planner xmlns=&#34;&#34;&gt;&#xA;   &lt;app&gt;Query&lt;/app&gt;  &#xA;   &lt;Attributes&gt;&#xA;    &lt;ModelVersion&gt;gemini-2.0-flash-lite&lt;/ModelVersion&gt;   &#xA;    &lt;EmailSubject&gt;Data Discrepancies After IDMC Sync&lt;/EmailSubject&gt;   &#xA;    &lt;EmailBody&gt;Hi Informatica Support,&amp;#xd;&#xA;&amp;#xd;&#xA;We're running into a major issue with our IDMC setup. After the latest data synchronization, we noticed unexpected discrepancies between the source and target systems. Some records appear missing or incorrect, which is causing confusion and could lead to serious business problems.&amp;#xd;&#xA;We've double-checked our configurations and logs but can't figure out why this is happening.&amp;#xd;&#xA;What we've tried: Verified mappings, checked logs, and reran sync jobs&amp;#xd;&#xA;This is urgent because we rely on accurate data for reporting and decision-making. Please help us get this resolved quickly.&amp;#xd;&#xA;&amp;#xd;&#xA;Thanks for your support,&amp;#xd;&#xA;Adam Smith&amp;#xd;&#xA;&amp;#xd;&#xA;&lt;/EmailBody&gt;   &#xA;    &lt;EmailAddress&gt;&#34;Kamuda, Julia&#34; &amp;lt;jkamuda@informatica.com&gt;&lt;/EmailAddress&gt;   &#xA;    &lt;ZendeskTicketLink&gt;https://informatica-21610.zendesk.com/agent/tickets/26&lt;/ZendeskTicketLink&gt;   &#xA;    &lt;ZendeskTicketNumber&gt;26&lt;/ZendeskTicketNumber&gt;   &#xA;    &lt;SupportCompanyName&gt;Informatica&lt;/SupportCompanyName&gt;   &#xA;    &lt;AssigneeEmail&gt;tholub@informatica.com&lt;/AssigneeEmail&gt;   &#xA;    &lt;OutputDimensionality&gt;768&lt;/OutputDimensionality&gt;   &#xA;    &lt;PineconeIndexHost&gt;jira-jr7c6kp.svc.aped-4627-b74a.pinecone.io&lt;/PineconeIndexHost&gt;   &#xA;    &lt;EmbeddedingModel&gt;text-embedding-004&lt;/EmbeddedingModel&gt;   &#xA;    &lt;JiraProjectKey&gt;TESTAI&lt;/JiraProjectKey&gt;   &lt;/Attributes&gt;&#xA;  &lt;/Planner&gt;"
+                                type="reference">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                        </options>
+                     </parameter>
+                     <parameter description=""
+                                label=""
+                                name="AgentName"
+                                nogen="true"
+                                required="false"
+                                testWith="QueryAgent"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{util:resolveURN('urn:agent:dispatcher:'||$AgentName)}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="Planner_Out"
+                            type="reference"
+                            xmlElement="PlannerOut">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>1QcxzuZP6VDkn9o9bSzv8y</types1:GUID>
+      <types1:DisplayName>Agent Dispatcher Connector</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.137Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

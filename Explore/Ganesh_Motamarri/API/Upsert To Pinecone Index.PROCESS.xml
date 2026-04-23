@@ -1,0 +1,181 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>JUO01huaa-gt-13315556-2026-03-09T12:33:10.572Z::pd.xml</types1:EntryId>
+      <types1:Name>Upsert_To_Pinecone_Index</types1:Name>
+      <types1:ParentFlowIds>eCFmVSciY3AxtPk-gt-13315679-2026-03-09T12:33:12.067Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that creates vectors using Gemini AI and saves them in an Pinecone index</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="asYn099kG5HgvgOGOFTqUE"
+                  displayName="Upsert To Pinecone Index"
+                  name="Upsert_To_Pinecone_Index"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that creates vectors using Gemini AI and saves them in an Pinecone index</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Input" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="Output_Dimensionality"
+                          required="true"
+                          type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Model" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Index_Host" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Metadata" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="mf57n0qs" targetId="mf57n0qr"/>
+               </start>
+               <subflow id="mf57n0qr">
+                  <title>Generate Gemini Embeddings</title>
+                  <subflowGUID>3EcNQENJiRecxj4dZNHIm5</subflowGUID>
+                  <subflowPath>Get_Embeddings</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="Input" source="field" updatable="true">input.Input</parameter>
+                     <parameter name="LLM_Model" source="field" updatable="true">input.Model</parameter>
+                     <parameter name="Output_Dimensionality" source="field" updatable="true">input.Output_Dimensionality</parameter>
+                     <parameter name="Operation" source="constant" updatable="true">Write</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="Embeddings" type="reference">
+                        <options>
+                           <option name="required">false</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                     <field name="Text" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="mf57n0rj" targetId="mf57n0uy"/>
+               </subflow>
+               <eventContainer id="mf57n0uy">
+                  <service id="mf57n0ri">
+                     <title>Upsert Dataset to Pinecone</title>
+                     <serviceName>PineconeConnection:Upsert Vectors</serviceName>
+                     <serviceGUID>6z7izhwk5IJjtjeSKmYFuO</serviceGUID>
+                     <serviceInput>
+                        <parameter name="indexHost" source="field" updatable="true">input.Index_Host</parameter>
+                        <parameter name="requestBody" source="formula">
+                           <expression language="XQuery">let $request:=
+&lt;root&gt;
+	&lt;vectors&gt;
+		&lt;id&gt; {hash:hash( $output.Text  , "SHA256")} &lt;/id&gt;
+		 { for $child in $output.Embeddings /values 
+         return element values {$child}
+         }
+         &lt;metadata&gt;
+        &lt;text&gt;{$output.Text}&lt;/text&gt;  
+        {$input.Metadata }
+         &lt;/metadata&gt;
+	&lt;/vectors&gt;
+&lt;/root&gt;
+return $request </expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mf57n0v0">
+                     <link id="mf57n0v1" targetId="mf57n0uy" type="containerLink"/>
+                  </flow>
+                  <flow id="mf57n0v3">
+                     <subflow id="mf57n0ve">
+                        <title>GenericErrorHandlerPinecone</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">Pinecone</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mf57n0vq" targetId="mf57n0vp"/>
+                     </subflow>
+                     <assignment id="mf57n0vp">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.tmp_Retry">output.Out_Retry</operation>
+                        <link id="mf57n112" targetId="mf57n110"/>
+                     </assignment>
+                     <jumpTo id="mf57n110">
+                        <link id="mf57n111" targetId="mf57n0uy"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mf57n0uz" targetId="mf57n0v0" type="containerLink"/>
+                  <link id="mf57n0rk" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mf57n0tf" interrupting="true">
+                        <link id="mf57n0v2" targetId="mf57n0v3" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>asYn099kG5HgvgOGOFTqUE</types1:GUID>
+      <types1:DisplayName>Upsert To Pinecone Index</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.676Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

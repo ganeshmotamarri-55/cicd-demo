@@ -1,0 +1,40 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>HBAGE7ppppppppp-gt-13315490-2026-03-09T12:33:09.453Z::conn.xml</types1:EntryId>
+      <types1:Name>AgentDispatcherConnection</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Agent Dispatcher connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AgentDispatcherConnection"
+                     label="AgentDispatcherConnection"
+                     name="AgentDispatcherConnection">
+            <description>Agent Dispatcher connection</description>
+            <tags/>
+            <agent/>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/Agent_Dispatcher_Connector/Agent_Dispatcher_Connector_svcDef.xml"
+                               guid="1QcxzuZP6VDkn9o9bSzv8y"
+                               name="Agent_Dispatcher_Connector"
+                               supportsConnectionTest="false"
+                               uuid="9f1a0292-8066-4140-baeb-806bb24e9a7d">
+               <description>Service connector for customer support Agent dispatcher</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>54HuWnvUxioiHqCguN5Fok</types1:GUID>
+      <types1:DisplayName>AgentDispatcherConnection</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.451Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

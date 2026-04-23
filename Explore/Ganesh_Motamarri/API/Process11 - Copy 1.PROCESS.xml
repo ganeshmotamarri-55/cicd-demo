@@ -1,0 +1,207 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CHck5qbbfUryzfY-gt-27590606-2026-04-16T09:22:55.464Z::pd.xml</types1:EntryId>
+      <types1:Name>Process11_-_Copy_1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:GaneshMotamarri</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-04-16T09:22:55Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-16T09:26:55Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-04-16T09:27:01Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process11_-_Copy_1/Process11_-_Copy_1.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="7Cgu2i7JwEWf9aeNKhZHuK"
+                  displayName="Process11 - Copy 1"
+                  name="Process11_-_Copy_1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:GaneshMotamarri</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="temp path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp file exists" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp file" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp content" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="EmployeeTable" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Writer" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">App-File-Writer:FileWriteTask</option>
+                     <option name="guid">9Ckc79CFowdh8PwmBzn2YI</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="ID" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="job" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>GaneshMotamarri</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="y4f97bad0-5b5d-4958-a8d9-2de3273321bb">
+               <start id="vdf61e273-58b8-42a5-9923-11226b4206ba">
+                  <link id="rab9784be-87ad-4208-817d-64ce8e5374e8"
+                        targetId="a17Cgu2i7JwEWf9aeNKhZHuK-Assignment90161049-e736-4888-9f91-2bae92760599"/>
+               </start>
+               <assignment id="a17Cgu2i7JwEWf9aeNKhZHuK-Assignment90161049-e736-4888-9f91-2bae92760599">
+                  <title>Assignment to temp file exists, temp path</title>
+                  <operation source="formula" to="temp.temp path">
+                     <expression language="XQuery">let $file:= doc('file:///E:/Projects/Training/SrcFiles/CAI/Text.xml')
+return $file</expression>
+                  </operation>
+                  <operation source="formula" to="temp.temp file exists">
+                     <expression language="XQuery">fn:unparsed-text-available($temp.temppath)</expression>
+                  </operation>
+                  <link id="ffcf804f1-c054-4f5c-9c61-5bb9ecdae6d9"
+                        targetId="a17Cgu2i7JwEWf9aeNKhZHuK-Assignment93b17488-0946-431a-ae55-7a5006404149"/>
+               </assignment>
+               <assignment id="a17Cgu2i7JwEWf9aeNKhZHuK-Assignment93b17488-0946-431a-ae55-7a5006404149">
+                  <title>Assignment to temp content</title>
+                  <operation source="formula" to="temp.temp content">
+                     <expression language="XQuery">let $doc := doc("file:///E:/Projects/Training/SrcFiles/CAI/Text.xml")
+return 
+concat(
+    'ID,NAME,AGE,JOB,PHONE,ADDRESS',
+    '&amp;#10;',
+    string-join(
+        for $emp in $doc/files/file
+        return concat(
+            $emp/id, ',',
+            $emp/name, ',',
+            $emp/age, ',',
+            $emp/job, ',',
+            $emp/phone, ',',
+            $emp/address
+        ),
+        '&amp;#10;'
+    )
+)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.ID">
+                     <expression language="XQuery">let $doc :=  doc("file:///E:/Projects/Training/SrcFiles/CAI/Text.xml")
+return string($doc/files/file[2]/id)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.job">
+                     <expression language="XQuery">let $doc := doc("file:///E:/Projects/Training/SrcFiles/CAI/Text.xml")
+return string($doc/files/file[1]/job)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Name">
+                     <expression language="XQuery">let $doc := doc("file:///E:/Projects/Training/SrcFiles/CAI/Text.xml")
+return string($doc/files/file[1]/name)</expression>
+                  </operation>
+                  <link id="u3972fa9c-0984-45f8-872c-f55477933a8e"
+                        targetId="a17Cgu2i7JwEWf9aeNKhZHuK-Assignment5e9845a6-9d50-4260-a6d2-acbf99d113c8"/>
+               </assignment>
+               <assignment id="a17Cgu2i7JwEWf9aeNKhZHuK-Assignment5e9845a6-9d50-4260-a6d2-acbf99d113c8">
+                  <title>Assignment to EmployeeTable</title>
+                  <operation source="constant" to="temp.File_Writer[1]/fileName">Employee.csv</operation>
+                  <operation source="formula" to="temp.File_Writer[1]/content">
+                     <expression language="XQuery">$temp.tempcontent</expression>
+                  </operation>
+                  <link id="h88d42401-1f00-472d-811c-46302bb8cc47"
+                        targetId="a17Cgu2i7JwEWf9aeNKhZHuK-Create74055b04-05b7-4a14-acad-793d78facf29"/>
+               </assignment>
+               <create id="a17Cgu2i7JwEWf9aeNKhZHuK-Create74055b04-05b7-4a14-acad-793d78facf29">
+                  <title>EMPLOYEE_MASTER</title>
+                  <entityName>App-Ganesh-oracle-jdbc-1:EMPLOYEE_MASTER</entityName>
+                  <createInput>
+                     <parameter name="EMPID" source="field" updatable="true">temp.ID</parameter>
+                  </createInput>
+                  <link id="if3ddbb37-b250-4cf4-90a7-8ff451874734"
+                        targetId="a17Cgu2i7JwEWf9aeNKhZHuK-Servicec3670cda-376f-42d2-9c6f-76abcdf3089f"/>
+               </create>
+               <service id="a17Cgu2i7JwEWf9aeNKhZHuK-Servicec3670cda-376f-42d2-9c6f-76abcdf3089f">
+                  <title>FileWriter</title>
+                  <serviceName>App-File-Writer:FileWriter</serviceName>
+                  <serviceGUID>9Ckc79CFowdh8PwmBzn2YI</serviceGUID>
+                  <serviceInput>
+                     <parameter name="fileWriteTask" source="field">temp.File_Writer</parameter>
+                  </serviceInput>
+                  <link id="tc3e0bf07-539a-4778-b265-4f6ea272ffec"
+                        targetId="a17Cgu2i7JwEWf9aeNKhZHuK-End51a512bb-9fbd-4332-a150-7c54caf2d326"/>
+               </service>
+               <end id="a17Cgu2i7JwEWf9aeNKhZHuK-End51a512bb-9fbd-4332-a150-7c54caf2d326">
+                  <title>End 1</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>15f39360-bc73-4fa3-8617-61cedf537b47</ns1:Id>
+               <ns1:Name>SS</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-04-16T09:22:55Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-04-16T09:22:55Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7Cgu2i7JwEWf9aeNKhZHuK</types1:GUID>
+      <types1:DisplayName>Process11 - Copy 1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.661Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,156 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wdrtRuImXycotFg-gt-4178889-2026-02-17T13:13:09.36Z::svc.xml</types1:EntryId>
+      <types1:Name>SC_Employee</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-17T13:13:09Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-17T13:20:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-17T13:20:57Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SC_Employee/SC_Employee_svcDef.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC_Employee"
+                            label=""
+                            name="SC_Employee"
+                            uuid="abb4206d-43ed-47fc-9019-01b81332e9ab">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetInvoice"
+                       maxRedirects="100"
+                       name="GetInvoice"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="employee_id"
+                                required="false"
+                                testWith="198"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="http://localhost:9090/ords/ganesh/employees/{$employee_id}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="EMPLOYEE_ID" type="string">
+                        <xquery>{/root/employee_id/text()}</xquery>
+                     </field>
+                     <field description="" name="FIRST_NAME" type="string">
+                        <xquery>{/root/first_name/text()}</xquery>
+                     </field>
+                     <field description="" name="LAST_NAME" type="string">
+                        <xquery>{/root/last_name/text()}</xquery>
+                     </field>
+                     <field description="" name="PHONE_NUMBER" type="string">
+                        <xquery>{/root/phone_number/text()}</xquery>
+                     </field>
+                     <field description="" name="HIRE_DATE" type="string">
+                        <xquery>{/root/hire_date/text()}</xquery>
+                     </field>
+                     <field description="" name="JOB_ID" type="string">
+                        <xquery>{/root/job_id/text()}</xquery>
+                     </field>
+                     <field description="" name="SALARY" type="string">
+                        <xquery>{/root/salary/text()}</xquery>
+                     </field>
+                     <field description="" name="COMMISSION_PCT" type="string">
+                        <xquery>{/root/commission_pct/text()}</xquery>
+                     </field>
+                     <field description="" name="MANAGER_ID" type="string">
+                        <xquery>{/root/manager_id/text()}</xquery>
+                     </field>
+                     <field description="" name="DEPARTMENT_ID" type="string">
+                        <xquery>{/root/department_id/text()}</xquery>
+                     </field>
+                     <field description="" name="EMAIL" type="string">
+                        <xquery>{/root/email/text()}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="commission_pct"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="gender" nullable="true" required="false" type="string"/>
+                     <field name="department_id"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="last_name" nullable="true" required="false" type="string"/>
+                     <field name="hire_date"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="salary" nullable="true" required="false" type="int"/>
+                     <field name="manager_id" nullable="true" required="false" type="int"/>
+                     <field name="job_id" nullable="true" required="false" type="string"/>
+                     <field name="employee_id" nullable="true" required="false" type="int"/>
+                     <field name="phone_number"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="links" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">links</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="first_name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="email" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="links">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="rel" nullable="true" required="false" type="string"/>
+                     <field name="href" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>aSGlNuOL3gdjjhflR45mEH</types1:GUID>
+      <types1:DisplayName>SC_Employee</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.061Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

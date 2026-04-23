@@ -1,0 +1,574 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping97",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Expression -> Target"
+      },
+      {
+        "link" : "Source -> Expression"
+      }
+    ],
+    "transformations" : [
+      {
+        "createTime" : "2025-12-23T10:30:34.376Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "SEQ_NUM"
+            },
+            "name" : "SEQ_NUM",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 40,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EXECUTION_PLAN_NAME"
+            },
+            "name" : "EXECUTION_PLAN_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "TASKFLOW_NAME"
+            },
+            "name" : "TASKFLOW_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "TARGET_TABLE_NAME"
+            },
+            "name" : "TARGET_TABLE_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ETL_PROC_WID"
+            },
+            "name" : "ETL_PROC_WID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 39,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DATA_SOURCE_NUM_ID"
+            },
+            "name" : "DATA_SOURCE_NUM_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 39,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LAST_RUN_DATE"
+            },
+            "name" : "LAST_RUN_DATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@4An5mPlDt6Eg5jzrt6p0Y6",
+          "connectionName" : "conn_Ganesh_orcl",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "QUERY",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "customQuery" : "select * from LAST_EXECUTION_DATES\nwhere TASKFLOW_NAME='$$Workflow_Name' and\nEXECUTION_PLAN_NAME=coalesce('$$Executionplan_Name','$$Workflow_Name')",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "SEQ_NUM",
+                "fieldType" : "CONNECTOR",
+                "label" : "SEQ_NUM",
+                "nativeName" : "SEQ_NUM",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 40,
+                "scale" : 0
+              },
+              {
+                "name" : "EXECUTION_PLAN_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "EXECUTION_PLAN_NAME",
+                "nativeName" : "EXECUTION_PLAN_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 100,
+                "scale" : 0
+              },
+              {
+                "name" : "TASKFLOW_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "TASKFLOW_NAME",
+                "nativeName" : "TASKFLOW_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 100,
+                "scale" : 0
+              },
+              {
+                "name" : "TARGET_TABLE_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "TARGET_TABLE_NAME",
+                "nativeName" : "TARGET_TABLE_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 100,
+                "scale" : 0
+              },
+              {
+                "name" : "ETL_PROC_WID",
+                "fieldType" : "CONNECTOR",
+                "label" : "ETL_PROC_WID",
+                "nativeName" : "ETL_PROC_WID",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 39,
+                "scale" : 0
+              },
+              {
+                "name" : "DATA_SOURCE_NUM_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "DATA_SOURCE_NUM_ID",
+                "nativeName" : "DATA_SOURCE_NUM_ID",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 39,
+                "scale" : 0
+              },
+              {
+                "name" : "LAST_RUN_DATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "LAST_RUN_DATE",
+                "nativeName" : "LAST_RUN_DATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "createTime" : "2025-12-23T10:30:34.376Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : [
+          "SEQ_NUM"
+        ],
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "SEQ_NUM"
+            },
+            "name" : "SEQ_NUM",
+            "platformType" : {
+              "name" : "double"
+            },
+            "precision" : 15,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EXECUTION_PLAN_NAME"
+            },
+            "name" : "EXECUTION_PLAN_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "TASKFLOW_NAME"
+            },
+            "name" : "TASKFLOW_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "TARGET_TABLE_NAME"
+            },
+            "name" : "TARGET_TABLE_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ETL_PROC_WID"
+            },
+            "name" : "ETL_PROC_WID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DATA_SOURCE_NUM_ID"
+            },
+            "name" : "DATA_SOURCE_NUM_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LAST_RUN_DATE"
+            },
+            "name" : "LAST_RUN_DATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@4An5mPlDt6Eg5jzrt6p0Y6",
+          "connectionName" : "conn_Ganesh_orcl",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "GANESH/LAST_EXECUTION_DATES",
+            "dbSchema" : "GANESH",
+            "label" : "LAST_EXECUTION_DATES",
+            "objectName" : "LAST_EXECUTION_DATES",
+            "path" : "GANESH/LAST_EXECUTION_DATES",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "SEQ_NUM",
+                "fieldType" : "CONNECTOR",
+                "label" : "SEQ_NUM",
+                "nativeName" : "SEQ_NUM",
+                "nativeType" : "double",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/LAST_EXECUTION_DATES"
+                  }
+                ]
+              },
+              {
+                "name" : "EXECUTION_PLAN_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "EXECUTION_PLAN_NAME",
+                "nativeName" : "EXECUTION_PLAN_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 100,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/LAST_EXECUTION_DATES"
+                  }
+                ]
+              },
+              {
+                "name" : "TASKFLOW_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "TASKFLOW_NAME",
+                "nativeName" : "TASKFLOW_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 100,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/LAST_EXECUTION_DATES"
+                  }
+                ]
+              },
+              {
+                "name" : "TARGET_TABLE_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "TARGET_TABLE_NAME",
+                "nativeName" : "TARGET_TABLE_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 100,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/LAST_EXECUTION_DATES"
+                  }
+                ]
+              },
+              {
+                "name" : "ETL_PROC_WID",
+                "fieldType" : "CONNECTOR",
+                "label" : "ETL_PROC_WID",
+                "nativeName" : "ETL_PROC_WID",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/LAST_EXECUTION_DATES"
+                  }
+                ]
+              },
+              {
+                "name" : "DATA_SOURCE_NUM_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "DATA_SOURCE_NUM_ID",
+                "nativeName" : "DATA_SOURCE_NUM_ID",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/LAST_EXECUTION_DATES"
+                  }
+                ]
+              },
+              {
+                "name" : "LAST_RUN_DATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "LAST_RUN_DATE",
+                "nativeName" : "LAST_RUN_DATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/LAST_EXECUTION_DATES"
+                  }
+                ]
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Update"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "SEQ_NUM",
+              "toField" : {
+                "name" : "SEQ_NUM"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "Backdate",
+              "toField" : {
+                "name" : "LAST_RUN_DATE"
+              },
+              "fromFieldNames" : null
+            }
+          ]
+        }
+      },
+      {
+        "createTime" : "2025-12-23T10:36:04.393Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Backdate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "Add_To_Date(SYSDATE, 'DD', -$$Prune_Days)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "Workflow_Name",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0,
+        "defaultValue" : "tf_SIL_APTermsDimension"
+      },
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "Executionplan_Name",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0,
+        "defaultValue" : "Enterprise Product All Subject Areas"
+      },
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "Prune_Days",
+        "platformType" : {
+          "name" : "integer"
+        },
+        "precision" : 10,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-04-23 02:55:10 PDT"
+}

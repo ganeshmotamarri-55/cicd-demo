@@ -1,0 +1,563 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping108",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Aggregator1"
+      },
+      {
+        "link" : "Aggregator -> Target"
+      },
+      {
+        "link" : "Aggregator1 -> Aggregator"
+      }
+    ],
+    "transformations" : [
+      {
+        "createTime" : "2026-01-29T10:47:11.664Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "Order_ID"
+            },
+            "name" : "Order_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Order_Date"
+            },
+            "name" : "Order_Date",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Year"
+            },
+            "name" : "Year",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Product"
+            },
+            "name" : "Product",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Category"
+            },
+            "name" : "Category",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Region"
+            },
+            "name" : "Region",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Quantity"
+            },
+            "name" : "Quantity",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Unit_Price"
+            },
+            "name" : "Unit_Price",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Sales_Amount"
+            },
+            "name" : "Sales_Amount",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@4DQlvvHikumixHfzqowOON",
+          "connectionName" : "FF_SRC_Ganesh",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "sales_data.csv",
+            "label" : "sales_data.csv",
+            "objectName" : "sales_data.csv",
+            "path" : "sales_data.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "Order_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Order_ID",
+                "nativeName" : "Order_ID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Order_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Order_Date",
+                "nativeName" : "Order_Date",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Year",
+                "fieldType" : "CONNECTOR",
+                "label" : "Year",
+                "nativeName" : "Year",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Product",
+                "fieldType" : "CONNECTOR",
+                "label" : "Product",
+                "nativeName" : "Product",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Category",
+                "fieldType" : "CONNECTOR",
+                "label" : "Category",
+                "nativeName" : "Category",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Region",
+                "fieldType" : "CONNECTOR",
+                "label" : "Region",
+                "nativeName" : "Region",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Quantity",
+                "fieldType" : "CONNECTOR",
+                "label" : "Quantity",
+                "nativeName" : "Quantity",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Unit_Price",
+                "fieldType" : "CONNECTOR",
+                "label" : "Unit_Price",
+                "nativeName" : "Unit_Price",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Sales_Amount",
+                "fieldType" : "CONNECTOR",
+                "label" : "Sales_Amount",
+                "nativeName" : "Sales_Amount",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sales_data.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "createTime" : "2026-01-29T10:47:11.664Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@8VWR03hG1vYkQ9AeNjhkYR",
+          "connectionName" : "FF_TGT_Ganesh",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "TGT_SALES.csv",
+            "label" : "TGT_SALES.csv",
+            "path" : "TGT_SALES.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "none"
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "createTime" : "2026-01-29T10:57:53.316Z",
+        "name" : "Aggregator1",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "Category"
+                  },
+                  {
+                    "inputName" : "Sales_Amount"
+                  },
+                  {
+                    "inputName" : "Year"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "fields" : [
+          {
+            "name" : "Year_2022",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SUM( IIF(to_integer(Year) = 2022, to_integer(Sales_Amount), 0) )"
+          },
+          {
+            "name" : "Year_2023",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SUM( IIF(to_integer(Year) = 2023, to_integer(Sales_Amount), 0) )"
+          },
+          {
+            "name" : "Year_2024",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SUM( IIF(to_integer(Year) = 2023, to_integer(Sales_Amount), 0) )"
+          },
+          {
+            "name" : "Year_2025",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SUM( IIF(to_integer(Year) = 2025, to_integer(Sales_Amount), 0) )"
+          }
+        ],
+        "groupByFieldsList" : {
+          "fields" : [
+            {
+              "fieldName" : "Category"
+            }
+          ]
+        }
+      },
+      {
+        "createTime" : "2026-01-29T11:49:40.395Z",
+        "name" : "Aggregator",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "Category"
+                  },
+                  {
+                    "inputName" : "Sales_Amount"
+                  },
+                  {
+                    "inputName" : "Year_2022"
+                  },
+                  {
+                    "inputName" : "Year_2023"
+                  },
+                  {
+                    "inputName" : "Year_2024"
+                  },
+                  {
+                    "inputName" : "Year_2025"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "fields" : [
+          {
+            "name" : "YOY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "iif((((Year_2025-Year_2024)/Year_2024)*100) >0, (((Year_2025-Year_2024)/Year_2024)*100)||'%', (((Year_2025-Year_2024)/Year_2024)*100)||'%')"
+          }
+        ],
+        "groupByFieldsList" : {
+          "fields" : [
+            {
+              "fieldName" : "Category"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-04-23 02:55:10 PDT"
+}

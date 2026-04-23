@@ -1,0 +1,46 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>f2VR4109cjIw8jI-gt-13275772-2026-03-09T12:33:08.809Z::po.xml</types1:EntryId>
+      <types1:Name>JiraTicketDescription_PO</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that contains Jira ticket details</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="JiraTicketDescription_PO"
+                        isByCopy="true"
+                        name="JiraTicketDescription_PO">
+            <description>Process object that contains Jira ticket details</description>
+            <tags/>
+            <detail>
+               <field label="id"
+                      name="id"
+                      nullable="false"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="description"
+                      name="description"
+                      nullable="false"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>88ZDHHeAkeElSu6TUbJwKK</types1:GUID>
+      <types1:DisplayName>JiraTicketDescription_PO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.304Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

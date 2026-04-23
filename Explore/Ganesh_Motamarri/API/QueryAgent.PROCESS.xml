@@ -1,0 +1,589 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>4jBvSx0aa-gt-13315664-2026-03-09T12:33:11.895Z::pd.xml</types1:EntryId>
+      <types1:Name>QueryAgent</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that generates a response based on the outcome of the Search in Pinecone subprocess, using either articles stored in Pinecone or its own knowledge base.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:12Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="0XE6xLhyiEuftOc9A0NgWl"
+                  displayName="QueryAgent"
+                  name="QueryAgent"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that generates a response based on the outcome of the Search in Pinecone subprocess, using either articles stored in Pinecone or its own knowledge base.</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Planner" required="false" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="PlannerOut" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_Request" type="reference">
+                  <options>
+                     <option name="referenceTo">GeminiConnection:GenerateContentRequestBody</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0BNr3j3wvwukTj4JucgxsM</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Prompt_Configuration" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:GenerationConfig_PO</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">30qf5eDsmAMhdaAX53MiWT</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Email_Subject" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Email_Body" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="bf1b0373b-474c-4a0d-98c5-5931a5c7bf52">
+               <start id="u51c87947-4e46-4018-bdef-321017116bd5">
+                  <link id="na327aa01-4b82-4b3b-b5c1-af064886aacc"
+                        targetId="a13e9cIC8DlM5lQXG19sKd2d-metxh9rg"/>
+               </start>
+               <subflow id="a13e9cIC8DlM5lQXG19sKd2d-metxh9rg">
+                  <title>Search In Pinecone</title>
+                  <subflowGUID>2GESBizGweNguaRuw9nH8z</subflowGUID>
+                  <subflowPath>Search_in_Pinecone</subflowPath>
+                  <appliesTo/>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="In_Query" source="formula" updatable="true">
+                        <expression language="XQuery">concat("Subject: ", $input.Planner[1]/Attributes[1]/EmailSubject , "&amp;#10;", "Body: ",$input.Planner[1]/Attributes[1]/EmailBody  )</expression>
+                     </parameter>
+                     <parameter name="In_Index_Host" source="field" updatable="true">input.Planner[1]/Attributes[1]/PineconeRAGIndexHost</parameter>
+                     <parameter name="In_Embedding_Model" source="field" updatable="true">input.Planner[1]/Attributes[1]/EmbeddingModel</parameter>
+                     <parameter name="In_Score_Cuttoff" source="field" updatable="true">input.Planner[1]/Attributes[1]/RAGArticleCutoff</parameter>
+                     <parameter name="In_Similar_Pinecone_Vectors_Number"
+                                source="field"
+                                updatable="true">input.Planner[1]/Attributes[1]/SimilarPineconeVectorNumber</parameter>
+                     <parameter name="In_Type" source="constant" updatable="true">RAG</parameter>
+                  </input>
+                  <outputDef>
+                     <field description="" name="Out_Embeddings_Model_PO" type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:VectorMatchEntry_PO</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">48wXsDTsyCscFr16yxrsen</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="q7cb8090a-dfad-4beb-9571-0235161cf825"
+                        targetId="a13e9cIC8DlM5lQXG19sKd2d-mev7wreu"/>
+               </subflow>
+               <container id="a13e9cIC8DlM5lQXG19sKd2d-mev7wreu" type="exclusive">
+                  <title>Out_Embeddings_Model_PO</title>
+                  <flow id="ic9c72498-f61f-472a-9eaa-47ac7a74e75d">
+                     <container id="a13e9cIC8DlM5lQXG19sKd2d-mfv48c13" type="exclusive">
+                        <title>Update Create Indicator</title>
+                        <flow id="n2cc8f33a-6367-4fc8-9103-b04853fdb866">
+                           <assignment id="a13e9cIC8DlM5lQXG19sKd2d-mfv48c2j">
+                              <title>Prepare Request Create</title>
+                              <operation source="field" to="temp.Tmp_Email_Body">input.Planner[1]/Attributes[1]/EmailBody</operation>
+                              <operation source="field" to="temp.Tmp_Email_Subject">input.Planner[1]/Attributes[1]/EmailSubject</operation>
+                              <operation source="formula" to="temp.Tmp_Prompt_Configuration">
+                                 <expression language="XQuery">&lt;generationConfig&gt;
+      &lt;stopSequences&gt;sadsadsad&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;1&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;50000&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;0.25&lt;/temperature&gt;
+      &lt;topP&gt;0.5&lt;/topP&gt;
+      &lt;topK&gt;2&lt;/topK&gt;
+&lt;/generationConfig&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_Request">
+                                 <expression language="XQuery">let $articles-as-string :=
+  string-join(
+    for $c in $output.Out_Embeddings_Model_PO 
+    let $score := $c/Score/string()
+    let $text := $c/Text/string()
+    return
+      concat(
+        "&lt;VectorMatchEntry-3&gt;&lt;Score&gt;", $score, "&lt;/Score&gt;&lt;Text&gt;",
+        $text, "&lt;/Text&gt;&lt;/VectorMatchEntry-3&gt;"
+      ),
+    ''
+  )
+  
+
+
+return &lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt; {util:base64Encode(concat("You are an Informatica Support Query Agent specialized in answering user queries about Informatica products. Your task is to respond with information that can help solve the problems outlined in the user's input.  Prioritize the most applicable information that have the highest chance of helping user solve the user's problem. Avoid making up answers. 
+Additionally, you receive a list of related articles extracted from Pinecone, each article provided in the following XML format:
+&lt;VectorMatchEntry-3&gt;
+&lt;Score&gt;...&lt;/Score&gt;
+&lt;Text&gt;...&lt;/Text&gt;
+&lt;/VectorMatchEntry-3&gt;
+Please consider these articles as supplementary information to assist you in answering the query. Pay close attention to the &lt;Score&gt; tag in each article—the higher the score, the more relevant and important that article is. The articles are likely sorted from most to least important.
+Do not rely solely on these articles; you should combine this information appropriately with your own knowledge base and understanding to generate the most accurate, helpful, and relevant answer.
+The values based on which you should answer the question (E-Mail Subject, E-Mail Body and Articles) will be given below:
+E-Mail Subject: ", $temp.Tmp_Email_Subject, "&amp;#10;",
+"E-Mail Body: ", $temp.Tmp_Email_Body, "&amp;#10;",
+"Articles: ", $articles-as-string, "&amp;#10;","&amp;#10;", "**Based on the above, generate a complete and helpful answer to the user's query. Do not describe your process. Just return the final answer.**"
+))}&lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+ &lt;generationConfig&gt;
+      &lt;stopSequences&gt;{$temp.Tmp_Prompt_Configuration[1]/stopSequences}&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;{$temp.Tmp_Prompt_Configuration[1]/candidateCount }&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;{$temp.Tmp_Prompt_Configuration[1]/maxOutputTokens }&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;{$temp.Tmp_Prompt_Configuration[1]/temperature }&lt;/temperature&gt;
+      &lt;topP&gt;{$temp.Tmp_Prompt_Configuration[1]/topP }&lt;/topP&gt;
+      &lt;topK&gt;{$temp.Tmp_Prompt_Configuration[1]/topK }&lt;/topK&gt;
+   &lt;/generationConfig&gt;
+&lt;/Generate_Content_Request&gt;
+</expression>
+                              </operation>
+                              <operation source="field"
+                                         to="input.Planner[1]/Attributes[1]/PineconeFoundArticles">output.Out_Embeddings_Model_PO</operation>
+                           </assignment>
+                           <link id="z684bd9e9-f8aa-49e2-84d4-fbb57881f59a"
+                                 targetId="a13e9cIC8DlM5lQXG19sKd2d-mfv48c13"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="a3c91eaec-a896-4bf0-bb38-caba39169fa8">
+                           <assignment id="a13e9cIC8DlM5lQXG19sKd2d-mfv48chh">
+                              <title>Prepare Request Update</title>
+                              <operation source="field" to="temp.Tmp_Email_Body">input.Planner[1]/Attributes[1]/EmailBody</operation>
+                              <operation source="field" to="temp.Tmp_Email_Subject">input.Planner[1]/Attributes[1]/EmailSubject</operation>
+                              <operation source="formula" to="temp.Tmp_Prompt_Configuration">
+                                 <expression language="XQuery">&lt;generationConfig&gt;
+      &lt;stopSequences&gt;sadsadsad&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;1&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;50000&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;0.25&lt;/temperature&gt;
+      &lt;topP&gt;0.5&lt;/topP&gt;
+      &lt;topK&gt;2&lt;/topK&gt;
+&lt;/generationConfig&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_Request">
+                                 <expression language="XQuery">let $articles-as-string :=
+  string-join(
+    for $c in $output.Out_Embeddings_Model_PO 
+    let $score := $c/Score/string()
+    let $text := $c/Text/string()
+    return
+      concat(
+        "&lt;VectorMatchEntry-3&gt;&lt;Score&gt;", $score, "&lt;/Score&gt;&lt;Text&gt;",
+        $text, "&lt;/Text&gt;&lt;/VectorMatchEntry-3&gt;"
+      ),
+    ''
+  )
+  
+
+
+return &lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt; {util:base64Encode(concat("You are an Informatica Support Query Agent specialized in answering user queries about Informatica products. Your task is to respond with information that can help solve the problems outlined in the user's input.  Prioritize the most applicable information that have the highest chance of helping user solve the user's problem. Avoid making up answers. 
+Additionally, you receive a list of related articles extracted from Pinecone, each article provided in the following XML format:
+&lt;VectorMatchEntry-3&gt;
+&lt;Score&gt;...&lt;/Score&gt;
+&lt;Text&gt;...&lt;/Text&gt;
+&lt;/VectorMatchEntry-3&gt;
+Please consider these articles as supplementary information to assist you in answering the query. Pay close attention to the &lt;Score&gt; tag in each article—the higher the score, the more relevant and important that article is. The articles are likely sorted from most to least important.
+Do not rely solely on these articles; you should combine this information appropriately with your own knowledge base and understanding to generate the most accurate, helpful, and relevant answer.
+The values based on which you should answer the question (E-Mail Subject, Conversation History and Articles) will be given below:
+E-Mail Subject: ", $temp.Tmp_Email_Subject, "&amp;#10;",
+"Conversation History: ", $input.Planner[1]/Attributes[1]/ConversationHistory , "&amp;#10;",
+"Articles: ", $articles-as-string, "&amp;#10;","&amp;#10;", "**Based on the above, generate a complete and helpful answer to the user's query. Do not describe your process. Just return the final answer.**"
+))}&lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+ &lt;generationConfig&gt;
+      &lt;stopSequences&gt;{$temp.Tmp_Prompt_Configuration[1]/stopSequences}&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;{$temp.Tmp_Prompt_Configuration[1]/candidateCount }&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;{$temp.Tmp_Prompt_Configuration[1]/maxOutputTokens }&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;{$temp.Tmp_Prompt_Configuration[1]/temperature }&lt;/temperature&gt;
+      &lt;topP&gt;{$temp.Tmp_Prompt_Configuration[1]/topP }&lt;/topP&gt;
+      &lt;topK&gt;{$temp.Tmp_Prompt_Configuration[1]/topK }&lt;/topK&gt;
+   &lt;/generationConfig&gt;
+&lt;/Generate_Content_Request&gt;
+</expression>
+                              </operation>
+                              <operation source="field"
+                                         to="input.Planner[1]/Attributes[1]/PineconeFoundArticles">output.Out_Embeddings_Model_PO</operation>
+                           </assignment>
+                           <link id="gc11cbd7a-ce96-4c8d-85a5-84a3c847b5e7"
+                                 targetId="a13e9cIC8DlM5lQXG19sKd2d-mfv48c13"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="gae031b1c-fccd-4e36-abe9-c3c901c0626e">
+                           <link id="qa8ec36bf-ac9a-4065-b449-7e4cfebc4dcd"
+                                 targetId="a13e9cIC8DlM5lQXG19sKd2d-mfv48c13"
+                                 type="containerLink"/>
+                        </flow>
+                        <link id="b8f192daa-5c51-42d5-a3df-cf4789d4062e"
+                              targetId="n2cc8f33a-6367-4fc8-9103-b04853fdb866"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$input.Planner[1]/Attributes[1]/UpdateCreateIndicator}</arg>
+                                 <arg name="right">Create</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="y6d594e2a-55be-45d9-a834-58990bff2bf1"
+                              targetId="a3c91eaec-a896-4bf0-bb38-caba39169fa8"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$input.Planner[1]/Attributes[1]/UpdateCreateIndicator}</arg>
+                                 <arg name="right">Update</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="t3674b662-de7b-497d-8639-6f5951c3d80b"
+                              targetId="gae031b1c-fccd-4e36-abe9-c3c901c0626e"
+                              type="containerLink"/>
+                     </container>
+                     <link id="uc44fa069-655e-4f23-8fcb-fec68f25be74"
+                           targetId="a13e9cIC8DlM5lQXG19sKd2d-mev7wreu"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="ec940b565-8265-4de8-a537-d65466a2b4d5">
+                     <container id="a13e9cIC8DlM5lQXG19sKd2d-mfv48c1t" type="exclusive">
+                        <title>Update Create Indicator</title>
+                        <flow id="dcc0eb3e6-76f8-4812-bde3-78b92d2fac95">
+                           <assignment id="a13e9cIC8DlM5lQXG19sKd2d-mfv48c3c">
+                              <title>Prepare Request Create</title>
+                              <operation source="field" to="temp.Tmp_Email_Body">input.Planner[1]/Attributes[1]/EmailBody</operation>
+                              <operation source="field" to="temp.Tmp_Email_Subject">input.Planner[1]/Attributes[1]/EmailSubject</operation>
+                              <operation source="formula" to="temp.Tmp_Prompt_Configuration">
+                                 <expression language="XQuery">&lt;generationConfig&gt;
+      &lt;stopSequences&gt;sadsadsad&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;1&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;50000&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;0.25&lt;/temperature&gt;
+      &lt;topP&gt;0.5&lt;/topP&gt;
+      &lt;topK&gt;2&lt;/topK&gt;
+&lt;/generationConfig&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_Request">
+                                 <expression language="XQuery">&lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt;You are an Informatica Support Query Agent specialized in answering user queries about Informatica products. Your task is to respond with information that can help solve the problems outlined in the user's input. Prioritize the most applicable information that have the highest chance of answering user query. Avoid making up answers. The values based on which you should answer the question (E-Mail Subject, E-Mail Body) are given below:
+E-Mail Subject: "{ $temp.Tmp_Email_Subject }",
+E-Mail Body: "{ $temp.Tmp_Email_Body }"
+**Based on the above, generate a complete and helpful answer to the user's query. Do not describe your process. Just return the final answer.**&lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;parts&gt;
+      	&lt;text&gt;&lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+ &lt;generationConfig&gt;
+      &lt;stopSequences&gt;{$temp.Tmp_Prompt_Configuration[1]/stopSequences}&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;{$temp.Tmp_Prompt_Configuration[1]/candidateCount }&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;{$temp.Tmp_Prompt_Configuration[1]/maxOutputTokens }&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;{$temp.Tmp_Prompt_Configuration[1]/temperature }&lt;/temperature&gt;
+      &lt;topP&gt;{$temp.Tmp_Prompt_Configuration[1]/topP }&lt;/topP&gt;
+      &lt;topK&gt;{$temp.Tmp_Prompt_Configuration[1]/topK }&lt;/topK&gt;
+   &lt;/generationConfig&gt;
+&lt;/Generate_Content_Request&gt;
+</expression>
+                              </operation>
+                           </assignment>
+                           <link id="r085c3fa9-3efe-439a-878c-2b8df6d8b3ed"
+                                 targetId="a13e9cIC8DlM5lQXG19sKd2d-mfv48c1t"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="wafd70d9a-5e4d-4afb-ae15-423b59d06c87">
+                           <assignment id="a13e9cIC8DlM5lQXG19sKd2d-mfv48ccu">
+                              <title>Prepare Request Update</title>
+                              <operation source="field" to="temp.Tmp_Email_Body">input.Planner[1]/Attributes[1]/EmailBody</operation>
+                              <operation source="field" to="temp.Tmp_Email_Subject">input.Planner[1]/Attributes[1]/EmailSubject</operation>
+                              <operation source="formula" to="temp.Tmp_Prompt_Configuration">
+                                 <expression language="XQuery">&lt;generationConfig&gt;
+      &lt;stopSequences&gt;sadsadsad&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;1&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;50000&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;0.25&lt;/temperature&gt;
+      &lt;topP&gt;0.5&lt;/topP&gt;
+      &lt;topK&gt;2&lt;/topK&gt;
+&lt;/generationConfig&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_Request">
+                                 <expression language="XQuery">&lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt;You are an Informatica Support Query Agent specialized in answering user queries about Informatica products. Your task is to respond with information that can help solve the problems outlined in the user's input. Prioritize the most applicable information that have the highest chance of answering user query. Avoid making up answers. The values based on which you should answer the question (E-Mail Subject, Conversation History) are given below:
+E-Mail Subject: "{ $temp.Tmp_Email_Subject }",
+Conversation History: "{ $input.Planner[1]/Attributes[1]/ConversationHistory  }"
+**Based on the above, generate a complete and helpful answer to the user's query. Do not describe your process. Just return the final answer.**&lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;parts&gt;
+      	&lt;text&gt;&lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+ &lt;generationConfig&gt;
+      &lt;stopSequences&gt;{$temp.Tmp_Prompt_Configuration[1]/stopSequences}&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;{$temp.Tmp_Prompt_Configuration[1]/candidateCount }&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;{$temp.Tmp_Prompt_Configuration[1]/maxOutputTokens }&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;{$temp.Tmp_Prompt_Configuration[1]/temperature }&lt;/temperature&gt;
+      &lt;topP&gt;{$temp.Tmp_Prompt_Configuration[1]/topP }&lt;/topP&gt;
+      &lt;topK&gt;{$temp.Tmp_Prompt_Configuration[1]/topK }&lt;/topK&gt;
+   &lt;/generationConfig&gt;
+&lt;/Generate_Content_Request&gt;
+</expression>
+                              </operation>
+                           </assignment>
+                           <link id="i5402bdbc-04e5-4a47-8b3e-fa81fc193b80"
+                                 targetId="a13e9cIC8DlM5lQXG19sKd2d-mfv48c1t"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="g0c7a80a7-11b9-40c6-b2e1-74a623395faa">
+                           <link id="x7fbf11f7-a286-416d-8c18-3c7fe96c33c4"
+                                 targetId="a13e9cIC8DlM5lQXG19sKd2d-mfv48c1t"
+                                 type="containerLink"/>
+                        </flow>
+                        <link id="rba60e478-a73d-49ec-b3d9-454a9429ce66"
+                              targetId="dcc0eb3e6-76f8-4812-bde3-78b92d2fac95"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$input.Planner[1]/Attributes[1]/UpdateCreateIndicator}</arg>
+                                 <arg name="right">Create</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="b9ed03da0-934f-48bd-a807-e49686cc848c"
+                              targetId="wafd70d9a-5e4d-4afb-ae15-423b59d06c87"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$input.Planner[1]/Attributes[1]/UpdateCreateIndicator}</arg>
+                                 <arg name="right">Update</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="s4361051b-6bbb-450e-811c-69521fc21553"
+                              targetId="g0c7a80a7-11b9-40c6-b2e1-74a623395faa"
+                              type="containerLink"/>
+                     </container>
+                     <link id="dd17df673-e6ad-4299-8513-adb8674e6d9f"
+                           targetId="a13e9cIC8DlM5lQXG19sKd2d-mev7wreu"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="d84038acf-4039-4648-a0bd-6b542e108afb"
+                        targetId="ic9c72498-f61f-472a-9eaa-47ac7a74e75d"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$output.Out_Embeddings_Model_PO}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="x82c94d2b-e780-4d78-adbc-3f3bcb3ebcef"
+                        targetId="ec940b565-8265-4de8-a537-d65466a2b4d5"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$output.Out_Embeddings_Model_PO}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="xc80b1afd-2fed-4826-bb5c-709d9da9e63f"
+                        targetId="a13e9cIC8DlM5lQXG19sKd2d-mev350m2"/>
+               </container>
+               <eventContainer id="a13e9cIC8DlM5lQXG19sKd2d-mev350m2">
+                  <service id="sfe1d422d-bdbd-4fa9-9d1f-6118952d13da">
+                     <title>Generate Content</title>
+                     <serviceName>GeminiConnection:Generate Content</serviceName>
+                     <serviceGUID>0BNr3j3wvwukTj4JucgxsM</serviceGUID>
+                     <serviceInput>
+                        <parameter name="model" source="field">input.Planner[1]/Attributes[1]/ModelVersion</parameter>
+                        <parameter name="requestBody" source="field">temp.Tmp_Request</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="qd482a8bf-44e3-464f-b7fa-bb1de3eb6286">
+                     <assignment id="a13e9cIC8DlM5lQXG19sKd2d-mev7wrdc">
+                        <title>Return Content from Response</title>
+                        <operation source="field" to="input.Planner[1]/Attributes[1]/QueryAgentResponse">output.text</operation>
+                        <operation source="field" to="output.PlannerOut">input.Planner</operation>
+                        <link id="q7d2430f3-86b7-45fb-ad82-71584633c947"
+                              targetId="a13e9cIC8DlM5lQXG19sKd2d-mev7wrdv"/>
+                     </assignment>
+                     <end id="a13e9cIC8DlM5lQXG19sKd2d-mev7wrdv">
+                        <title>End</title>
+                     </end>
+                  </flow>
+                  <flow id="m4aba96a8-09aa-469d-83fe-42b2c310254e">
+                     <subflow id="a13e9cIC8DlM5lQXG19sKd2d-mev350oi">
+                        <title>GenericErrorHandlerLLM</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <appliesTo/>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">LLM</parameter>
+                        </input>
+                        <outputDef>
+                           <field description="" name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="n43a8c5bf-ef44-42ec-b24a-a6af0236e88b"
+                              targetId="a13e9cIC8DlM5lQXG19sKd2d-mev350uf"/>
+                     </subflow>
+                     <assignment id="a13e9cIC8DlM5lQXG19sKd2d-mev350uf">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="ycc99c570-ae5b-4f44-a3a3-176f22aabcad"
+                              targetId="a13e9cIC8DlM5lQXG19sKd2d-mev350sl"/>
+                     </assignment>
+                     <jumpTo id="a13e9cIC8DlM5lQXG19sKd2d-mev350sl">
+                        <link id="m6d2a1041-c06e-4536-b174-e4fb396e6dbf"
+                              targetId="a13e9cIC8DlM5lQXG19sKd2d-mev350m2"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="b0ca59638-7f0a-4942-a643-d5ef76c7dc9f"
+                        targetId="qd482a8bf-44e3-464f-b7fa-bb1de3eb6286"
+                        type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo"
+                            id="d00b683a1-cc79-40da-a1fb-6b22ebf4e445"
+                            interrupting="true">
+                        <link id="id3206e57-f15d-45bd-be44-e0adcc236f04"
+                              targetId="m4aba96a8-09aa-469d-83fe-42b2c310254e"
+                              type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ae19d2f3-e105-457f-ae8e-47e86057c445</ns1:Id>
+               <ns1:Name>query agent</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "Email Subject": "Data Discrepancies After IDMC Sync ",
+	 "Email Body": "Hi Informatica Support, We’re running into a major issue with our IDMC setup. After the latest data synchronization, we noticed unexpected discrepancies between the source and target systems. Some records appear missing or incorrect, which is causing confusion and could lead to serious business problems. We’ve double-checked our configurations and logs but can’t figure out why this is happening. What we’ve tried: Verified mappings, checked logs, and reran sync jobs This is urgent because we rely on accurate data for reporting and decision-making. Please help us get this resolved quickly. Thanks for your support, Adam Smith "
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>98e5f5ac-0f69-4eb4-8b4d-9173700532c0</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "Email Subject": "Mapping failure",
+	 "Email Body": "Hello GCS Team! I am trying to run a mapping in Cloud Data Integration that's called test_mapping, but I am unable to do so , as during the execution I get the 'jobInstanceId is empty or has default value, hence quitting' error. Can you please suggest on how to resolve this? Best Regards, Jurek Brzęczek"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5e971b34-264e-4dc3-a118-e6159923cbd3</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "Planner": {
+	 	 "app": "",
+	 	 "Attributes": {
+	 	 	 "EmailBody": "Hello, After a failed attempt to upgrade the Informatica agent, I'm unable to restart it using AgentManager. Is there an alternative way to start the agent if AgentManager isn't working properly?",
+	 	 	 "EmailSubject": "Unable to restart agent after failed upgrade",
+	 	 	 "EmailAddress": "tholub@informatica.com",
+	 	 	 "ZendeskTicketNumber": "12",
+	 	 	 "ZendeskTicketLink": "https://app.pinecone.io/organizations/-OXMjTbe_6NraQlofYEW/projects/ed1bd2f2-9cc1-4434-a6ec-cf4c25ed8d74/indexes/rag/browser",
+	 	 	 "ConfidenceLevel": "50",
+	 	 	 "SummarizerAgentResponse": "",
+	 	 	 "AssigneeEmail": "tholub@informatica.com",
+	 	 	 "ModelVersion": "gemini-2.0-flash-lite",
+	 	 	 "SupportCompanyName": "",
+	 	 	 "QueryAgentResponse": "",
+	 	 	 "OutputDimensionality": "768",
+	 	 	 "EmbeddedingModel": "text-embedding-004",
+	 	 	 "JiraProjectKey": "TESTAI",
+	 	 	 "JiraTicketPriority": "High",
+	 	 	 "PineconeRAGIndexHost": "rag-jr7c6kp.svc.aped-4627-b74a.pinecone.io",
+	 	 	 "PineconeFoundArticles": "",
+	 	 	 "PineconeJiraIndexHost": "jira-jr7c6kp.svc.aped-4627-b74a.pinecone.io",
+	 	 	 "JiraTicketCutoff": "0.3",
+	 	 	 "RAGArticleCutoff": "0.95",
+	 	 	 "SimilarPineconeVectorNumber": "3"
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0XE6xLhyiEuftOc9A0NgWl</types1:GUID>
+      <types1:DisplayName>QueryAgent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:14.135Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

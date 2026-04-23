@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "2dpZbKG6o2zdHIuFtDjKKR",
+    "name" : "Process5",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "W0bdpIO3M4WwOC2-gt-2704836-2026-02-15T10:05:31.774Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.533Z",
+  "objectRefs" : [ {
+    "id" : "bR3OIKnrTmEk9N4h8YMB4C",
+    "name" : "MappingTask24",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01DF810Z000000000129"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

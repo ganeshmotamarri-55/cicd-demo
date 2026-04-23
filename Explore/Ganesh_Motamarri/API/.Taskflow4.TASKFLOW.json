@@ -1,0 +1,70 @@
+{
+  "objectInfo" : {
+    "id" : "0TOh6PEOfGmg46bg8GvI4s",
+    "name" : "Taskflow4",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "n0qRi92qBbbeJOS-gt-3257178-2026-02-15T10:39:19.223Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.559Z",
+  "objectRefs" : [ {
+    "id" : "1O6ODliF7mkbs8TyxKMkSI",
+    "name" : "MappingTask25",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01DF810Z00000000012B"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "2dpZbKG6o2zdHIuFtDjKKR",
+    "name" : "Process5",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "W0bdpIO3M4WwOC2-gt-2704836-2026-02-15T10:05:31.774Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

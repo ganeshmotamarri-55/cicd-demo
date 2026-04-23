@@ -1,0 +1,172 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>02Fjuz3PI2HBxZm-gt-13315627-2026-03-09T12:33:10.994Z::pd.xml</types1:EntryId>
+      <types1:Name>Gemini_Agent_Dispatcher</types1:Name>
+      <types1:ParentFlowIds>PXyDQeH2PKDC0hC-gt-13315646-2026-03-09T12:33:11.669Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that calls the sub-agents based on the query prompt and dispatches the workflow to the appropriate agent at run time</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="45S0RJRydwzca5hnvdXPoQ"
+                  displayName="Gemini Agent Dispatcher"
+                  name="Gemini_Agent_Dispatcher"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that calls the sub-agents based on the query prompt and dispatches the workflow to the appropriate agent at run time</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Planner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="PlannerOut" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_App" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Title" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+            </extData>
+            <flow id="hcbfb642a-dcaa-4fa4-9dee-4a558b6c615d">
+               <start id="acdf79e23-ac34-47e4-8dd8-d0b1362bf369">
+                  <link id="z4dd46101-43e2-4820-a646-6fcda0ab4309"
+                        targetId="a160mleftJAtlhqjJbJO1kw6-meb3nu00"/>
+               </start>
+               <assignment id="a160mleftJAtlhqjJbJO1kw6-meb3nu00">
+                  <title>Assignment to tempApp, Title</title>
+                  <operation source="formula" to="temp.Tmp_App">
+                     <expression language="XQuery">let $camelCaseApp :=$input.Planner[1]/app/text()
+return $camelCaseApp ||'Agent'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Tmp_Title">
+                     <expression language="XQuery">let $title := 'Dispatching to  '|| $temp.Tmp_App 
+return ipd:setProcessTitle($title)</expression>
+                  </operation>
+                  <link id="md7dbb327-f66c-4015-9d79-aebb990fc869" targetId="mf4irh2o"/>
+               </assignment>
+               <assignment id="a160mleftJAtlhqjJbJO1kw6-meb3nu0c">
+                  <title>Assignment to PlannerOut</title>
+                  <operation source="formula" to="output.PlannerOut">
+                     <expression language="XQuery">$output.Planner_Out</expression>
+                  </operation>
+                  <link id="c3c9307c2-abe5-433f-ad99-65a1a37c7d64"
+                        targetId="a160mleftJAtlhqjJbJO1kw6-c"/>
+               </assignment>
+               <eventContainer id="mf4irh2o">
+                  <service id="a160mleftJAtlhqjJbJO1kw6-meb3nu05">
+                     <title>Dispatcher</title>
+                     <serviceName>AgentDispatcherConnection:Dispatcher</serviceName>
+                     <serviceGUID>54HuWnvUxioiHqCguN5Fok</serviceGUID>
+                     <serviceInput>
+                        <parameter name="Planner" source="formula">
+                           <expression language="XQuery">$input.Planner</expression>
+                        </parameter>
+                        <parameter name="AgentName" source="formula">
+                           <expression language="XQuery">$temp.Tmp_App</expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mf4irh2q">
+                     <link id="mf4irh2r" targetId="mf4irh2o" type="containerLink"/>
+                  </flow>
+                  <flow id="mf4irh2t">
+                     <subflow id="mf4irh2z">
+                        <title>GenericErrorHandler</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mf4irh36" targetId="mf4irh35"/>
+                     </subflow>
+                     <assignment id="mf4irh35">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="mf4irh63" targetId="mf4irh61"/>
+                     </assignment>
+                     <jumpTo id="mf4irh61">
+                        <link id="mf4irh62" targetId="mf4irh2o"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mf4irh2p" targetId="mf4irh2q" type="containerLink"/>
+                  <link id="p05972fde-1a5c-422c-a7ed-d86cfa40a165"
+                        targetId="a160mleftJAtlhqjJbJO1kw6-meb3nu0c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mf4irh2n" interrupting="true">
+                        <link id="mf4irh2s" targetId="mf4irh2t" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="a160mleftJAtlhqjJbJO1kw6-c">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>45S0RJRydwzca5hnvdXPoQ</types1:GUID>
+      <types1:DisplayName>Gemini Agent Dispatcher</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.767Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

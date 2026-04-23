@@ -1,0 +1,234 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>iZf5kck8jKBmeK3-gt-3394313-2026-02-16T11:15:28.135Z::pd.xml</types1:EntryId>
+      <types1:Name>Process6_Invalid</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:GaneshMotamarri</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-16T11:15:28Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-17T09:01:59Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-17T09:02:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process6_Invalid/Process6_Invalid.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="8uUewzo3JMoe5jQWPvL5uE"
+                  displayName="Process6_Invalid"
+                  name="Process6_Invalid"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:GaneshMotamarri</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="Depth2" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="XMLTEXT" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Depth" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Folder_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Command_Incr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Command_Full" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="XML1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Total" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="index" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Head" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>GaneshMotamarri</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="q2d57ccaa-ca5c-4eb8-8af5-1baafeba8c1b">
+               <start id="l09127172-f553-43de-a8f2-c4a00139703b">
+                  <link id="d8d1e251c-646f-4928-8225-5aeae4fcd90b"
+                        targetId="a18uUewzo3JMoe5jQWPvL5uE-Assignment098e4699-bfaa-4adf-95f7-42066f6c60be"/>
+               </start>
+               <assignment id="a18uUewzo3JMoe5jQWPvL5uE-Assignment098e4699-bfaa-4adf-95f7-42066f6c60be">
+                  <title>Assignment to XMLTEXT</title>
+                  <operation source="formula" to="temp.XMLTEXT">
+                     <expression language="XQuery">&lt;CSI_PROCESSES&gt;
+   &lt;PROCESS&gt;
+      &lt;DEPTH&gt;1&lt;/DEPTH&gt;
+      &lt;NAME&gt;Customer_Load&lt;/NAME&gt;
+      &lt;FOLDER_NAME&gt;Customer_Integration&lt;/FOLDER_NAME&gt;
+      &lt;COMMAND_FOR_FULL_LOAD&gt;LOAD_CUSTOMER_FULL.sh&lt;/COMMAND_FOR_FULL_LOAD&gt;
+      &lt;COMMAND_FOR_INCREMENTAL_LOAD&gt;LOAD_CUSTOMER_INC.sh&lt;/COMMAND_FOR_INCREMENTAL_LOAD&gt;
+   &lt;/PROCESS&gt;
+   &lt;PROCESS&gt;
+      &lt;DEPTH&gt;2&lt;/DEPTH&gt;
+      &lt;NAME&gt;Orders_Load&lt;/NAME&gt;
+      &lt;FOLDER_NAME&gt;Order_Integration&lt;/FOLDER_NAME&gt;
+      &lt;COMMAND_FOR_FULL_LOAD&gt;LOAD_ORDERS_FULL.sh&lt;/COMMAND_FOR_FULL_LOAD&gt;
+      &lt;COMMAND_FOR_INCREMENTAL_LOAD&gt;LOAD_ORDERS_INC.sh&lt;/COMMAND_FOR_INCREMENTAL_LOAD&gt;
+   &lt;/PROCESS&gt;
+&lt;/CSI_PROCESSES&gt;</expression>
+                  </operation>
+                  <link id="y0e25a8e3-4df7-46d1-8f85-b31a3daf6365"
+                        targetId="a18uUewzo3JMoe5jQWPvL5uE-Assignment5ebd83f3-187e-4904-a302-eebdb9244eea"/>
+               </assignment>
+               <assignment id="a18uUewzo3JMoe5jQWPvL5uE-Assignment5ebd83f3-187e-4904-a302-eebdb9244eea">
+                  <title>Assignment to Depth</title>
+                  <operation source="formula" to="temp.XML1">
+                     <expression language="XQuery">parse-xml(string($temp.XMLTEXT))</expression>
+                  </operation>
+                  <link id="yf0a1acaf-d99d-4708-ae60-cd3bd5cfefc0"
+                        targetId="a18uUewzo3JMoe5jQWPvL5uE-Assignment0bcbf688-896f-4ef0-86cb-67db3309037d"/>
+               </assignment>
+               <assignment id="a18uUewzo3JMoe5jQWPvL5uE-Assignment0bcbf688-896f-4ef0-86cb-67db3309037d">
+                  <title>Assignment to Total, index</title>
+                  <operation source="formula" to="temp.Total">
+                     <expression language="XQuery">count($temp.XML1/CSI_PROCESSES/PROCESS)</expression>
+                  </operation>
+                  <operation source="constant" to="temp.index">1</operation>
+                  <operation source="formula" to="temp.Head">
+                     <expression language="XQuery">list:head ( $temp.XML1 )</expression>
+                  </operation>
+                  <link id="jcf6afeab-b710-4865-9c7e-82bc512f6ab8"
+                        targetId="Decision4816579c-9eae-4326-990a-a27e4b8f90cd"/>
+               </assignment>
+               <container id="Decision4816579c-9eae-4326-990a-a27e4b8f90cd" type="exclusive">
+                  <title>Head</title>
+                  <flow id="j9822866b-d835-4a8a-8a5b-389b588b8b0b">
+                     <link id="o7cf7628e-986a-4e3b-8847-8b85d9eebd99"
+                           targetId="Decision4816579c-9eae-4326-990a-a27e4b8f90cd"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="zc036ac73-972a-4c84-851a-2846d387b9d8">
+                     <create id="a18uUewzo3JMoe5jQWPvL5uE-Create8064d769-ac01-4456-b7e0-de23bd60908e">
+                        <title>AP_SUBJECT_AREA</title>
+                        <entityName>App-Ganesh-oracle-jdbc:AP_SUBJECT_AREA</entityName>
+                        <createInput>
+                           <parameter name="DEPTH" source="formula" updatable="true">
+                              <expression language="XQuery">xs:integer(
+   $temp.Head/CSI_PROCESSES/PROCESS/DEPTH
+)</expression>
+                           </parameter>
+                        </createInput>
+                        <link id="c6dfe5a1e-a652-4446-b6c5-702889e81255"
+                              targetId="Assignmentf04e12ca-73b7-41c7-8975-f84a354a5239"/>
+                     </create>
+                     <assignment id="Assignmentf04e12ca-73b7-41c7-8975-f84a354a5239">
+                        <title>Assignment to XML1</title>
+                        <operation source="formula" to="temp.XML1">
+                           <expression language="XQuery">list:tail ( $temp.XML1 )</expression>
+                        </operation>
+                        <link id="k16238d7c-1c13-40fa-aa20-884d18ae5d83"
+                              targetId="Jump028fcc0f-4f15-42c0-97da-8c730bc1b3ae"/>
+                     </assignment>
+                     <jumpTo id="Jump028fcc0f-4f15-42c0-97da-8c730bc1b3ae">
+                        <link id="w1ebe0b19-6e8c-4b05-a343-7f644ffba4f2"
+                              targetId="a18uUewzo3JMoe5jQWPvL5uE-Assignment0bcbf688-896f-4ef0-86cb-67db3309037d"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="hc093c254-c3a6-4e2b-9b93-296f758c7e70"
+                        targetId="j9822866b-d835-4a8a-8a5b-389b588b8b0b"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.Head}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="w5cecff9e-d98d-40f3-b9ac-9b219d9bcae2"
+                        targetId="zc036ac73-972a-4c84-851a-2846d387b9d8"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.Head}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="beff4fecb-5ba3-492e-83bc-a6dba6e514db"
+                        targetId="a18uUewzo3JMoe5jQWPvL5uE-end-y8e66ec8a-e24c-462b-966e-183812a5552c"/>
+               </container>
+               <end id="a18uUewzo3JMoe5jQWPvL5uE-end-y8e66ec8a-e24c-462b-966e-183812a5552c">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>fd18b866-bbef-47fc-9ca2-8daddbf70fc1</ns1:Id>
+               <ns1:Name>Noinputs</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T11:16:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T11:16:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>8uUewzo3JMoe5jQWPvL5uE</types1:GUID>
+      <types1:DisplayName>Process6_Invalid</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.117Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

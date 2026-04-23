@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "2GESBizGweNguaRuw9nH8z",
+    "name" : "Search in Pinecone",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "OYTRgpDqotxGomU-gt-13315574-2026-03-09T12:33:10.654Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that generates embedding vectors from user input using Gemini, searches for matching vectors in a specified Pinecone index based on input parameters, and returns the top matches with metadata, limited to the specified number of similar Pinecone vectors",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.561Z",
+  "objectRefs" : [ {
+    "id" : "3EcNQENJiRecxj4dZNHIm5",
+    "name" : "Get Embeddings",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "abbf5ZK0CYybdsM-gt-13315538-2026-03-09T12:33:10.013Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that generates embedding vectors from the user input using Gemini",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "48wXsDTsyCscFr16yxrsen",
+    "name" : "VectorMatchEntry_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6gg8vHWOMzeHbcj-gt-13315453-2026-03-09T12:33:08.793Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that provides all the information from the Pinecone vector matching",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "3SJLxXYkBehgeZDdxt77a6",
+    "name" : "Query Pinecone",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BOAPbdutaaabbgd-gt-13315501-2026-03-09T12:33:09.544Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that searches for matches between input vectors and vectors in base Pinecone specified by the input parameters Index_Host_Pinecone, and returns results with metadata",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

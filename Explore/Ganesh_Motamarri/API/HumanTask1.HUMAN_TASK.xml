@@ -1,0 +1,114 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>i5Xt1T4W6jKsJlv-gt-7198714-2025-12-23T12:46:31.138Z::ht.xml</types1:EntryId>
+      <types1:Name>HumanTask1</types1:Name>
+      <types1:MimeType>application/xml+humantask</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2025-12-23T12:46:31Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2025-12-23T17:13:37Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <HumanTask xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskAsset.xsd"
+                    xmlns:core="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                    xmlns:htc="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                    displayName="HumanTask1"
+                    name="HumanTask1">
+            <description/>
+            <priority source="constant">1</priority>
+            <skippable source="constant">false</skippable>
+            <origin source="constant"/>
+            <interface>
+               <input>
+                  <field name="Executionplan" required="false" type="string">
+                     <options>
+                        <option xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                                name="defaultValue">Enterprise Product All Subject Areas</option>
+                     </options>
+                  </field>
+                  <field name="Workflow" required="false" type="string">
+                     <options>
+                        <option xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                                name="defaultValue">tf_SIL_APTermsDimension</option>
+                     </options>
+                  </field>
+                  <field name="Prune" required="false" type="int">
+                     <options>
+                        <option xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                                name="defaultValue">10</option>
+                     </options>
+                  </field>
+               </input>
+               <output>
+                  <field name="OExecutionplan" required="false" type="string"/>
+                  <field name="OWorkflow" required="false" type="string"/>
+                  <field name="OPrune" required="false" type="int"/>
+               </output>
+               <outcomes>
+                  <outcome>
+                     <id>outcomes-1766492108297</id>
+                     <value>Outcome1</value>
+                     <label>Outcome1</label>
+                  </outcome>
+                  <outcome>
+                     <id>outcomes-1766492109469</id>
+                     <value>Outcome2</value>
+                     <label>Outcome2</label>
+                  </outcome>
+                  <outcome>
+                     <id>outcomes-1766492109638</id>
+                     <value>Outcome3</value>
+                     <label>Outcome3</label>
+                  </outcome>
+               </outcomes>
+            </interface>
+            <presentation>
+               <displayName source="constant">HT</displayName>
+               <subject source="constant">Providecredentials</subject>
+            </presentation>
+            <assignments>
+               <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                canOverwrite="true">
+                  <include source="constant">
+                     <user>gmotamarri@idmc.axxeltechnologies.com</user>
+                  </include>
+                  <exclude/>
+               </potentialOwners>
+               <administrators xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                               canOverwrite="true"
+                               source="constant">
+                  <user>gmotamarri@idmc.axxeltechnologies.com</user>
+               </administrators>
+               <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                             canOverwrite="true"
+                             source="constant">
+                  <user>gmotamarri@idmc.axxeltechnologies.com</user>
+               </stakeholders>
+            </assignments>
+            <renderings>
+               <humanTaskRendering xmlns="urn:ht:renderings:internal" xmlns:rend="urn:ht:renderings:internal">
+                  <origin>urn:rendering:CAI</origin>
+                  <id>urn:rendering:CAI:Guide</id>
+                  <metadata>
+                     <guideMetadata>
+                        <guid>18BTrIB5D9Lesg4dDLO18j</guid>
+                        <name>Guide2</name>
+                        <catalogLocation>project:/sf.Guide2/Guide2.xml</catalogLocation>
+                     </guideMetadata>
+                  </metadata>
+               </humanTaskRendering>
+            </renderings>
+         </HumanTask>
+      </types1:Entry>
+      <types1:GUID>lYgRwxMrAwOinWQzrqnvGO</types1:GUID>
+      <types1:DisplayName>HumanTask1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.349Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

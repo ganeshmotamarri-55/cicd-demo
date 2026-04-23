@@ -1,0 +1,49 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>lOETyxKf3eFhBJQ-gt-7110093-2025-12-23T11:10:28.191Z::po.xml</types1:EntryId>
+      <types1:Name>Taskflow115Request</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2025-12-23T11:10:28Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:aetgt="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:internal2="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                        xmlns:ns3="http://schemas.active-endpoints.com/appmodules/screenflow/2012/09/avosObjectDiscovery.xsd"
+                        isByCopy="true"
+                        name="Taskflow115Request">
+            <description>This object was generated from [Taskflow1-15Request complex type] located in the [https://usw5.dm-us.informaticacloud.com/active-bpel/rt/Taskflow1-15?swagger.xsd] source XML schema.</description>
+            <detail>
+               <field label="Executionplan_Name"
+                      name="Executionplan_Name"
+                      nullable="false"
+                      required="true"
+                      type="string"/>
+               <field label="Prune_Days"
+                      name="Prune_Days"
+                      nullable="false"
+                      required="true"
+                      type="int"/>
+               <field label="Workflow_Name"
+                      name="Workflow_Name"
+                      nullable="false"
+                      required="true"
+                      type="string"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>8gZPrBu7b48evDYjmfMnsI</types1:GUID>
+      <types1:DisplayName>Taskflow115Request</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.016Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

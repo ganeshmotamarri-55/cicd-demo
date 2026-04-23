@@ -1,0 +1,152 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>W0bdpIO3M4WwOC2-gt-2704836-2026-02-15T10:05:31.774Z::pd.xml</types1:EntryId>
+      <types1:Name>Process5</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-15T10:05:32Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-15T11:41:40Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-15T11:42:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process5/Process5.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="2dpZbKG6o2zdHIuFtDjKKR"
+                  displayName="Process5"
+                  name="Process5"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="TaskDetails"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="STATUS" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Instanceid" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Successsrows" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="FileReady" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="s7efd5c18-f387-424b-8103-d6ae9ebc34b7">
+               <start id="lf0d2b8c0-718e-4af7-8159-36456c3624d2">
+                  <link id="w54e07dea-b8f0-489f-90b7-d5511204c6ac"
+                        targetId="Loopb67b395b-65f8-4dc6-87b3-ae2cc3ddd929"/>
+               </start>
+               <repeat id="Loopb67b395b-65f8-4dc6-87b3-ae2cc3ddd929"
+                       title="FileReady"
+                       type="Until">
+                  <condition source="formula">
+                     <function name="equals">
+                        <arg name="left">{$temp.FileReady}</arg>
+                        <arg name="right">2</arg>
+                     </function>
+                  </condition>
+                  <flow id="k66cce760-4d13-4117-9243-3f3f2e53f9eb">
+                     <assignment id="Assignment2a19b040-4511-47e6-9d43-37792f2e03a2">
+                        <title>Assignment to FileReady</title>
+                        <operation source="formula" to="temp.FileReady">
+                           <expression language="XQuery">$temp.FileReady+1</expression>
+                        </operation>
+                        <link id="jfc2ed963-b513-4cf8-a035-9602e1765cda"
+                              targetId="Service894e9240-bbac-42bd-97e8-f7cce99288c6"/>
+                     </assignment>
+                     <service id="Service894e9240-bbac-42bd-97e8-f7cce99288c6">
+                        <title>Run Cloud Task</title>
+                        <serviceName>ICSExecuteTask</serviceName>
+                        <serviceInput>
+                           <parameter name="Task Name" source="constant">MappingTask24 [MCT]</parameter>
+                           <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                           <parameter name="Fail on Cloud Task Errors" source="constant"/>
+                           <parameter name="GUID" source="constant">bR3OIKnrTmEk9N4h8YMB4C</parameter>
+                        </serviceInput>
+                     </service>
+                  </flow>
+                  <link id="he9b29737-b5f9-4f02-8ed4-4a822d7dfc94"
+                        targetId="Assignment210eb70d-9b04-4d35-805b-2e9e62b66a8d"/>
+               </repeat>
+               <assignment id="Assignment210eb70d-9b04-4d35-805b-2e9e62b66a8d">
+                  <title>Assignment to STATUS, Successsrows, etc,</title>
+                  <operation source="formula" to="output.STATUS">
+                     <expression language="XQuery">$output.TaskStatus</expression>
+                  </operation>
+                  <operation source="formula" to="output.Successsrows">
+                     <expression language="XQuery">$output.SuccessTargetRows</expression>
+                  </operation>
+                  <operation source="formula" to="output.Instanceid">
+                     <expression language="XQuery">$output.SuccessSourceRows</expression>
+                  </operation>
+                  <link id="g25de6e1d-7e1d-4df3-a1bf-0aedc6406192"
+                        targetId="end-f030f1559-fb21-4896-bd0c-011e03cc4be9"/>
+               </assignment>
+               <end id="end-f030f1559-fb21-4896-bd0c-011e03cc4be9">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>690b10c6-76d8-47c2-87b9-3aa08080ac69</ns1:Id>
+               <ns1:Name>Process1</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-15T10:05:51Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-15T10:05:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2dpZbKG6o2zdHIuFtDjKKR</types1:GUID>
+      <types1:DisplayName>Process5</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.746Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

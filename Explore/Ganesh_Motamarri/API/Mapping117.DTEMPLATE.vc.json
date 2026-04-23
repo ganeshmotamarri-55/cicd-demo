@@ -1,0 +1,323 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping117",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Target"
+      }
+    ],
+    "transformations" : [
+      {
+        "createTime" : "2026-02-15T10:42:19.127Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "DEPTH"
+            },
+            "name" : "DEPTH",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "NAME"
+            },
+            "name" : "NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 128,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "FOLDER_NAME"
+            },
+            "name" : "FOLDER_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "COMMAND_FOR_FULL_LOAD"
+            },
+            "name" : "COMMAND_FOR_FULL_LOAD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 400,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "COMMAND_FOR_INCREMENTAL_LOAD"
+            },
+            "name" : "COMMAND_FOR_INCREMENTAL_LOAD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 400,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@4An5mPlDt6Eg5jzrt6p0Y6",
+          "connectionName" : "conn_Ganesh_orcl",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "GANESH/AP_SUBJECT_AREA",
+            "dbSchema" : "GANESH",
+            "label" : "AP_SUBJECT_AREA",
+            "objectName" : "AP_SUBJECT_AREA",
+            "path" : "GANESH/AP_SUBJECT_AREA",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "DEPTH",
+                "fieldType" : "CONNECTOR",
+                "label" : "DEPTH",
+                "nativeName" : "DEPTH",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/AP_SUBJECT_AREA"
+                  }
+                ]
+              },
+              {
+                "name" : "NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "NAME",
+                "nativeName" : "NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 128,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/AP_SUBJECT_AREA"
+                  }
+                ]
+              },
+              {
+                "name" : "FOLDER_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "FOLDER_NAME",
+                "nativeName" : "FOLDER_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/AP_SUBJECT_AREA"
+                  }
+                ]
+              },
+              {
+                "name" : "COMMAND_FOR_FULL_LOAD",
+                "fieldType" : "CONNECTOR",
+                "label" : "COMMAND_FOR_FULL_LOAD",
+                "nativeName" : "COMMAND_FOR_FULL_LOAD",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 400,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/AP_SUBJECT_AREA"
+                  }
+                ]
+              },
+              {
+                "name" : "COMMAND_FOR_INCREMENTAL_LOAD",
+                "fieldType" : "CONNECTOR",
+                "label" : "COMMAND_FOR_INCREMENTAL_LOAD",
+                "nativeName" : "COMMAND_FOR_INCREMENTAL_LOAD",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 400,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GANESH/AP_SUBJECT_AREA"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "createTime" : "2026-02-15T10:42:19.127Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@8VWR03hG1vYkQ9AeNjhkYR",
+          "connectionName" : "FF_TGT_Ganesh",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "Try.txt",
+            "label" : "Try.txt",
+            "path" : "Try.txt",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "RUNID",
+        "platformType" : {
+          "name" : "text"
+        },
+        "precision" : 10000,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-04-23 02:55:11 PDT"
+}

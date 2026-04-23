@@ -1,0 +1,199 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>R6Eaaaaaaaaaaaa-gt-3011950-2026-02-15T11:05:49.699Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow5</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-15T11:05:50Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-15T11:26:28Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-15T11:26:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Taskflow5/Taskflow5.tf.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Taskflow5"
+                   name="Taskflow5"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="IntegrationOps Task 1" type="reference">
+                  <options>
+                     <option hide="true" name="isAPITaskType">true</option>
+                     <option name="referenceTo">$po:Process5</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task 1" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:MappingTask25-1O6ODliF7mkbs8TyxKMkSI</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="mlnmwmoz" targetId="mlnmwmpa"/>
+               </start>
+               <eventContainer id="mlnmwmpa">
+                  <service id="mlnmwmoy">
+                     <title>IntegrationOps Task 1</title>
+                     <serviceName>avTaskflowLocalCalling</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="GUID" source="constant" updatable="true">2dpZbKG6o2zdHIuFtDjKKR</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">PROCESS</parameter>
+                        <parameter name="Agent Name" source="constant" updatable="true"/>
+                        <parameter name="Task Name" source="constant" updatable="true">Process5</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="Process5">temp.IntegrationOps Task 1</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.IntegrationOps Task 1/output/STATUS">STATUS</operation>
+                        <operation source="field" to="temp.IntegrationOps Task 1/output/Instanceid">Instanceid</operation>
+                        <operation source="field" to="temp.IntegrationOps Task 1/output/Successsrows">Successsrows</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="mlnngww1" targetId="mlnngwww"/>
+                  <events>
+                     <catch faultField="temp.IntegrationOps Task 1/fault"
+                            id="mlnmwmp3"
+                            interrupting="true"
+                            name="error"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="mlnngwww">
+                  <service id="mlnngww0">
+                     <title>Data Task 1</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">MappingTask25</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">1O6ODliF7mkbs8TyxKMkSI</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="MappingTask25-1O6ODliF7mkbs8TyxKMkSI">temp.Data Task 1</operation>
+                           <operation source="formula"
+                                      to="MappingTask25-1O6ODliF7mkbs8TyxKMkSI/inout[1]/RUNID">
+                              <expression language="XQuery">$temp.IntegrationOpsTask1[1]/output[1]/Instanceid ||$temp.IntegrationOpsTask1[1]/output[1]/STATUS ||$temp.IntegrationOpsTask1[1]/output[1]/Successsrows </expression>
+                           </operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Data Task 1/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Data Task 1/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Data Task 1/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Data Task 1/output/FirstErrorCode">First Error Code</operation>
+                        <operation source="field" to="temp.Data Task 1/inout/RUNID">RUNID</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="mlnngww2" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.Data Task 1/fault"
+                            id="mlnngwwu"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Data Task 1/fault"
+                            id="mlnngwwv"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="Process5"
+                              isByCopy="true"
+                              name="Process5">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MappingTask25-1O6ODliF7mkbs8TyxKMkSI"
+                              isByCopy="true"
+                              name="MappingTask25-1O6ODliF7mkbs8TyxKMkSI">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>8M8BcOz5jxQgmePApqnUoQ</types1:GUID>
+      <types1:DisplayName>Taskflow5</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:14.101Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

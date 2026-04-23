@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "30qf5eDsmAMhdaAX53MiWT",
+    "name" : "GenerationConfig_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ZBpDUQbgdwUiQLn-gt-13315471-2026-03-09T12:33:08.883Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that creates the prompt request.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.546Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,254 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>BHSCpwNXHS45bfT-gt-5973226-2026-03-04T13:21:50.44Z::pd.xml</types1:EntryId>
+      <types1:Name>Email_verification-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Supports correlation and a long-running transaction. The process modifies its behavior based on an external event that occurs when the process is still in transit. The process is called by an HTTP request with the email ID as an incoming parameter. The process sends an email to the user for email verification. The transaction remains in its current state until the user approves or rejects the email verification. After the user approves the email verification, the process continues. Otherwise, the email is rejected and further actions are terminated.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-04T13:21:50Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-03-04T13:29:43Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-03-04T13:29:52Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Email_verification-1/Email_verification-1.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="2JYTIoDDENeber2GMrAB65"
+                  displayName="Email verification"
+                  name="Email_verification-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Supports correlation and a long-running transaction. The process modifies its behavior based on an external event that occurs when the process is still in transit. The process is called by an HTTP request with the email ID as an incoming parameter. The process sends an email to the user for email verification. The transaction remains in its current state until the user approves or rejects the email verification. After the user approves the email verification, the process continues. Otherwise, the email is rejected and further actions are terminated.</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Email_ID" required="true" type="email">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="message" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="emailInput" type="reference">
+                  <options>
+                     <option name="referenceTo">EmailConnection-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7wO2UI0GaGokweOMLm8bKO</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="normal">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="recipeName">Verify Email</nvpair>
+            </extData>
+            <eventDefinitions>
+               <messageDefinition name="CheckStatus">
+                  <input>
+                     <parameter correlationPath="." description="" name="EmailID" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </parameter>
+                     <parameter description="" name="VerifyStatusResp" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <output>
+                     <field description="" name="Response" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </output>
+                  <deployment>
+                     <rest>
+                        <allowAnonymousAccess/>
+                     </rest>
+                  </deployment>
+               </messageDefinition>
+            </eventDefinitions>
+            <flow id="jf0374e1c-81b5-4d5d-814b-2e6d442d6bdb">
+               <start id="vad578df3-9e6f-4be8-ae96-90309c22e0bc">
+                  <link id="ae2c62c65-b283-4f35-a08f-da708bae60f7"
+                        targetId="a12JYTIoDDENeber2GMrAB65-kmynskn6"/>
+               </start>
+               <assignment id="a12JYTIoDDENeber2GMrAB65-kmynskn6">
+                  <title>Send Email Set Up</title>
+                  <operation source="constant" to="temp.emailInput[1]/subject">Verify Your Email</operation>
+                  <operation source="field" to="temp.emailInput[1]/to">input.Email_ID</operation>
+                  <operation source="constant" to="temp.emailInput[1]/contentType">text/html</operation>
+                  <operation source="constant" to="temp.emailInput[1]/body">&lt;!doctype html&gt;
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+      &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+      &lt;title&gt;Welcome to Informatica Cloud!&lt;/title&gt;
+      
+   &lt;/head&gt;
+   &lt;body class=""&gt;
+      &lt;table role="presentation" class="body" style="line-height:1.5; border-collapse: collapse;"&gt;
+         &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td class="container"&gt;
+               &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+               &lt;table role="presentation" class="main" style="border-top: 8px solid #ff7d00;"&gt;
+                  &lt;tr&gt;
+                     &lt;td class="wrapper"&gt;
+                        &lt;table role="presentation" style="border-collapse: collapse;"&gt;
+                           &lt;tr&gt;
+                              &lt;td align="center"&gt;
+                                 &lt;div style="margin: 0 auto; text-align: center;"&gt;
+                                    &lt;img src="https://www.informatica.com/content/dam/informatica-com/en/images/gl01/informatica-logo.png" alt="Informatica logo" width="250" height="90" style="border:0; outline:none; text-decoration:none; display:block;margin:0 auto;"&gt;
+                                 &lt;/div&gt;
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                           &lt;tr&gt;
+                              &lt;td&gt;
+                                 &lt;p style="margin-top:20px; text-align:center"&gt;
+                                    &lt;b&gt;You are almost done! Please verify your account.&lt;/b&gt;
+                                 &lt;/p&gt;
+                                 &lt;div style="margin-bottom:20px; display:flex; justify-content: center; gap:10px;"&gt;
+                                    &lt;a clicktracking=off href="&lt;Cloud Application Integration POD URL&gt;/active-bpel/public/rt/&lt;Organization ID&gt;/Email_verification/event/CheckStatus?EmailID={$input.Email_ID}&amp;VerifyStatusResp=Accept" style='font-size: 14px;font-family: "helvetica" , "arial" , sans-serif;font-weight: normal;color: #ffffff;text-decoration: none;background-color: #001aff;border-top: 6px solid #001aff;border-bottom: 6px solid #001aff;border-left: 25px solid #001aff;border-right: 25px solid #001aff;border-radius: 3px;-webkit-border-radius: 3px;-moz-border-radius: 3px;display: inline-block;'&gt;Verify&lt;/a&gt;
+									&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &lt;a clicktracking=off href="&lt;Cloud Application Integration POD URL&gt;/active-bpel/public/rt/&lt;Organization ID&gt;/Email_verification/event/CheckStatus?EmailID={$input.Email_ID}&amp;VerifyStatusResp=Reject" style='font-size: 14px;font-family: "helvetica" , "arial" , sans-serif;font-weight: normal;color: #ffffff;text-decoration: none;background-color: #001aff;border-top: 6px solid #001aff;border-bottom: 6px solid #001aff;border-left: 25px solid #001aff;border-right: 25px solid #001aff;border-radius: 3px;-webkit-border-radius: 3px;-moz-border-radius: 3px;display: inline-block;'&gt;Reject&lt;/a&gt;
+                                 &lt;/div&gt;
+                                 &lt;p&gt;Sincerely,&lt;br&gt;The Informatica Cloud Team&lt;/p&gt;
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                        &lt;/table&gt;
+                     &lt;/td&gt;
+                  &lt;/tr&gt;
+               &lt;/table&gt;
+               &lt;table role="presentation" style="border-collapse: collapse;"&gt;
+                  &lt;tr&gt;
+                     &lt;td class="content-block" style="font-size: 10px;text-align: center;"&gt;
+                        &lt;a href="https://www.informatica.com/"&gt;&lt;strong style="color: #ff4d00; font-weight: normal;word-break: break-all;"&gt;Informatica&lt;/strong&gt;&lt;/a&gt; | 2100 Seaport Boulevard, Redwood City, CA 94063
+                        &lt;br&gt;&lt;a href="https://www.informatica.com/terms-of-use.html"&gt;&lt;strong style="color: #ff4d00; font-weight: normal;word-break: break-all;"&gt;Terms of use&lt;/strong&gt;&lt;/a&gt; | &lt;a href="https://www.informatica.com/privacy-policy.html"&gt;&lt;strong style="color: #ff4d00; font-weight: normal;word-break: break-all;"&gt;Privacy Policy&lt;/strong&gt;&lt;/a&gt;
+                     &lt;/td&gt;
+                  &lt;/tr&gt;
+               &lt;/table&gt;
+            &lt;/td&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+         &lt;/tr&gt;
+      &lt;/table&gt;
+   &lt;/body&gt;
+&lt;/html&gt;</operation>
+                  <link id="n49252d03-2dea-40a1-a485-4b74a3bf30a0"
+                        targetId="a12JYTIoDDENeber2GMrAB65-lz049h2b"/>
+               </assignment>
+               <service id="a12JYTIoDDENeber2GMrAB65-lz049h2b">
+                  <title>Send Email Service</title>
+                  <serviceName>EmailConnection-1:sendEmailService</serviceName>
+                  <serviceGUID>7wO2UI0GaGokweOMLm8bKO</serviceGUID>
+                  <serviceInput>
+                     <parameter name="emailTaskInput" source="field">temp.emailInput</parameter>
+                  </serviceInput>
+                  <link id="ve1b39047-0dae-496f-8d85-2f3db5c406ad"
+                        targetId="a12JYTIoDDENeber2GMrAB65-kwchrqec"/>
+               </service>
+               <milestone id="a12JYTIoDDENeber2GMrAB65-kwchrqec">
+                  <title>Return 200 OK Response to the Caller Process</title>
+                  <link id="a6b917a11-351b-47b9-8326-fc0844f003b3"
+                        targetId="a12JYTIoDDENeber2GMrAB65-kwchrqf1"/>
+               </milestone>
+               <receive id="a12JYTIoDDENeber2GMrAB65-kwchrqf1">
+                  <title>Retain Status or Wait Until the User Clicks on Verify</title>
+                  <message refer="CheckStatus">
+                     <correlation>
+                        <parameter name="EmailID" source="field" updatable="true">input.Email_ID</parameter>
+                     </correlation>
+                  </message>
+                  <link id="o374d3100-09d0-4fe4-a6a1-6dcd4d8977e4"
+                        targetId="a12JYTIoDDENeber2GMrAB65-kwchrqs4"/>
+               </receive>
+               <container id="a12JYTIoDDENeber2GMrAB65-kwchrqs4" type="exclusive">
+                  <title>Status</title>
+                  <flow id="t5c6c1c56-d7b4-4d0f-8cfa-4930a0bf7bb4">
+                     <assignment id="a12JYTIoDDENeber2GMrAB65-l28wxh3z">
+                        <title>Continue Process for the User</title>
+                        <operation source="constant" to="output.message">Email verification approved</operation>
+                     </assignment>
+                     <link id="oebc99cb6-d678-470d-a8aa-cde50ff1b1a3"
+                           targetId="a12JYTIoDDENeber2GMrAB65-kwchrqs4"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="ib12e2678-181d-46cb-9f38-5ca21d7e8b77">
+                     <assignment id="a12JYTIoDDENeber2GMrAB65-l28wxhh8">
+                        <title>Stop Process for the User</title>
+                        <operation source="constant" to="output.message">Email verification rejected</operation>
+                     </assignment>
+                     <link id="heac5df7a-78eb-4fb4-98b6-80637a4d1270"
+                           targetId="a12JYTIoDDENeber2GMrAB65-kwchrqs4"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="v89210909-7d86-4940-b6fb-056b430c928a"
+                        targetId="t5c6c1c56-d7b4-4d0f-8cfa-4930a0bf7bb4"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.VerifyStatusResp}</arg>
+                           <arg name="right">Accept</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="f56352a79-87e5-41d0-ba23-3d3d75d68f87"
+                        targetId="ib12e2678-181d-46cb-9f38-5ca21d7e8b77"
+                        type="containerLink"/>
+                  <link id="g7629e5b8-35b9-4ecd-89e6-fc470bb2b0fc"
+                        targetId="a12JYTIoDDENeber2GMrAB65-kmynskmi"/>
+               </container>
+               <end id="a12JYTIoDDENeber2GMrAB65-kmynskmi">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>995c2f62-462c-4b02-9bbf-20ad3ded68ae</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-04T13:21:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-04T13:21:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "Email_ID": "user@test.com"
+	
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2JYTIoDDENeber2GMrAB65</types1:GUID>
+      <types1:DisplayName>Email verification</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.765Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

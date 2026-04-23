@@ -1,0 +1,167 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>vGPJwsciQlBWlD2-gt-7144421-2025-12-23T12:05:04.339Z::gt.xml</types1:EntryId>
+      <types1:Name>Guide2</types1:Name>
+      <types1:ParentFlowIds>DKYsGuDoWn2sqeE-gt-31007870-2026-01-27T10:27:53.475Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.alwaysnew</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2025-12-23T12:05:04Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-22T09:30:19Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-04-22T09:30:22Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.Guide2/Guide2.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         displayName="Guide2"
+                         doneOnEndStep="false"
+                         name="Guide2"
+                         runAsUser="$current">
+            <description/>
+            <appliesTo/>
+            <tags>.alwaysnew</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="null"
+                          name="Workflow"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="null"
+                          name="Executionplan"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="null" name="Prune" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="hover_text">0</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Workflow1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Executionplan1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Prune1" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <possibleOutcomes>
+               <outcome id="a118BTrIB5D9Lesg4dDLO18j-outcome-1776848039225">Done</outcome>
+            </possibleOutcomes>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo>gmotamarri@axxeltechnologies.com</emailTo>
+            </sendFeedback>
+            <flow>
+               <startScreen id="a118BTrIB5D9Lesg4dDLO18j-start-l6cc71e6a-7c96-4b2b-b962-31f9c8ab1434">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null"
+                             id="ce50705be-69fd-4b7e-9c35-89b05a9de013"
+                             targetScreen="a118BTrIB5D9Lesg4dDLO18j-Screen7064642e-1c2d-4dbf-9769-8b3fe58e2e87">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <screen id="a118BTrIB5D9Lesg4dDLO18j-Screen7064642e-1c2d-4dbf-9769-8b3fe58e2e87">
+                  <title>Screen 1</title>
+                  <body contentType="text/html">&lt;p&gt;Executionplan &lt;input name="input.Executionplan" type="text" value="Executionplan (input)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Prune &lt;input name="input.Prune" type="text" value="Prune (input)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Workflow &lt;input name="input.Workflow" type="text" value="Workflow (input)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null"
+                             id="e22a1919a-2707-4f24-83a6-94deb01cb434"
+                             targetScreen="a118BTrIB5D9Lesg4dDLO18j-Assignment2d9c457f-6860-4021-94a4-f4b11d76770c">
+                        <text>Done</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="input.Executionplan"
+                                     readonly="false"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="input.Prune"
+                                     readonly="false"
+                                     renderingType="int"
+                                     required="false"
+                                     type="int">
+                        <options>
+                           <option name="required">false</option>
+                           <option name="hover_text">0</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="input.Workflow"
+                                     readonly="false"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <endScreen id="a118BTrIB5D9Lesg4dDLO18j-end-l825b461d-6197-4111-9888-42a3785b7f50"
+                          outcomeId="a118BTrIB5D9Lesg4dDLO18j-outcome-1776848039225">
+                  <title>End</title>
+                  <actions/>
+                  <redirectTo type="current_object"/>
+               </endScreen>
+               <assignment id="a118BTrIB5D9Lesg4dDLO18j-Assignment2d9c457f-6860-4021-94a4-f4b11d76770c">
+                  <title>Assignment to untitled1, untitled2, etc,</title>
+                  <operation source="field" to="output.Workflow1">input.Executionplan</operation>
+                  <operation source="field" to="output.Executionplan1">input.Workflow</operation>
+                  <operation source="field" to="output.Prune1">input.Prune</operation>
+                  <actions>
+                     <action alt="null"
+                             id="zbcd41f74-2bfb-4ec3-bf5e-bac6d5cb40d6"
+                             targetScreen="a118BTrIB5D9Lesg4dDLO18j-end-l825b461d-6197-4111-9888-42a3785b7f50">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>18BTrIB5D9Lesg4dDLO18j</types1:GUID>
+      <types1:DisplayName>Guide2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.682Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

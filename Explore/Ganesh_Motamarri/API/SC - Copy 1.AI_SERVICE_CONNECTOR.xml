@@ -1,0 +1,128 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Z6K0XV4KhPVEQrX-gt-5523138-2025-12-22T13:25:58.824Z::svc.xml</types1:EntryId>
+      <types1:Name>SC_-_Copy_1</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2025-12-22T13:25:59Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC - Copy 1"
+                            label=""
+                            name="SC_-_Copy_1"
+                            uuid="6af3e59b-8254-4e8e-9635-2398861fb5ad">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="LOGIN"
+                       maxRedirects="100"
+                       name="LOGIN"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label="username"
+                                name="username"
+                                required="true"
+                                testWith="gmotamarri@idmc.axxeltechnologies.com"
+                                type="string"/>
+                     <parameter description=""
+                                label="password"
+                                name="password"
+                                required="true"
+                                testWith="Inflecto@1712"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dm-us.informaticacloud.com/ma/api/v2/user/login"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="icSessionId" type="reference">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                        <xquery>{/root/icSessionId/text()}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Trigger_taskflow"
+                       maxRedirects="100"
+                       name="Trigger_taskflow"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label="Body"
+                                name="Body"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#xA;    &#34;@type&#34;: &#34;job&#34;,&#xA;    &#34;taskId&#34;: &#34;01DF810Z0000000000LS&#34;,&#xA;    &#34;taskType&#34;: &#34;MTT&#34;,&#xA;    &#34;runtime&#34;: {&#xA;        &#34;@type&#34;: &#34;mtTaskRuntime&#34;&#xA;    }&#xA;}"
+                                type="string"/>
+                     <parameter description=""
+                                label="icSessionId"
+                                name="icSessionId"
+                                required="false"
+                                testWith="1wrZKKItKJKkSgD0k01DGl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://usw5.dm-us.informaticacloud.com/saas/api/v2/job"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="icSessionId">{$icSessionId}</header>
+                        </httpHeaders>
+                        <body>{$Body}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>8KVRlmysAcxlDS0ROBosCU</types1:GUID>
+      <types1:DisplayName>SC - Copy 1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.683Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

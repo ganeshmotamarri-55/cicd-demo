@@ -1,0 +1,52 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>n0qRi92qBbbeJOS-gt-13315526-2026-03-09T12:33:09.922Z::po.xml</types1:EntryId>
+      <types1:Name>AgentPlanner_PO</types1:Name>
+      <types1:ParentFlowIds>02Fjuz3PI2HBxZm-gt-13315627-2026-03-09T12:33:10.994Z::pd.xml,4jBvSx0aa-gt-13315664-2026-03-09T12:33:11.895Z::pd.xml,ISHCwkNmumf6S3w-gt-13315700-2026-03-09T12:33:12.554Z::pd.xml,KmabeAzu2JQhtGc-gt-13315562-2026-03-09T12:33:10.593Z::pd.xml,RLC64Ky2uI5CUP9-gt-13315587-2026-03-09T12:33:10.704Z::pd.xml,W01BchMYeOm6S6f-gt-13315712-2026-03-09T12:33:12.787Z::pd.xml,ZWlwUiQLnzYLnzY-gt-13315610-2026-03-09T12:33:10.82Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that contains information about the agent's name and attribute references.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="AgentPlanner_PO"
+                        isByCopy="true"
+                        name="AgentPlanner_PO">
+            <description>Process object that contains information about the agent's name and attribute references.</description>
+            <tags/>
+            <detail>
+               <field label="app"
+                      name="app"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Attributes"
+                      name="Attributes"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:Attributes_PO</option>
+                     <option name="guid">9HJYxfCIsERiOC2zBuTOKm</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>5M8C8S3xw3nb8UgFpMf1qm</types1:GUID>
+      <types1:DisplayName>AgentPlanner_PO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.352Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

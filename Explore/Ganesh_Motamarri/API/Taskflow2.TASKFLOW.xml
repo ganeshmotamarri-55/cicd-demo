@@ -1,0 +1,545 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oNZPD4ARW8UBM7z-gt-26593376-2026-02-02T09:34:58.237Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow2-9</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-02T09:34:58Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-06T06:28:46Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-09T09:20:30Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Taskflow2-9/Taskflow2-9.tf.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Taskflow2"
+                   name="Taskflow2-9"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Src_Table_List" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tgt_Table_List" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Src_Table_count" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tgt_Table_count" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Count" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_Src_Table" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_Tgt_Table" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task 1" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt-test-4o8kWWoFrTZe17tzVGOqwp</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+               <field description="" name="Field_Mapping" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Field_mapping_count1" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_Field_mapping" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Update_query" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Update_query_count" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_update_query" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tgt_Table_List1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Src_Table_List1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Count1" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Field_Mapping1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Src_Table_count1" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_Src_Table1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_Tgt_Table1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_Field_mapping1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Get_update_query1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Update_query1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task 1 1" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt-test-4o8kWWoFrTZe17tzVGOqwp</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">false</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="mlahewp5" targetId="mlahewp4"/>
+               </start>
+               <container id="mlahewp4" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="mlahewp8">
+                     <assignment id="mlahewtz">
+                        <title>Assignment 1</title>
+                        <operation source="formula" to="temp.Src_Table_List">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;Employee&lt;/query&gt; 
+&lt;query&gt;employee_ff&lt;/query&gt;
+&lt;query&gt;EMP_PROJ&lt;/query&gt;
+&lt;query&gt;DONATIONS&lt;/query&gt; 
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Tgt_Table_List">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;Employee&lt;/query&gt; 
+&lt;query&gt;employee_ff&lt;/query&gt;
+&lt;query&gt;EMP_PROJ&lt;/query&gt;
+&lt;query&gt;DONATIONS&lt;/query&gt; 
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Field_Mapping">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;EMPLOYEE_ID=EMPLOYEE_ID;FIRST_NAME=FIRST_NAME;LAST_NAME=LAST_NAME;PHONE_NUMBER=PHONE_NUMBER;HIRE_DATE=HIRE_DATE;JOB_ID=JOB_ID;SALARY=SALARY;COMMISSION_PCT=COMMISSION_PCT;MANAGER_ID=MANAGER_ID;DEPARTMENT_ID=DEPARTMENT_ID;EMAIL=EMAIL;&lt;/query&gt; 
+&lt;query&gt;CUSTOMER_ID=CUSTOMER_ID;CUSTOMER_NAME=CUSTOMER_NAME;CITY=CITY;STATE=STATE;COUNTRY=COUNTRY;ZIP_CODE=ZIP_CODE;EMAIL=EMAIL;PHONE=PHONE;ADDRESS=ADDRESS;CHANGE_DATE=CHANGE_DATE;CREDIT_SCORE=CREDIT_SCORE;LOYALTY_POINTS=LOYALTY_POINTS;ANNUAL_INCOME=ANNUAL_INCOME;CHANGED_BY=CHANGED_BY;MONTHLY_INCOME=MONTHLY_INCOME;&lt;/query&gt;
+&lt;query&gt;FK_ROOT=FK_ROOT;PROJID=PROJID;HOURS=HOURS;PK_ROOT=PK_ROOT;EMPLOYEEID=EMPLOYEEID;NAME=NAME;&lt;/query&gt;
+&lt;query&gt;NAME=NAME;DONATION=DONATION;DONATION_DATE=DONATION_DATE;DONATION_TYPE=DONATION_TYPE;&lt;/query&gt;
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Update_query">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;update $$Table_2 set FIRST_NAME= :TU.FIRST_NAME,LAST_NAME= :TU.LAST_NAME,PHONE_NUMBER= :TU.PHONE_NUMBER,HIRE_DATE= :TU.HIRE_DATE,JOB_ID= :TU.JOB_ID,SALARY= :TU.SALARY,COMMISSION_PCT= :TU.COMMISSION_PCT,MANAGER_ID= :TU.MANAGER_ID,DEPARTMENT_ID= :TU.DEPARTMENT_ID,EMAIL= :TU.EMAIL where EMPLOYEE_ID= :TU.EMPLOYEE_ID&lt;/query&gt;
+&lt;query&gt;update $$Table_2 set CUSTOMER_NAME= :TU.CUSTOMER_NAME,CITY= :TU.CITY,STATE= :TU.STATE,COUNTRY= :TU.COUNTRY,ZIP_CODE= :TU.ZIP_CODE,EMAIL= :TU.EMAIL,PHONE= :TU.PHONE,ADDRESS= :TU.ADDRESS,CHANGE_DATE= :TU.CHANGE_DATE,CREDIT_SCORE= :TU.CREDIT_SCORE,LOYALTY_POINTS= :TU.LOYALTY_POINTS,ANNUAL_INCOME= :TU.ANNUAL_INCOME,CHANGED_BY= :TU.CHANGED_BY,MONTHLY_INCOME= :TU.MONTHLY_INCOME where CUSTOMER_ID= :TU.CUSTOMER_ID&lt;/query&gt;
+&lt;query&gt;update $$Table_2 set HOURS= :TU.HOURS,PK_ROOT= :TU.PK_ROOT,EMPLOYEEID= :TU.EMPLOYEEID,NAME= :TU.NAME where FK_ROOT= :TU.FK_ROOT and PROJID= :TU.PROJID&lt;/query&gt;
+&lt;query&gt;update $$Table_2 set DONATION= :TU.DONATION,DONATION_DATE= :TU.DONATION_DATE,DONATION_TYPE= :TU.DONATION_TYPE where NAME= :TU.NAME&lt;/query&gt;
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Tgt_Table_count">
+                           <expression language="XQuery">let $count := fn:count(util:parseXML($temp.Tgt_Table_List)/query)
+return $count</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Src_Table_count">
+                           <expression language="XQuery">let $count1 := fn:count(util:parseXML($temp.Src_Table_List)/query)
+return $count1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Field_mapping_count1">
+                           <expression language="XQuery">let $count2 := fn:count(util:parseXML($temp.Field_Mapping)/query)
+return $count2</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Update_query_count">
+                           <expression language="XQuery">let $count3 := fn:count(util:parseXML($temp.Update_query )/query)
+return $count3</expression>
+                        </operation>
+                        <operation source="constant" to="temp.Count">1</operation>
+                        <link id="mlahewuj" targetId="mlahewui"/>
+                     </assignment>
+                     <assignment id="mlahewui">
+                        <title>Assignment 2</title>
+                        <operation source="formula" to="temp.Get_Src_Table">
+                           <expression language="XQuery">let $query_value := util:parseXML($temp.Src_Table_List )/query[$temp.Count ]/text()
+return $query_value</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Get_Tgt_Table">
+                           <expression language="XQuery">let $query_value1 := util:parseXML($temp.Tgt_Table_List)/query[$temp.Count]/text()
+return $query_value1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Get_Field_mapping">
+                           <expression language="XQuery">let $query_value2 := util:parseXML($temp.Field_Mapping)/query[$temp.Count]/text()
+return $query_value2</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Get_update_query">
+                           <expression language="XQuery">let $query_value3 := util:parseXML($temp.Update_query )/query[$temp.Count]/text()
+return $query_value3</expression>
+                        </operation>
+                        <link id="mlahewv6" targetId="mlahewux"/>
+                     </assignment>
+                     <container id="mlahewux" type="exclusive">
+                        <title>Decision 1</title>
+                        <flow id="mlahewuy">
+                           <eventContainer id="mlahewuz">
+                              <service id="mlahewv0">
+                                 <title>Data Task 1</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">mt_test</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">4o8kWWoFrTZe17tzVGOqwp</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="mt-test-4o8kWWoFrTZe17tzVGOqwp">temp.Data Task 1</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/input[1]/Field_mapping">temp.Get_Field_mapping</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/inout[1]/Update_override">temp.Get_update_query</operation>
+                                       <operation source="field" to="mt-test-4o8kWWoFrTZe17tzVGOqwp/inout[1]/Table_2">temp.Get_Tgt_Table</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/input[1]/source[1]/Source1[1]/object">temp.Get_Src_Table</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/input[1]/target[1]/Target1[1]/object">temp.Get_Tgt_Table</operation>
+                                       <operation source="field" to="temp.Data Task 1[1]/input[1]/Field_mapping">temp.Get_Field_mapping</operation>
+                                       <operation source="field"
+                                                  to="temp.Data Task 1[1]/input[1]/source[1]/Source1[1]/object">temp.Get_Src_Table</operation>
+                                       <operation source="field"
+                                                  to="temp.Data Task 1[1]/input[1]/target[1]/Target1[1]/object">temp.Get_Tgt_Table</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Data Task 1/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Task_Status">Task Status</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/End_Time">End Time</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/Error_Message">Error Message</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/TotalTransErrors">Total Transformation Errors</operation>
+                                    <operation source="field" to="temp.Data Task 1/output/FirstErrorCode">First Error Code</operation>
+                                    <operation source="field" to="temp.Data Task 1/inout/Table_1">Table_1</operation>
+                                 </serviceOutput>
+                              </service>
+                              <link id="mlahewzo" targetId="mlahewzn"/>
+                              <events>
+                                 <catch faultField="temp.Data Task 1/fault"
+                                        id="ml4z28qa"
+                                        interrupting="true"
+                                        name="error">
+                                    <suspend/>
+                                 </catch>
+                                 <catch faultField="temp.Data Task 1/fault"
+                                        id="ml4z28qb"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <assignment id="mlahewzn">
+                              <title>Assignment 3</title>
+                              <operation source="formula" to="temp.Count">
+                                 <expression language="XQuery">$temp.Count +1</expression>
+                              </operation>
+                              <link id="mlahex09" targetId="mlahex07"/>
+                           </assignment>
+                           <jumpTo id="mlahex07">
+                              <link id="mlahex08" targetId="mlahewui"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="mlahewv1">
+                           <link id="mlahewz8" targetId="mlahewux" type="containerLink"/>
+                        </flow>
+                        <link id="mlahewv3" targetId="mlahewuy" type="containerLink">
+                           <condition source="formula">
+                              <function name="greater-or-equals">
+                                 <arg name="left">{$temp.Tgt_Table_count}</arg>
+                                 <arg name="right">{$temp.Count }</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mlahewv4" targetId="mlahewv1" type="containerLink"/>
+                     </container>
+                     <link id="mlahex06" targetId="mlahewp4" type="containerLink"/>
+                  </flow>
+                  <flow id="mlahewpb">
+                     <assignment id="mlahewpy">
+                        <title>Assignment 1 1</title>
+                        <operation source="formula" to="temp.Src_Table_List1">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;EMP_PROJ&lt;/query&gt;
+&lt;query&gt;DONATIONS&lt;/query&gt; 
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Tgt_Table_List1">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;EMP_PROJ&lt;/query&gt;
+&lt;query&gt;DONATIONS&lt;/query&gt; 
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Field_Mapping1">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;FK_ROOT=FK_ROOT;PROJID=PROJID;HOURS=HOURS;PK_ROOT=PK_ROOT;EMPLOYEEID=EMPLOYEEID;NAME=NAME;&lt;/query&gt;
+&lt;query&gt;NAME=NAME;DONATION=DONATION;DONATION_DATE=DONATION_DATE;DONATION_TYPE=DONATION_TYPE;&lt;/query&gt;
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Update_query1">
+                           <expression language="XQuery">'&lt;queries&gt;
+&lt;query&gt;update $$Table_2 set HOURS= :TU.HOURS,PK_ROOT= :TU.PK_ROOT,EMPLOYEEID= :TU.EMPLOYEEID,NAME= :TU.NAME where FK_ROOT= :TU.FK_ROOT and PROJID= :TU.PROJID&lt;/query&gt;
+&lt;query&gt;update $$Table_2 set DONATION= :TU.DONATION,DONATION_DATE= :TU.DONATION_DATE,DONATION_TYPE= :TU.DONATION_TYPE where NAME= :TU.NAME&lt;/query&gt;
+&lt;/queries&gt;'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Src_Table_count1">
+                           <expression language="XQuery">let $count4 := fn:count(util:parseXML($temp.Src_Table_List1)/query)
+return $count4</expression>
+                        </operation>
+                        <operation source="constant" to="temp.Count1">1</operation>
+                        <link id="mlahewtk" targetId="mlahewtj"/>
+                     </assignment>
+                     <assignment id="mlahewtj">
+                        <title>Assignment5</title>
+                        <operation source="formula" to="temp.Get_Src_Table1">
+                           <expression language="XQuery">let $query_value4 := util:parseXML($temp.Src_Table_List1)/query[$temp.Count1]/text()
+return $query_value4</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Get_Tgt_Table1">
+                           <expression language="XQuery">let $query_value5 := util:parseXML($temp.Tgt_Table_List1)/query[$temp.Count1]/text()
+return $query_value5</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Get_Field_mapping1">
+                           <expression language="XQuery">let $query_value6 := util:parseXML($temp.Field_Mapping1)/query[$temp.Count1]/text()
+return $query_value6</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Get_update_query1">
+                           <expression language="XQuery">let $query_value7 := util:parseXML($temp.Update_query1 )/query[$temp.Count1]/text()
+return $query_value7</expression>
+                        </operation>
+                        <link id="mlahewtl" targetId="mlahewsz"/>
+                     </assignment>
+                     <container id="mlahewsz" type="exclusive">
+                        <title>Decision 1 1</title>
+                        <flow id="mlahewt0">
+                           <eventContainer id="mlahewt1">
+                              <service id="mlahewt2">
+                                 <title>Data Task 1 1</title>
+                                 <serviceName>ICSExecuteDataTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                                    <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                                    <parameter name="Task Name" source="constant" updatable="true">mt_test</parameter>
+                                    <parameter name="GUID" source="constant" updatable="true">4o8kWWoFrTZe17tzVGOqwp</parameter>
+                                    <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                                    <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="mt-test-4o8kWWoFrTZe17tzVGOqwp">temp.Data Task 1</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/input[1]/Field_mapping">temp.Get_Field_mapping1</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/inout[1]/Update_override">temp.Get_update_query1</operation>
+                                       <operation source="field" to="mt-test-4o8kWWoFrTZe17tzVGOqwp/inout[1]/Table_2">temp.Get_Tgt_Table1</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/input[1]/source[1]/Source1[1]/object">temp.Get_Src_Table1</operation>
+                                       <operation source="field"
+                                                  to="mt-test-4o8kWWoFrTZe17tzVGOqwp/input[1]/target[1]/Target1[1]/object">temp.Get_Tgt_Table1</operation>
+                                       <operation source="field" to="temp.Data Task 1 1[1]/input[1]/Field_mapping">temp.Get_Field_mapping1</operation>
+                                       <operation source="field"
+                                                  to="temp.Data Task 1 1[1]/input[1]/source[1]/Source1[1]/object">temp.Get_Src_Table1</operation>
+                                       <operation source="field"
+                                                  to="temp.Data Task 1 1[1]/input[1]/target[1]/Target1[1]/object">temp.Get_Tgt_Table1</operation>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Object_Name">Object Name</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Log_Id">Log Id</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Task_Id">Task Id</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Task_Status">Task Status</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Success_Source_Rows">Success Source Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Failed_Source_Rows">Failed Source Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Success_Target_Rows">Success Target Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Failed_Target_Rows">Failed Target Rows</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/End_Time">End Time</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/Error_Message">Error Message</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/TotalTransErrors">Total Transformation Errors</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/output/FirstErrorCode">First Error Code</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/inout/Table_1">Table_1</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/inout/Update_override">Update_override</operation>
+                                    <operation source="field" to="temp.Data Task 1 1/inout/Table_2">Table_2</operation>
+                                 </serviceOutput>
+                              </service>
+                              <link id="mlahex0k" targetId="mlahex0j"/>
+                              <events>
+                                 <catch faultField="temp.Data Task 1 1/fault"
+                                        id="ml4z28qa"
+                                        interrupting="true"
+                                        name="error">
+                                    <suspend/>
+                                 </catch>
+                                 <catch faultField="temp.Data Task 1 1/fault"
+                                        id="ml4z28qb"
+                                        interrupting="true"
+                                        name="warning"/>
+                              </events>
+                           </eventContainer>
+                           <assignment id="mlahex0j">
+                              <title>Assignment 3 1</title>
+                              <operation source="formula" to="temp.Count1">
+                                 <expression language="XQuery">$temp.Count1 +1</expression>
+                              </operation>
+                              <link id="mlahex0x" targetId="mlahex0v"/>
+                           </assignment>
+                           <jumpTo id="mlahex0v">
+                              <link id="mlahex0w" targetId="mlahewtj"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="mlahewt3">
+                           <link id="mlahewzh" targetId="mlahewsz" type="containerLink"/>
+                        </flow>
+                        <link id="mlahewt5" targetId="mlahewt0" type="containerLink">
+                           <condition source="formula">
+                              <function name="greater-or-equals">
+                                 <arg name="left">{$temp.Src_Table_count1}</arg>
+                                 <arg name="right">{$temp.Count1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mlahewt6" targetId="mlahewt3" type="containerLink"/>
+                     </container>
+                     <link id="mlahex0u" targetId="mlahewp4" type="containerLink"/>
+                  </flow>
+                  <link id="mlahewp7" targetId="mlahewp8" type="containerLink"/>
+                  <link id="mlahex00" targetId="mlahewzz"/>
+                  <link id="mlahewpa" targetId="mlahewpb" type="containerLink"/>
+               </container>
+               <end id="mlahewzz">
+                  <title>End 1</title>
+               </end>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-test-4o8kWWoFrTZe17tzVGOqwp"
+                              isByCopy="true"
+                              name="mt-test-4o8kWWoFrTZe17tzVGOqwp">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>kphl1LnVDaybme8rcuszGE</types1:GUID>
+      <types1:DisplayName>Taskflow2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.924Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

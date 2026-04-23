@@ -1,0 +1,232 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oJGD4ARW8UBM7zs-gt-3184520-2026-03-02T09:25:42.236Z::pd.xml</types1:EntryId>
+      <types1:Name>SCM_Import_from_Git</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This process implements partial Source Code Management. It checks out the Cloud Assets Export file from Git using Git Contents API and imports them into IICS using IICS REST API.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-02T09:25:42Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="9K3ZTPGDEGCfzhSvz9phyg"
+                  displayName="SCM Import from Git"
+                  name="SCM_Import_from_Git">
+            <appliesTo/>
+            <description>This process implements partial Source Code Management. It checks out the Cloud Assets Export file from Git using Git Contents API and imports them into IICS using IICS REST API.</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 9</generator>
+            <input>
+               <parameter description=""
+                          name="IICS Username"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="IICS Password"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="IICS Hostname"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="SCM File Path"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Login Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="SCM Checkout Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Import Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="LoginRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-actions:LoginRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0XdPDguq2LqejlTH2fjUwa</option>
+                  </options>
+               </field>
+               <field description="" name="UploadImportPackageRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-actions:UploadImportPackageRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0XdPDguq2LqejlTH2fjUwa</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ji5pmu5f" targetId="ji5pmu5e"/>
+               </start>
+               <assignment id="ji5pmu5e">
+                  <title>Create Login Request</title>
+                  <operation source="field" to="temp.LoginRequest[1]/username">input.IICS Username</operation>
+                  <operation source="field" to="temp.LoginRequest[1]/password">input.IICS Password</operation>
+                  <link id="ji5pmu5g" targetId="ji5pmu56"/>
+               </assignment>
+               <service id="ji5pmu56">
+                  <title>Login to IICS</title>
+                  <serviceName>IICS-REST-API-actions:SaasPublicCoreV3LoginPost</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="body" source="field">temp.LoginRequest</parameter>
+                     <parameter name="hostName" source="field" updatable="true">input.IICS Hostname</parameter>
+                  </serviceInput>
+                  <link id="jjjhd3jg" targetId="jjjhd3jf"/>
+               </service>
+               <service id="jjjhd3jf">
+                  <title>Get contents</title>
+                  <serviceName>Git-Contents-API-actions:Get contents</serviceName>
+                  <serviceGUID>2G7wtK7LtVdfRYiOhXGKIH</serviceGUID>
+                  <serviceInput>
+                     <parameter name="path" source="field" updatable="true">input.SCM File Path</parameter>
+                  </serviceInput>
+                  <link id="jjjhd3jo" targetId="jjjhd3jn"/>
+               </service>
+               <service id="jjjhd3jn">
+                  <title>Upload the Import Package</title>
+                  <serviceName>IICS-REST-API-actions:PublicCoreV3ImportPackagePost</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="INFA_SESSION_ID" source="field" updatable="true">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                     <parameter name="package" source="formula">
+                        <expression language="XQuery">sff:createAttachmentFromBase64("package.zip", $output.content, "application/zip")</expression>
+                     </parameter>
+                     <parameter name="hostName" source="field" updatable="true">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                  </serviceInput>
+                  <link id="jjjhd3jw" targetId="jjjhd3jv"/>
+               </service>
+               <service id="jjjhd3jv">
+                  <title>Start Import</title>
+                  <serviceName>IICS-REST-API-actions:PublicCoreV3ImportIdGet</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="INFA_SESSION_ID" source="field" updatable="true">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                     <parameter name="id" source="field" updatable="true">output.UploadImportPackageResponse[1]/jobId</parameter>
+                     <parameter name="hostName" source="field" updatable="true">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                  </serviceInput>
+                  <link id="jjjhd3k4" targetId="jjjhd3k3"/>
+               </service>
+               <service id="jjjhd3k6">
+                  <title>Get Import Job Status</title>
+                  <serviceName>IICS-REST-API-actions:PublicCoreV3ImportIdExpandObjectsGet</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostName" source="field" updatable="true">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                     <parameter name="INFA_SESSION_ID" source="field" updatable="true">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                     <parameter name="id" source="field" updatable="true">output.UploadImportPackageResponse[1]/jobId</parameter>
+                  </serviceInput>
+                  <link id="jjjhd3kx" targetId="jjjhd3kj"/>
+               </service>
+               <wait id="jjjhd3k3">
+                  <title>Wait 5 seconds</title>
+                  <duration source="formula">
+                     <function name="duration_expression">
+                        <arg name="value">5</arg>
+                        <arg name="scale">S</arg>
+                        <arg name="businessDays"/>
+                     </function>
+                  </duration>
+                  <link id="jjjhd3k7" targetId="jjjhd3k6"/>
+               </wait>
+               <container id="jjjhd3kj" type="exclusive">
+                  <title>Import Status</title>
+                  <flow id="jjjhd3kk">
+                     <service id="jjjhd3kl">
+                        <title>Logout of IICS</title>
+                        <serviceName>IICS-REST-API-actions:PublicCoreV3LogoutPost</serviceName>
+                        <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                        <serviceInput>
+                           <parameter name="IDS_SESSION_ID" source="field" updatable="true">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                           <parameter name="hostName" source="field" updatable="true">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                        </serviceInput>
+                        <link id="jjjhd3kt" targetId="jjjhd3km"/>
+                     </service>
+                     <assignment id="jjjhd3km">
+                        <title>Assign Output</title>
+                        <operation source="field" to="output.Login Status">output.LoginResponse[1]/userInfo[1]/status</operation>
+                        <operation source="field" to="output.SCM Checkout Status">output.path</operation>
+                        <operation source="field" to="output.Import Status">output.GetImportJobStatusResponse[1]/status[1]/state</operation>
+                        <link id="jjjhd3ku" targetId="jjjhd3kn"/>
+                     </assignment>
+                     <end id="jjjhd3kn"/>
+                  </flow>
+                  <flow id="jjjhd3ko">
+                     <wait id="jjjhd3kp">
+                        <title>Wait 5 seconds</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">5</arg>
+                              <arg name="scale">S</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="jjjhd3kv" targetId="jjjhd3kq"/>
+                     </wait>
+                     <jumpTo id="jjjhd3kq">
+                        <link id="jjjhd3kw" targetId="jjjhd3k6"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="jjjhd3kr" targetId="jjjhd3kk" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.GetImportJobStatusResponse[1]/status[1]/state}</arg>
+                           <arg name="right">SUCCESSFUL</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jjjhd3ks" targetId="jjjhd3ko" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>9K3ZTPGDEGCfzhSvz9phyg</types1:GUID>
+      <types1:DisplayName>SCM Import from Git</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.261Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

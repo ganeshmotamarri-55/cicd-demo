@@ -1,0 +1,235 @@
+{
+  "name" : "mt_test",
+  "runtimeEnvironmentId" : "@4RQfuhC3k6tbDmbmMtcbIq",
+  "runtimeEnvironmentName" : "GaneshMotamarri",
+  "maxLogs" : 10,
+  "parameters" : [
+    {
+      "name" : "$Source1$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "Conn_Src",
+      "uiProperties" : {
+        "cnxtype" : "Oracle",
+        "connectionParameterized" : "true",
+        "paramName" : "Conn_Src",
+        "paramType-mapping" : "Connection",
+        "logcnx" : "Conn_Src",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objlabel" : "SRC_Table",
+        "objectParameterized" : "true",
+        "objectParamName" : "SRC_Table",
+        "objectParamType-mapping" : "DataObject",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "Source1"
+      },
+      "sourceConnectionId" : "@4An5mPlDt6Eg5jzrt6p0Y6",
+      "connectionName" : "conn_Ganesh_orcl",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : true,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "GANESH/EMPLOYEE",
+          "label" : "EMPLOYEE",
+          "metadataUpdated" : false,
+          "dbSchema" : "GANESH"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "GANESH/EMPLOYEE",
+            "label" : "EMPLOYEE",
+            "metadataUpdated" : false,
+            "dbSchema" : "GANESH"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "fetchMode" : "ORIGINAL",
+      "runtimeParameterData" : {
+        "connectionParameterName" : "Conn_Src",
+        "objectParameterName" : "SRC_Table",
+        "objectDefaultValue" : "EMPLOYEE",
+        "connectionRuntimeParameter" : true,
+        "objectRuntimeParameter" : true
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$Target1$",
+      "type" : "TARGET",
+      "label" : "Conn_TGT",
+      "uiProperties" : {
+        "cnxtype" : "Oracle",
+        "connectionParameterized" : "true",
+        "paramName" : "Conn_TGT",
+        "paramType-mapping" : "Connection",
+        "logcnx" : "Conn_TGT",
+        "objlabel" : "TGT_Table",
+        "objectParameterized" : "true",
+        "objectParamName" : "TGT_Table",
+        "objectParamType-mapping" : "DataObject",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "fieldMappingParameterized" : "true",
+        "supportApplyDDLChanges" : "false",
+        "originalPath" : "Target1"
+      },
+      "targetConnectionId" : "@6P5VVirHSrSgd4HjCFEpC1",
+      "connectionName" : "conn_Ganesh_orcl_system",
+      "targetObject" : "SYSTEM/EMPLOYEE",
+      "targetObjectLabel" : "EMPLOYEE",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : true,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "operationType" : "Upsert",
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "singleMode" : true
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "SYSTEM/EMPLOYEE",
+      "objectLabel" : "EMPLOYEE",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "fetchMode" : "ORIGINAL",
+      "runtimeParameterData" : {
+        "connectionParameterName" : "Conn_TGT",
+        "objectParameterName" : "TGT_Table",
+        "objectDefaultValue" : "EMPLOYEE",
+        "connectionRuntimeParameter" : true,
+        "objectRuntimeParameter" : true
+      },
+      "dbSchema" : "SYSTEM",
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$Field_mapping$",
+      "type" : "STRING",
+      "text" : "double (15, 0) EMPLOYEE_ID=EMPLOYEE_ID;nstring (200, 0) FIRST_NAME=FIRST_NAME;nstring (200, 0) LAST_NAME=LAST_NAME;double (15, 0) PHONE_NUMBER=PHONE_NUMBER;date/time (29, 9) HIRE_DATE=HIRE_DATE;nstring (40, 0) JOB_ID=JOB_ID;double (15, 0) SALARY=SALARY;double (15, 0) COMMISSION_PCT=COMMISSION_PCT;double (15, 0) MANAGER_ID=MANAGER_ID;double (15, 0) DEPARTMENT_ID=DEPARTMENT_ID;nstring (400, 0) EMAIL=EMAIL;",
+      "label" : "Field_mapping",
+      "uiProperties" : {
+        "paramName" : "Field_mapping",
+        "paramType-mapping" : "FieldMapping",
+        "paramtype" : "Fieldmap",
+        "supressFieldmappingSuffix" : "true",
+        "lefttitle" : "Incoming Fields",
+        "righttitle" : "Target Fields",
+        "allowPartialOverride" : "true",
+        "isPwxMultiGroupFieldMapping" : "false",
+        "objlabel" : "Target Field Group:",
+        "originalPath" : "Target1"
+      },
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : true,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "fetchMode" : "ORIGINAL",
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    }
+  ],
+  "verbose" : false,
+  "lastRunTime" : 1771151995000,
+  "mappingId" : "@6mfGhQxZEdSi1j7GzW3Gcv",
+  "mappingTemplateName" : "Mapping114",
+  "sessionPropertiesList" : [
+    {
+      "name" : "Pushdown Optimization",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Context",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Fallback Option",
+      "value" : "Partial PDO"
+    }
+  ],
+  "inOutParameters" : [
+    {
+      "name" : "Table_1",
+      "datatype" : "STRING",
+      "precision" : "100",
+      "scale" : "0",
+      "retentionPolicy" : "NEVER",
+      "aggregationType" : "MAX"
+    },
+    {
+      "name" : "Update_override",
+      "datatype" : "STRING",
+      "precision" : "32000",
+      "scale" : "0",
+      "retentionPolicy" : "NEVER",
+      "aggregationType" : "MAX"
+    },
+    {
+      "name" : "Table_2",
+      "datatype" : "STRING",
+      "precision" : "100",
+      "scale" : "0",
+      "retentionPolicy" : "NEVER",
+      "aggregationType" : "MAX"
+    }
+  ],
+  "hidden" : false,
+  "enableCrossSchemaPushdown" : true,
+  "enableParallelRun" : true,
+  "autoTunedApplied" : false,
+  "autoTunedAppliedType" : "NONE",
+  "paramFileType" : "PARAM_FILE_LOCAL",
+  "schemaMode" : "async",
+  "valid" : true,
+  "optimizationPlan" : "NONE",
+  "allowMaxFieldLength" : false,
+  "specialCharacterSupport" : false,
+  "midstreamPreview" : false,
+  "vcsExportTime" : "2026-04-23 02:55:13 PDT"
+}

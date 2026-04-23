@@ -1,0 +1,164 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>A6gaabclvAhrswV-gt-8446983-2026-02-22T14:00:08.435Z::pd.xml</types1:EntryId>
+      <types1:Name>Process8</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-22T14:00:08Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-22T14:04:43Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="1Em3boCfPeJl0PtP6jtxoM"
+                  displayName="Process8"
+                  name="Process8"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Source" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Target" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Field_Mapping" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="xmlPayload" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="XML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Source_count" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="rca5141e4-e59f-4d6f-8e82-b4231ea13bce">
+               <start id="p9584ece6-c04b-4421-a392-dc3b25907f31">
+                  <link id="nf5c48e90-e458-4591-b0cc-39c452064aed"
+                        targetId="Assignment65adbecc-68d2-4178-aa24-4091b5a42975"/>
+               </start>
+               <assignment id="Assignment65adbecc-68d2-4178-aa24-4091b5a42975">
+                  <title>Assignment to xmlPayload</title>
+                  <operation source="constant" to="temp.xmlPayload">&lt;queries&gt;   &lt;source&gt;Employee&lt;/source&gt;    &lt;source&gt;employee_ff&lt;/source&gt;   &lt;source&gt;EMP_PROJ&lt;/source&gt;   &lt;source&gt;DONATIONS&lt;/source&gt;   &lt;target&gt;Employee&lt;/target&gt;    &lt;target&gt;employee_ff&lt;/target&gt;   &lt;target&gt;EMP_PROJ&lt;/target&gt;   &lt;target&gt;DONATIONS&lt;/target&gt;   &lt;/queries&gt;</operation>
+                  <link id="v52345fd3-7bcc-408b-8873-a5e996bff8c8"
+                        targetId="Assignment8d0fb0a9-e383-4753-99bd-26ec21cf00ca"/>
+               </assignment>
+               <assignment id="Assignment8d0fb0a9-e383-4753-99bd-26ec21cf00ca">
+                  <title>Assignment to XML</title>
+                  <operation source="formula" to="temp.XML">
+                     <expression language="XQuery">let $xmlData := fn:parse-xml($temp.xmlPayload)
+return $xmlData</expression>
+                  </operation>
+                  <link id="ofd51cf4d-aa7c-4298-9c89-6bafb3958de6"
+                        targetId="Assignment856245ce-b2e9-4373-beba-88bdae2d5b72"/>
+               </assignment>
+               <assignment id="Assignment856245ce-b2e9-4373-beba-88bdae2d5b72">
+                  <title>Assignment to Source, Target</title>
+                  <operation source="formula" to="temp.Source">
+                     <expression language="XQuery">let $xmlData := fn:parse-xml($temp.xmlPayload)
+for $s in $xmlData/queries/source
+return data($s)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Target">
+                     <expression language="XQuery">let $xmlData := fn:parse-xml($temp.xmlPayload)
+for $t in $xmlData/queries/target
+return data($t)</expression>
+                  </operation>
+                  <link id="s96499d28-6b63-4048-9cb0-81fa01af8642"
+                        targetId="Assignment083bd592-26c0-4b63-b85d-489e828c878d"/>
+               </assignment>
+               <assignment id="Assignment083bd592-26c0-4b63-b85d-489e828c878d">
+                  <title>Assignment to Count, Source_count</title>
+                  <operation source="constant" to="temp.Count">4</operation>
+                  <operation source="formula" to="temp.Source_count">
+                     <expression language="XQuery">let $count1 := fn:count(util:parseXML( $temp.XML )/source)
+return $count1</expression>
+                  </operation>
+                  <link id="nf9ef31cc-2bbb-4787-980e-4bcc9811e6c6"
+                        targetId="Decision957bc418-d1ab-4ad9-8d1a-35f27abb88a4"/>
+               </assignment>
+               <container id="Decision957bc418-d1ab-4ad9-8d1a-35f27abb88a4" type="exclusive">
+                  <title>Count</title>
+                  <flow id="ue617829b-0d70-4b36-9a99-32d0e9396283">
+                     <link id="nc2d6199d-b023-4005-943d-c2603d1bc811"
+                           targetId="Decision957bc418-d1ab-4ad9-8d1a-35f27abb88a4"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="tc099eb7c-c95f-4777-b968-906f5d07477c">
+                     <service id="Servicecfdf524f-a3bb-4337-801c-f82088fa04a5">
+                        <title>Service 1</title>
+                     </service>
+                     <link id="f160c2d9b-8a62-4d99-b67b-e47a6118f0ef"
+                           targetId="Decision957bc418-d1ab-4ad9-8d1a-35f27abb88a4"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="f14e3a80f-eda3-405d-8a6b-0d71ae9b8151"
+                        targetId="ue617829b-0d70-4b36-9a99-32d0e9396283"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="less-than">
+                           <arg name="left">{$temp.Count}</arg>
+                           <arg name="right">{$temp.Source_count}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="v5c7191d6-f7cf-45a3-939f-7d6838c83ce4"
+                        targetId="tc099eb7c-c95f-4777-b968-906f5d07477c"
+                        type="containerLink"/>
+                  <link id="p0d70e98f-23ba-42df-87ed-0a4c2e6be62a"
+                        targetId="end-h88e31a72-72d7-44bd-973f-2836fdff8250"/>
+               </container>
+               <end id="end-h88e31a72-72d7-44bd-973f-2836fdff8250">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>1Em3boCfPeJl0PtP6jtxoM</types1:GUID>
+      <types1:DisplayName>Process8</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.056Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

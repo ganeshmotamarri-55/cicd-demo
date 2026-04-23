@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "0VxfoD7tJAMlReQLax0Miz",
+    "name" : "JiraConnectionTicket",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yD7tyGoQwg74Rpf-gt-13275797-2026-03-09T12:33:09.239Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : " Jira connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.557Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

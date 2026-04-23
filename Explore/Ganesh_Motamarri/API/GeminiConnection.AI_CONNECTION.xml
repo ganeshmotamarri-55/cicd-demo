@@ -1,0 +1,45 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>0PiciT6sFsdsFsd-gt-13275789-2026-03-09T12:33:09.199Z::conn.xml</types1:EntryId>
+      <types1:Name>GeminiConnection</types1:Name>
+      <types1:ParentFlowIds>4jBvSx0aa-gt-13315664-2026-03-09T12:33:11.895Z::pd.xml,ISHCwkNmumf6S3w-gt-13315700-2026-03-09T12:33:12.554Z::pd.xml,oBL2BX9cjIw8jIw-gt-13315512-2026-03-09T12:33:09.723Z::pd.xml,PXyDQeH2PKDC0hC-gt-13315646-2026-03-09T12:33:11.669Z::pd.xml,RLC64Ky2uI5CUP9-gt-13315587-2026-03-09T12:33:10.704Z::pd.xml,W01BchMYeOm6S6f-gt-13315712-2026-03-09T12:33:12.787Z::pd.xml,ZWlwUiQLnzYLnzY-gt-13315610-2026-03-09T12:33:10.82Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Gemini connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="GeminiConnection"
+                     label="GeminiConnection"
+                     name="GeminiConnection">
+            <description>Gemini connection</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="true" name="API_Key" value=""/>
+               <attribute encrypted="false" name="API_Version" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/INFA_Gemini/INFA_Gemini_svcDef.xml"
+                               name="INFA_Gemini"
+                               supportsConnectionTest="false"
+                               uuid="7afa9da1-cee5-4be5-8b35-7904e160b269">
+               <description>Gemini APIs for content generation and embedding</description>
+               <icon>project:/com.informatica.cai.connectors.gemini/icon.svg</icon>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>0BNr3j3wvwukTj4JucgxsM</types1:GUID>
+      <types1:DisplayName>GeminiConnection</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.746Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

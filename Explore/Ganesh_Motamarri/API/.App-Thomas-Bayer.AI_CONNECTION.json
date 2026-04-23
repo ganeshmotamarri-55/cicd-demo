@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "9EJ4NQKy7gEhYN7OdTD6ac",
+    "name" : "App-Thomas-Bayer",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "03puoJ49ARJi4tc-gt-4211282-2026-02-17T13:38:59.984Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.529Z",
+  "objectRefs" : [ {
+    "id" : "78A6dUdXhKbiM3UqXRPYm9",
+    "name" : "SC_THOMAS_BAYER",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "abdreAFLK2D86Cj-gt-4201409-2026-02-17T13:21:13.015Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,67 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>f2B7O2htghGZ5i4-gt-1980889-2026-02-14T10:25:12.093Z::pd.xml</types1:EntryId>
+      <types1:Name>Process4-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-14T10:25:12Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="eJ1rl1hXvCMfRBShUpOvOk"
+                  displayName="Process4"
+                  name="Process4-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="nda5e3634-08a5-4062-9efb-03947adb7970">
+               <start id="oee59d84b-7c98-4777-950a-d03ddeac5032">
+                  <link id="v020897ed-fbf2-495b-bdb7-15ea76ae248c"
+                        targetId="Service31b0692f-199c-416a-862f-1c5904867780"/>
+               </start>
+               <service id="Service31b0692f-199c-416a-862f-1c5904867780">
+                  <title>Get Agent</title>
+                  <serviceName>AppConnection5:Get Agent</serviceName>
+                  <serviceGUID>0DDSo5kZieqeQCSmiN4UIq</serviceGUID>
+                  <serviceInput>
+                     <parameter name="icsSessionUrl" source="constant"/>
+                     <parameter name="icSessionId" source="constant"/>
+                     <parameter name="icsAgentId" source="constant"/>
+                  </serviceInput>
+                  <link id="n301e9c93-d2fa-40a0-9627-f407744d79f4"
+                        targetId="end-q42fdcaf6-e0bc-4980-a5c7-806a430269b9"/>
+               </service>
+               <end id="end-q42fdcaf6-e0bc-4980-a5c7-806a430269b9">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>eJ1rl1hXvCMfRBShUpOvOk</types1:GUID>
+      <types1:DisplayName>Process4</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.521Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

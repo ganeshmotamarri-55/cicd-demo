@@ -1,0 +1,185 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>pC18ypmaaa-gt-5583426-2026-02-19T09:12:22.54Z::gt.xml</types1:EntryId>
+      <types1:Name>Guide4</types1:Name>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-19T09:12:23Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-19T09:31:23Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-19T09:31:26Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.Guide4/Guide4.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         displayName="Guide4"
+                         doneOnEndStep="false"
+                         name="Guide4"
+                         runAsUser="$current">
+            <description/>
+            <appliesTo/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="null" name="ID1" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo/>
+            </sendFeedback>
+            <flow>
+               <startScreen id="a161d2ghxxmWXjnHFM626N41-start-ua4b833f2-f5a8-4150-af12-140d2215456f">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null"
+                             id="j78cd1f25-a664-4eeb-9250-89cee1956fef"
+                             targetScreen="a161d2ghxxmWXjnHFM626N41-Screenc5b01a98-0251-4e02-912f-e58bc5be6d82">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <screen id="a161d2ghxxmWXjnHFM626N41-Screenc5b01a98-0251-4e02-912f-e58bc5be6d82">
+                  <title>Screen 1</title>
+                  <body contentType="text/html">&lt;p&gt;ID1 &lt;input name="input.ID1" type="text" value="ID1 (input)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null"
+                             id="bd02a28b5-2b41-4ea3-a51b-6bd37d3873f6"
+                             targetScreen="a161d2ghxxmWXjnHFM626N41-Service96173e72-1074-478b-8760-b05f5ebfd5e2">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="input.ID1"
+                                     readonly="false"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="a161d2ghxxmWXjnHFM626N41-Screenefafad3c-a4af-4adf-8d45-a35dcb355ab4">
+                  <title>Screen 2</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.CITY" readonly="readonly" type="text" value="CITY (output)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.COUNTRY" readonly="readonly" type="text" value="COUNTRY (output)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.CUSTOMER" readonly="readonly" type="text" value="CUSTOMER (output)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.FIRSTNAME" readonly="readonly" type="text" value="FIRSTNAME (output)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.LASTNAME" readonly="readonly" type="text" value="LASTNAME (output)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.TOTAL" readonly="readonly" type="text" value="TOTAL (output)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null"
+                             id="w0860db6b-9eec-4cc8-ab70-b12d6bd1135b"
+                             targetScreen="a161d2ghxxmWXjnHFM626N41-end-vf6bd0764-836b-4dfe-a49c-c87c68a82095">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.CITY"
+                                     readonly="true"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.COUNTRY"
+                                     readonly="true"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.CUSTOMER"
+                                     readonly="true"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.FIRSTNAME"
+                                     readonly="true"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.LASTNAME"
+                                     readonly="true"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.TOTAL"
+                                     readonly="true"
+                                     renderingType="string"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <service id="a161d2ghxxmWXjnHFM626N41-Service96173e72-1074-478b-8760-b05f5ebfd5e2">
+                  <title>Get_Customer</title>
+                  <serviceName>P_Customer_details</serviceName>
+                  <serviceGUID>594SCKdUTCTkni8tgk1t4Y</serviceGUID>
+                  <serviceInput>
+                     <parameter id="a161d2ghxxmWXjnHFM626N41-ffff80c05-de4f-402d-a72f-70d134bf14dd"
+                                name="ID"
+                                source="field"
+                                updatable="false">input.ID1</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null"
+                             id="y7d5eff4d-0332-4825-87c8-dc91706d39c6"
+                             targetScreen="a161d2ghxxmWXjnHFM626N41-Screenefafad3c-a4af-4adf-8d45-a35dcb355ab4">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <endScreen id="a161d2ghxxmWXjnHFM626N41-end-vf6bd0764-836b-4dfe-a49c-c87c68a82095">
+                  <title>End</title>
+                  <actions/>
+                  <redirectTo type="current_object"/>
+               </endScreen>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>61d2ghxxmWXjnHFM626N41</types1:GUID>
+      <types1:DisplayName>Guide4</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:14.046Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

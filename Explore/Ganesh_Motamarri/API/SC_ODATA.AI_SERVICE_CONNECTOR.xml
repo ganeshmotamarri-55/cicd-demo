@@ -1,0 +1,144 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>XKkfUryzfYtjCtb-gt-1927777-2026-02-14T08:43:54.797Z::svc.xml</types1:EntryId>
+      <types1:Name>SC_ODATA</types1:Name>
+      <types1:ParentFlowIds>ByHfSTu0kMVX3cj-gt-1949233-2026-02-14T09:01:04.516Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-14T08:43:55Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-14T09:53:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-14T09:53:54Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SC_ODATA/SC_ODATA_svcDef.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="true"
+                            debug="false"
+                            displayName="SC_ODATA"
+                            label=""
+                            name="SC_ODATA"
+                            uuid="77125194-5912-44f8-a433-cf1188dae704">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get_The_Data"
+                       maxRedirects="100"
+                       name="Get_The_Data"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="http://localhost:9090/ords/ganesh/employees/"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Name" property="Name" type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="offset" nullable="true" required="false" type="int"/>
+                     <field name="hasMore" nullable="true" required="false" type="string"/>
+                     <field name="count" nullable="true" required="false" type="int"/>
+                     <field name="limit" nullable="true" required="false" type="int"/>
+                     <field name="links" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">links</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="items" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">items</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="links">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="rel" nullable="true" required="false" type="string"/>
+                     <field name="href" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="items">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="commission_pct"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="gender" nullable="false" required="false" type="string">
+                        <options/>
+                     </field>
+                     <field name="department_id"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="last_name" nullable="true" required="false" type="string"/>
+                     <field name="hire_date"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="salary" nullable="true" required="false" type="int"/>
+                     <field name="manager_id" nullable="true" required="false" type="int"/>
+                     <field name="job_id" nullable="true" required="false" type="string"/>
+                     <field name="employee_id" nullable="true" required="false" type="int"/>
+                     <field name="phone_number"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="links" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">links</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="first_name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="email" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>7gkjWTvXnr5g68wGUjpy8o</types1:GUID>
+      <types1:DisplayName>SC_ODATA</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.824Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

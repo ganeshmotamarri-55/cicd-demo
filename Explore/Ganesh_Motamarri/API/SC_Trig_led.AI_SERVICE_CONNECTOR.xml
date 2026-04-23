@@ -1,0 +1,169 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>abdvhxiQLnzYLnz-gt-7089797-2025-12-23T10:56:02.101Z::svc.xml</types1:EntryId>
+      <types1:Name>SC_Trig_led</types1:Name>
+      <types1:ParentFlowIds>nFKi9zhFtybduaa-gt-7101270-2025-12-23T10:57:47.212Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2025-12-23T10:56:02Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2025-12-23T12:47:48Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2025-12-23T10:57:18Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SC_Trig_led/SC_Trig_led_svcDef.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC_Trig_led"
+                            label=""
+                            name="SC_Trig_led"
+                            uuid="aab05fce-ea85-491b-88fa-54f3874efca4">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description="Host Name"
+                                    label="hostName"
+                                    masked="false"
+                                    name="hostName"
+                                    required="true"
+                                    testWith="usw5.dm-us.informaticacloud.com:443"
+                                    type="string"/>
+               <connectionAttribute description="User Name"
+                                    label="username"
+                                    masked="false"
+                                    name="username"
+                                    required="true"
+                                    testWith="gmotamarri@idmc.axxeltechnologies.com"
+                                    type="string"/>
+               <connectionAttribute description="Password"
+                                    label="password"
+                                    masked="true"
+                                    name="password"
+                                    required="true"
+                                    testWith=""
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Taskflow1"
+                       maxRedirects="100"
+                       name="Taskflow1"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label="body"
+                                name="body"
+                                required="true"
+                                testWith=""
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">Taskflow1_15Request</option>
+                        </options>
+                     </parameter>
+                     <parameter description=""
+                                label="Workflow_Name"
+                                name="Workflow_Name"
+                                required="false"
+                                testWith="tf_SIL_APTermsDimension"
+                                type="string"/>
+                     <parameter description=""
+                                label="Executionplan_Name"
+                                name="Executionplan_Name"
+                                required="false"
+                                testWith="Enterprise Product All Subject Areas"
+                                type="string"/>
+                     <parameter description=""
+                                label="Prune_Days"
+                                name="Prune_Days"
+                                required="false"
+                                testWith="10"
+                                type="int"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/active-bpel/rt/Taskflow1-15"
+                                        verb="POST">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Taskflow1_15Request">
+                  <description/>
+                  <detail>
+                     <field name="Executionplan_Name"
+                            nullable="true"
+                            required="true"
+                            type="string"/>
+                     <field name="Prune_Days" nullable="true" required="true" type="int"/>
+                     <field name="Workflow_Name"
+                            nullable="true"
+                            required="true"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="string">
+                  <detail>
+                     <field name="string" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="boolean">
+                  <detail>
+                     <field name="boolean" nullable="true" required="false" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="double">
+                  <detail>
+                     <field name="double" nullable="true" required="false" type="double"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="integer">
+                  <detail>
+                     <field name="integer" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>1njkhBx6NuEl5mZn5lWjIs</types1:GUID>
+      <types1:DisplayName>SC_Trig_led</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.72Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

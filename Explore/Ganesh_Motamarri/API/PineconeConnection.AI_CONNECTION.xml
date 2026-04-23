@@ -1,0 +1,44 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>4XUxQ2Tp5OjG4ab-gt-13275748-2026-03-09T12:33:08.689Z::conn.xml</types1:EntryId>
+      <types1:Name>PineconeConnection</types1:Name>
+      <types1:ParentFlowIds>BOAPbdutaaabbgd-gt-13315501-2026-03-09T12:33:09.544Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Pinecone connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="PineconeConnection"
+                     label="PineconeConnection"
+                     name="PineconeConnection">
+            <description>Pinecone connection</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="true" name="API_Key" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/INFA_Pinecone/INFA_Pinecone_svcDef.xml"
+                               name="INFA_Pinecone"
+                               supportsConnectionTest="false"
+                               uuid="4ab048e2-d534-4437-aec4-44cddca0fc6f">
+               <description>Pinecone REST APIs for interacting programmatically with the Pinecone account using HTTP requests.</description>
+               <icon>project:/com.informatica.cai.connectors.poinecone/icon.svg</icon>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>6z7izhwk5IJjtjeSKmYFuO</types1:GUID>
+      <types1:DisplayName>PineconeConnection</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.996Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

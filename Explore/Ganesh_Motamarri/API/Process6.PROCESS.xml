@@ -1,0 +1,169 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>qkiVR3aaa-gt-3398298-2026-02-16T12:09:07.267Z::pd.xml</types1:EntryId>
+      <types1:Name>Process6</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-16T12:09:07Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="j8ILfaah087j6OkllGkw0b"
+                  displayName="Process6"
+                  name="Process6"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="Depth2" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="XMLTEXT" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Depth" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Folder_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Command_Incr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Command_Full" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="XML1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="corrected-flow">
+               <start id="start1">
+                  <link targetId="assignXML"/>
+               </start>
+               <assignment id="assignXML">
+                  <title>Assign XMLTEXT</title>
+                  <operation source="formula" to="temp.XMLTEXT">
+                     <expression language="XQuery">
+"&lt;CSI_PROCESSES&gt;
+    &lt;PROCESS&gt;
+        &lt;DEPTH&gt;1&lt;/DEPTH&gt;
+        &lt;NAME&gt;Customer_Load&lt;/NAME&gt;
+        &lt;FOLDER_NAME&gt;Customer_Integration&lt;/FOLDER_NAME&gt;
+        &lt;COMMAND_FOR_FULL_LOAD&gt;LOAD_CUSTOMER_FULL.sh&lt;/COMMAND_FOR_FULL_LOAD&gt;
+        &lt;COMMAND_FOR_INCREMENTAL_LOAD&gt;LOAD_CUSTOMER_INC.sh&lt;/COMMAND_FOR_INCREMENTAL_LOAD&gt;
+    &lt;/PROCESS&gt;
+    &lt;PROCESS&gt;
+        &lt;DEPTH&gt;2&lt;/DEPTH&gt;
+        &lt;NAME&gt;Orders_Load&lt;/NAME&gt;
+        &lt;FOLDER_NAME&gt;Order_Integration&lt;/FOLDER_NAME&gt;
+        &lt;COMMAND_FOR_FULL_LOAD&gt;LOAD_ORDERS_FULL.sh&lt;/COMMAND_FOR_FULL_LOAD&gt;
+        &lt;COMMAND_FOR_INCREMENTAL_LOAD&gt;LOAD_ORDERS_INC.sh&lt;/COMMAND_FOR_INCREMENTAL_LOAD&gt;
+    &lt;/PROCESS&gt;
+&lt;/CSI_PROCESSES&gt;"
+            </expression>
+                  </operation>
+                  <link targetId="parseXML"/>
+               </assignment>
+               <assignment id="parseXML">
+                  <title>Parse XML</title>
+                  <operation source="formula" to="temp.XML1">
+                     <expression language="XQuery">
+parse-xml($temp.XMLTEXT)
+            </expression>
+                  </operation>
+                  <link targetId="loopProcesses"/>
+               </assignment>
+               <foreach collection="$temp.XML1/CSI_PROCESSES/PROCESS"
+                        id="loopProcesses"
+                        item="currentProcess">
+                  <create id="createOracle">
+                     <title>Insert Oracle</title>
+                     <entityName>App-Ganesh-oracle-jdbc:AP_SUBJECT_AREA</entityName>
+                     <createInput>
+                        <parameter name="DEPTH" source="formula">
+                    xs:integer($currentProcess/DEPTH)
+                </parameter>
+                        <parameter name="NAME" source="formula">
+                    string($currentProcess/NAME)
+                </parameter>
+                        <parameter name="FOLDER_NAME" source="formula">
+                    string($currentProcess/FOLDER_NAME)
+                </parameter>
+                        <parameter name="COMMAND_FULL" source="formula">
+                    string($currentProcess/COMMAND_FOR_FULL_LOAD)
+                </parameter>
+                        <parameter name="COMMAND_INC" source="formula">
+                    string($currentProcess/COMMAND_FOR_INCREMENTAL_LOAD)
+                </parameter>
+                     </createInput>
+                  </create>
+               </foreach>
+               <end id="end1"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>c49adfec-723b-4a24-8729-d7def4fb56b8</ns1:Id>
+               <ns1:Name>Noinputs</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-16T12:09:07Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-16T12:09:07Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>j8ILfaah087j6OkllGkw0b</types1:GUID>
+      <types1:DisplayName>Process6</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.957Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

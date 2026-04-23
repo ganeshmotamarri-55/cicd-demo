@@ -1,0 +1,112 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>nHUPAZf5kck8jKB-gt-23377662-2026-04-16T10:25:36.213Z::pd.xml</types1:EntryId>
+      <types1:Name>Process10</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-04-16T10:25:36Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-16T10:28:05Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-04-16T10:28:07Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process10/Process10.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="gN9v7oUnniPe2sqUYURKW9"
+                  displayName="Process10"
+                  name="Process10"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input/>
+            <output>
+               <field description="" name="untitled1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="t8d4e7777-e1e6-4d8d-809f-45fc22393abc">
+               <start id="cb2e5af89-5a5d-404a-821e-8cfc9480b0ec">
+                  <link id="a9173a496-fc04-4a61-b651-24c5df386f67"
+                        targetId="HumanTask94a2abcb-4ae7-48a2-ab12-279eb20c7413"/>
+               </start>
+               <humanTask id="HumanTask94a2abcb-4ae7-48a2-ab12-279eb20c7413">
+                  <title>HumanTask1</title>
+                  <subflowGUID>lYgRwxMrAwOinWQzrqnvGO</subflowGUID>
+                  <subflowPath>HumanTask1</subflowPath>
+                  <peopleActivityName>HumanTask1</peopleActivityName>
+                  <asset>
+                     <GUID>lYgRwxMrAwOinWQzrqnvGO</GUID>
+                     <taskName>HumanTask1</taskName>
+                  </asset>
+                  <input>
+                     <field name="Executionplan" source="constant">Enterprise Product All Subject Areas</field>
+                     <field name="Workflow" source="constant"/>
+                     <field name="Prune" source="constant"/>
+                  </input>
+                  <outputDef>
+                     <field name="OExecutionplan" type="string"/>
+                     <field name="OWorkflow" type="string"/>
+                     <field name="OPrune" type="int"/>
+                     <field name="taskOutcome" type="string"/>
+                  </outputDef>
+                  <config>
+                     <disableOutcomeLinksGeneration>true</disableOutcomeLinksGeneration>
+                  </config>
+                  <link id="p1e2b6dcd-fe40-44b0-83fc-52df8a29adac"
+                        targetId="Assignmentefb6da98-e996-4576-971f-23b14f10ee20"/>
+               </humanTask>
+               <assignment id="Assignmentefb6da98-e996-4576-971f-23b14f10ee20">
+                  <title>Assignment to untitled1</title>
+                  <operation source="field" to="output.untitled1">output.untitled1</operation>
+                  <link id="u3673edcf-b42e-4ab9-a458-6acbddb08e3f"
+                        targetId="end-n3da7ef76-4662-4e5d-a800-4f2e17673103"/>
+               </assignment>
+               <end id="end-n3da7ef76-4662-4e5d-a800-4f2e17673103">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>30c201f0-caa5-4050-9a8b-6fff4c88d5e4</ns1:Id>
+               <ns1:Name>SS</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-04-16T10:25:49Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-04-16T10:25:49Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>gN9v7oUnniPe2sqUYURKW9</types1:GUID>
+      <types1:DisplayName>Process10</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.786Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

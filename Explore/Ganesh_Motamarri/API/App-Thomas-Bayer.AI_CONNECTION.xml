@@ -1,0 +1,45 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>03puoJ49ARJi4tc-gt-4211282-2026-02-17T13:38:59.984Z::conn.xml</types1:EntryId>
+      <types1:Name>App-Thomas-Bayer</types1:Name>
+      <types1:ParentFlowIds>TVMTonQYWeIssjq-gt-4213346-2026-02-17T13:41:19.726Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:GaneshMotamarri</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-17T13:39:00Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-17T13:39:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-19T09:28:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/App-Thomas-Bayer/App-Thomas-Bayer.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="App-Thomas-Bayer"
+                     label="App-Thomas-Bayer"
+                     name="App-Thomas-Bayer">
+            <description/>
+            <tags>.agent:GaneshMotamarri</tags>
+            <agent>GaneshMotamarri</agent>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/SC_THOMAS_BAYER/SC_THOMAS_BAYER_svcDef.xml"
+                               guid="78A6dUdXhKbiM3UqXRPYm9"
+                               name="SC_THOMAS_BAYER"
+                               supportsConnectionTest="false"
+                               uuid="346201f9-061b-4b89-a1f3-07602de7a574">
+               <description/>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>9EJ4NQKy7gEhYN7OdTD6ac</types1:GUID>
+      <types1:DisplayName>App-Thomas-Bayer</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.368Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

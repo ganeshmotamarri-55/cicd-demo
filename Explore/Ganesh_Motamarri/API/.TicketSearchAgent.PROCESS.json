@@ -1,0 +1,107 @@
+{
+  "objectInfo" : {
+    "id" : "it1JptiDruQl5Hw1bYagGA",
+    "name" : "TicketSearchAgent",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "oBL2BX9cjIw8jIw-gt-13315512-2026-03-09T12:33:09.723Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that searches the incoming email for a Zendesk ticket number and updates the ticket if found. If the Zendesk ticket does not exist, it creates a new ticket. Additionally, it generates a Zendesk ticket link and logs the conversation history.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.547Z",
+  "objectRefs" : [ {
+    "id" : "30qf5eDsmAMhdaAX53MiWT",
+    "name" : "GenerationConfig_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ZBpDUQbgdwUiQLn-gt-13315471-2026-03-09T12:33:08.883Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that creates the prompt request.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "7SV3vbmluGBiYrnCFJlWGB",
+    "name" : "ZendeskConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "q695kchzt1Y6tMF-gt-13275756-2026-03-09T12:33:08.726Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Zendesk connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "0n6qhvyIVgwlFmCA1wnzEx",
+    "name" : "Generic Error Handler",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "A5tIS7T1cnFKi9z-gt-13315463-2026-03-09T12:33:08.842Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that manages errors, processes different services as input, and returns appropriate error responses based on the service type and the error encountered, ensuring effective error handling and recovery",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "0BNr3j3wvwukTj4JucgxsM",
+    "name" : "GeminiConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0PiciT6sFsdsFsd-gt-13275789-2026-03-09T12:33:09.199Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Gemini connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

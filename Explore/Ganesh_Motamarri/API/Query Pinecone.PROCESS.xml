@@ -1,0 +1,242 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>BOAPbdutaaabbgd-gt-13315501-2026-03-09T12:33:09.544Z::pd.xml</types1:EntryId>
+      <types1:Name>Query_Pinecone</types1:Name>
+      <types1:ParentFlowIds>OYTRgpDqotxGomU-gt-13315574-2026-03-09T12:33:10.654Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that searches for matches between input vectors and vectors in base Pinecone specified by the input parameters Index_Host_Pinecone, and returns results with metadata</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="3SJLxXYkBehgeZDdxt77a6"
+                  displayName="Query Pinecone"
+                  name="Query_Pinecone"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that searches for matches between input vectors and vectors in base Pinecone specified by the input parameters Index_Host_Pinecone, and returns results with metadata</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="Vectors_Array"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="Index_Host_Pinecone"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Score_Cuttoff"
+                          required="true"
+                          type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="In_Type" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="The process object that contains vectors with score and text implementation"
+                      name="Matches_Vectors_Array"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:VectorMatchEntry_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48wXsDTsyCscFr16yxrsen</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_Request" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">PineconeConnection:QueryVectorsRequestBody</option>
+                     <option name="guid">6z7izhwk5IJjtjeSKmYFuO</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Get_Vectors" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Top_K" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">10</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="x1b1e03b6-befe-4fc9-b68e-24ddec6b59c0">
+               <start id="j4ff11d7f-a8fe-4d2b-a05c-61e690fe9697">
+                  <link id="wf3a6b5f2-5fcb-4b18-8247-7b9f17dbb0d6"
+                        targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-Assignment04a80d39-4e72-4fea-b1c3-5fdd90da439e"/>
+               </start>
+               <assignment id="a1jGrHZ0zmiMbbu7GR3wHlWa-Assignment04a80d39-4e72-4fea-b1c3-5fdd90da439e">
+                  <title>Prepare Request PO</title>
+                  <operation source="formula" to="temp.Tmp_Get_Vectors">
+                     <expression language="XQuery">for $arr in $input.Vectors_Array//values
+return &lt;vector&gt;{$arr}&lt;/vector&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Tmp_Request">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+{ $temp.Tmp_Get_Vectors }
+&lt;topK&gt;{ $temp.Tmp_Top_K  }&lt;/topK&gt;
+&lt;includeMetadata&gt;true&lt;/includeMetadata&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <link id="oc505ad08-0113-4308-950e-aedb5db21331"
+                        targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-mf1mmkyb"/>
+               </assignment>
+               <assignment id="a1jGrHZ0zmiMbbu7GR3wHlWa-Assignmentcd012b65-863e-4be5-98c0-1b956b557887">
+                  <title>Get Matching Vectors</title>
+                  <operation source="formula" to="output.Matches_Vectors_Array">
+                     <expression language="XQuery">for $candidate in $output.response[1]/matches
+return if ($candidate/score &gt; $input.In_Score_Cuttoff  ) then
+
+if($input.In_Type="RAG") then 
+&lt;VectorMatchEntry&gt;
+    &lt;ID&gt; {$candidate/id/text() }&lt;/ID&gt;
+    &lt;Score&gt;{ $candidate/score/text() }&lt;/Score&gt;
+    &lt;Text&gt; {$candidate/metadata/text/text()} &lt;/Text&gt;
+&lt;/VectorMatchEntry&gt;
+else
+&lt;VectorMatchEntry&gt;
+    &lt;ID&gt; {$candidate/id/text() }&lt;/ID&gt;
+    &lt;Score&gt;{ $candidate/score/text() }&lt;/Score&gt;
+    &lt;Text&gt; {$candidate/metadata/text/text()} &lt;/Text&gt;
+    &lt;JiraLink&gt;{$candidate/metadata/jira_link}&lt;/JiraLink&gt;
+&lt;/VectorMatchEntry&gt;
+else ()
+
+</expression>
+                  </operation>
+                  <link id="g6060be98-871e-4127-a668-8df39f1ed5ec"
+                        targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-end-d56bca54c-46b9-4e82-8370-f3c0fc1a707e"/>
+               </assignment>
+               <eventContainer id="a1jGrHZ0zmiMbbu7GR3wHlWa-mf1mmkyb">
+                  <service id="vb7b25991-fec1-4b7f-987f-b7d17a93f98e">
+                     <title>Query Vectors</title>
+                     <serviceName>PineconeConnection:Query Vectors</serviceName>
+                     <serviceGUID>6z7izhwk5IJjtjeSKmYFuO</serviceGUID>
+                     <serviceInput>
+                        <parameter name="indexHost" source="field">input.Index_Host_Pinecone</parameter>
+                        <parameter name="requestBody" source="formula">
+                           <expression language="XQuery">$temp.Tmp_Request</expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="h7268e283-40db-4251-b342-a204971cce9a">
+                     <link id="w691ca613-8a36-4f7a-9c0b-79b1ac15ec91"
+                           targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-mf1mmkyb"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="hf5280a6a-35e7-4c74-9c23-1a933a94d522">
+                     <subflow id="a1jGrHZ0zmiMbbu7GR3wHlWa-mf4ggw2p">
+                        <title>GenericErrorHandlerPinecone</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <appliesTo/>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">Pinecone</parameter>
+                        </input>
+                        <outputDef>
+                           <field description="" name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mbfddde23-adde-4f2b-ab8f-6970ed2d4bba"
+                              targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-mf4ggw71"/>
+                     </subflow>
+                     <assignment id="a1jGrHZ0zmiMbbu7GR3wHlWa-mf4ggw71">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="habd8ecb1-43fa-473c-b1ff-57082920e44a"
+                              targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-mf4ggw92"/>
+                     </assignment>
+                     <jumpTo id="a1jGrHZ0zmiMbbu7GR3wHlWa-mf4ggw92">
+                        <link id="ef4e6110a-8a5f-4d6b-8bb9-95f9439d8636"
+                              targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-mf1mmkyb"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="bcea7a5fb-0fb9-43a9-b204-89685e450e73"
+                        targetId="h7268e283-40db-4251-b342-a204971cce9a"
+                        type="containerLink"/>
+                  <link id="scc51fa80-f3c5-44ff-afd9-86676365c04c"
+                        targetId="a1jGrHZ0zmiMbbu7GR3wHlWa-Assignmentcd012b65-863e-4be5-98c0-1b956b557887"/>
+                  <events>
+                     <catch faultField="faultInfo"
+                            id="j23004554-4d4a-4f8d-9452-e818ab188c7d"
+                            interrupting="true">
+                        <link id="h2048994b-b80b-4bc4-8e78-fcc01c733309"
+                              targetId="hf5280a6a-35e7-4c74-9c23-1a933a94d522"
+                              type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="a1jGrHZ0zmiMbbu7GR3wHlWa-end-d56bca54c-46b9-4e82-8370-f3c0fc1a707e">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>3SJLxXYkBehgeZDdxt77a6</types1:GUID>
+      <types1:DisplayName>Query Pinecone</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.413Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

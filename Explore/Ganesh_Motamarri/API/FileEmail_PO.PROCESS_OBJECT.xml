@@ -1,0 +1,53 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CCKpNz6HKoJBUht-gt-13275780-2026-03-09T12:33:08.846Z::po.xml</types1:EntryId>
+      <types1:Name>FileEmail_PO</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that contains email details</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="FileEmail_PO"
+                        isByCopy="true"
+                        name="FileEmail_PO">
+            <description>Process object that contains email details</description>
+            <tags/>
+            <detail>
+               <field label="Email Body"
+                      name="Email_Body"
+                      nullable="false"
+                      required="true"
+                      type="richtextarea">
+                  <options/>
+               </field>
+               <field label="Email Address"
+                      name="Email_Address"
+                      nullable="false"
+                      required="true"
+                      type="email">
+                  <options/>
+               </field>
+               <field label="Email Subject"
+                      name="Email_Subject"
+                      nullable="false"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>l2BbSTu2RuLkrhqNE11isv</types1:GUID>
+      <types1:DisplayName>FileEmail_PO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.098Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

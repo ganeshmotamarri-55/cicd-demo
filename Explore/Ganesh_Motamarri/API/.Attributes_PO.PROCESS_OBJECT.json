@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "9HJYxfCIsERiOC2zBuTOKm",
+    "name" : "Attributes_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "fRi1pqrzYLnzYLn-gt-13315437-2026-03-09T12:33:08.708Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that contains email details, information required to create a Jira ticket, Zendesk ticket data, confidence level, and search parameters for querying data in Pinecone. This process object is used by another process object named UberPlanner_PO.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.552Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

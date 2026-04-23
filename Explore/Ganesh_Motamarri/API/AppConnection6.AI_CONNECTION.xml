@@ -1,0 +1,44 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>SEEqclNE6Eaaaaa-gt-5614759-2026-02-19T10:06:23.717Z::conn.xml</types1:EntryId>
+      <types1:Name>AppConnection6</types1:Name>
+      <types1:ParentFlowIds>ELlBWlD2pHALVYx-gt-5651389-2026-02-19T10:09:09.485Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:GaneshMotamarri</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>REQUIRE_UPDATE</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-19T10:06:24Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-19T10:07:26Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/AppConnection6/AppConnection6.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppConnection6"
+                     label="AppConnection6"
+                     name="AppConnection6">
+            <description/>
+            <tags>.agent:GaneshMotamarri</tags>
+            <agent>GaneshMotamarri</agent>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/ServiceConnector1_5/ServiceConnector1_5_svcDef.xml"
+                               guid="2QPyCztKAwciC5nyb3jWab"
+                               name="ServiceConnector1-5"
+                               supportsConnectionTest="false"
+                               uuid="fb8bdf2f-1df8-4bef-ad4f-b8d445a52ad3">
+               <description/>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>12N7jvYEzrHdxN5EvN3j8N</types1:GUID>
+      <types1:DisplayName>AppConnection6</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.432Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

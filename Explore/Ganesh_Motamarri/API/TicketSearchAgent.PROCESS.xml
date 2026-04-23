@@ -1,0 +1,711 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oBL2BX9cjIw8jIw-gt-13315512-2026-03-09T12:33:09.723Z::pd.xml</types1:EntryId>
+      <types1:Name>TicketSearchAgent</types1:Name>
+      <types1:ParentFlowIds>PXyDQeH2PKDC0hC-gt-13315646-2026-03-09T12:33:11.669Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that searches the incoming email for a Zendesk ticket number and updates the ticket if found. If the Zendesk ticket does not exist, it creates a new ticket. Additionally, it generates a Zendesk ticket link and logs the conversation history.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="it1JptiDruQl5Hw1bYagGA"
+                  displayName="TicketSearchAgent"
+                  name="TicketSearchAgent"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that searches the incoming email for a Zendesk ticket number and updates the ticket if found. If the Zendesk ticket does not exist, it creates a new ticket. Additionally, it generates a Zendesk ticket link and logs the conversation history.</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="In_Email_Subject"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Email_Body"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Model_Version"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Out_Response_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">GeminiConnection:GenerateContentResponse</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0BNr3j3wvwukTj4JucgxsM</option>
+                  </options>
+               </field>
+               <field description="" name="Out_Response_Text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Out_Zendesk_Ticket_Number" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Out_Zendesk_Tcket_Link" type="url">
+                  <options>
+                     <option name="urlDisplayReadonlyAs">Link</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Out_Coversation_History" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Out_UpdateCreateIndicator" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_Zedesk_Ticket_Number" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Prompt_Configuration" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:GenerationConfig_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">30qf5eDsmAMhdaAX53MiWT</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Prompt_Request" type="reference">
+                  <options>
+                     <option name="referenceTo">GeminiConnection:GenerateContentRequestBody</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0BNr3j3wvwukTj4JucgxsM</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="md7deymt" targetId="md7deyms"/>
+               </start>
+               <assignment id="md7deyms">
+                  <title>Prepare Request</title>
+                  <operation source="formula" to="temp.Tmp_Prompt_Configuration">
+                     <expression language="XQuery">&lt;generationConfig&gt;
+      &lt;stopSequences&gt;sadsadsad&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;1&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;50000&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;0.5&lt;/temperature&gt;
+      &lt;topP&gt;0.5&lt;/topP&gt;
+      &lt;topK&gt;2&lt;/topK&gt;
+&lt;/generationConfig&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Tmp_Prompt_Request">
+                     <expression language="XQuery">&lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt;Given the following email subject and body, analyze the text and extract only one Zendesk ticket number in the exact format below: If the email contains a Zendesk ticket number, return: Zendesk Ticket Number: value If no Zendesk ticket number is found, return nothing. Rules: Only return one line, no extra text or explanation. The Zendesk ticket number is usually a numeric ID, often preceded by phrases like Zendesk ticket #12345 or ticket number 12345.
+Email Text:
+Subject: {$input.In_Email_Subject} 
+Body: {$input.In_Email_Body} &lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+ &lt;generationConfig&gt;
+      &lt;stopSequences&gt;{$temp.Tmp_Prompt_Configuration [1]/stopSequences }&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;{$temp.Tmp_Prompt_Configuration [1]/candidateCount }&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;{$temp.Tmp_Prompt_Configuration [1]/maxOutputTokens  }&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;{$temp.Tmp_Prompt_Configuration [1]/temperature }&lt;/temperature&gt;
+      &lt;topP&gt;{$temp.Tmp_Prompt_Configuration [1]/topP  }&lt;/topP&gt;
+      &lt;topK&gt;{$temp.Tmp_Prompt_Configuration [1]/topK  }&lt;/topK&gt;
+   &lt;/generationConfig&gt;
+&lt;/Generate_Content_Request&gt;
+</expression>
+                  </operation>
+                  <link id="md7deymy" targetId="mev3mq12"/>
+               </assignment>
+               <assignment id="mf4hmgo7">
+                  <title>Reset retries to 0 if call successful</title>
+                  <operation source="constant" to="temp.Tmp_Retry">0</operation>
+                  <link id="mf4hmgo9" targetId="md7deyn4"/>
+               </assignment>
+               <assignment id="md7deyn4">
+                  <title>Return Content from Response</title>
+                  <operation source="field" to="output.Out_Response_PO">output.response</operation>
+                  <operation source="field" to="output.Out_Response_Text">output.text</operation>
+                  <operation source="formula" to="temp.Tmp_Zedesk_Ticket_Number">
+                     <expression language="XQuery">let $number := substring-after($output.Out_Response_Text , 'Zendesk Ticket Number: ')
+return normalize-space($number)</expression>
+                  </operation>
+                  <link id="mdd2b7iy" targetId="mdd2b7ix"/>
+               </assignment>
+               <assignment id="mf4hmhra">
+                  <title>Reset retries to 0 if call successful</title>
+                  <operation source="constant" to="temp.Tmp_Retry">0</operation>
+                  <link id="mf4hmhrc" targetId="me9v5m7x"/>
+               </assignment>
+               <assignment id="me9v5m7x">
+                  <title>Set Zendesk Ticket Link</title>
+                  <operation source="formula" to="output.Out_Zendesk_Tcket_Link">
+                     <expression language="XQuery">let $domain := substring-before($output.response/ticket/url/text(), "/api")
+
+let $url := concat(
+  $domain,
+  '/agent/tickets/',
+  $output.Out_Zendesk_Ticket_Number 
+)
+
+return $url
+</expression>
+                  </operation>
+                  <link id="mf4hmhzt" targetId="mf4hmgqd"/>
+               </assignment>
+               <assignment id="mewmvwtd">
+                  <title>Extract Conversation History</title>
+                  <operation source="formula" to="output.Out_Coversation_History">
+                     <expression language="XQuery">let $doc := $output.response 
+let $bodies := $doc//body
+return string-join(for $b in $bodies return normalize-space($b), "&amp;#10;&amp;#10;")</expression>
+                  </operation>
+                  <link id="mewmvwtf" targetId="mdfkn37r"/>
+               </assignment>
+               <eventContainer id="mev3mq12">
+                  <service id="md7deymx">
+                     <title>Generate Content</title>
+                     <serviceName>GeminiConnection:Generate Content</serviceName>
+                     <serviceGUID>0BNr3j3wvwukTj4JucgxsM</serviceGUID>
+                     <serviceInput>
+                        <parameter name="model" source="field" updatable="true">input.In_Model_Version</parameter>
+                        <parameter name="requestBody" source="field">temp.Tmp_Prompt_Request</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mev3mq14">
+                     <link id="mev3mq15" targetId="mev3mq12" type="containerLink"/>
+                  </flow>
+                  <flow id="mev3mq17">
+                     <subflow id="mev3mq2d">
+                        <title>GenericErrorHandlerLLM</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">LLM</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mev3mq32" targetId="mev3mq31"/>
+                     </subflow>
+                     <assignment id="mev3mq31">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="mev3mq3g" targetId="mev3mq3e"/>
+                     </assignment>
+                     <jumpTo id="mev3mq3e">
+                        <link id="mev3mq3f" targetId="mev3mq12"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mev3mq13" targetId="mev3mq14" type="containerLink"/>
+                  <link id="mf4hmgo8" targetId="mf4hmgo7"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mev3mq11" interrupting="true">
+                        <link id="mev3mq16" targetId="mev3mq17" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <eventContainer id="mf4hmgqd">
+                  <service id="me9ydhnj">
+                     <title>Get Objects</title>
+                     <serviceName>ZendeskConnection:Get Objects</serviceName>
+                     <serviceGUID>7SV3vbmluGBiYrnCFJlWGB</serviceGUID>
+                     <serviceInput>
+                        <parameter name="entityType" source="constant">tickets</parameter>
+                        <parameter name="entityId" source="field" updatable="true">output.Out_Zendesk_Ticket_Number</parameter>
+                        <parameter name="segment1" source="constant">/comments.json</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mf4hmgqf">
+                     <link id="mf4hmgqg" targetId="mf4hmgqd" type="containerLink"/>
+                  </flow>
+                  <flow id="mf4hmgqi">
+                     <subflow id="mf4hmi07">
+                        <title>GenericErrorHandlerLLM</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">LLM</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mf4hmi5a" targetId="mf4hmi59"/>
+                     </subflow>
+                     <assignment id="mf4hmi59">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                     </assignment>
+                     <link id="mf4hmgqj" targetId="mf4hmgqd" type="containerLink"/>
+                  </flow>
+                  <link id="mf4hmgqe" targetId="mf4hmgqf" type="containerLink"/>
+                  <link id="mewmvwte" targetId="mewmvwtd"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mf4hmgqc" interrupting="true">
+                        <link id="mf4hmgqh" targetId="mf4hmgqi" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="mdd2b7ix" type="exclusive">
+                  <title>Tmp_Zedesk_Ticket_Number</title>
+                  <flow id="mdd2b7j1">
+                     <eventContainer id="mf4hmgm6">
+                        <service id="mdfkn37k">
+                           <title>Create Zendesk Ticket</title>
+                           <serviceName>ZendeskConnection:Create Object</serviceName>
+                           <serviceGUID>7SV3vbmluGBiYrnCFJlWGB</serviceGUID>
+                           <serviceInput>
+                              <parameter name="entityType" source="constant">tickets</parameter>
+                              <parameter name="rawData" source="formula">
+                                 <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt; &lt;ticket&gt; 
+&lt;subject&gt;{$input.In_Email_Subject } &lt;/subject&gt; 
+&lt;description&gt;{$input.In_Email_Body }&lt;/description&gt; &lt;status&gt;open&lt;/status&gt; 
+&lt;/ticket&gt; 
+&lt;/root&gt;</expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="mf4hmgm8">
+                           <link id="mf4hmgm9" targetId="mf4hmgm6" type="containerLink"/>
+                        </flow>
+                        <flow id="mf4hmgmb">
+                           <subflow id="mf4hmhhe">
+                              <title>GenericErrorHandlerZendesk</title>
+                              <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                              <subflowPath>Generic_Error_Handler</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                                 <parameter name="In_Service" source="constant" updatable="true">Zendesk</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="Out_Retry" type="int">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="mf4hmhn2" targetId="mf4hmhn1"/>
+                           </subflow>
+                           <assignment id="mf4hmhn1">
+                              <title>Increment Retry Attempt</title>
+                              <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                              <link id="mf4hmhp1" targetId="mf4hmhoz"/>
+                           </assignment>
+                           <jumpTo id="mf4hmhoz">
+                              <link id="mf4hmhp0" targetId="mf4hmgm6"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="mf4hmgm7" targetId="mf4hmgm8" type="containerLink"/>
+                        <link id="mdfkn3d6" targetId="mdfkn3d5"/>
+                        <events>
+                           <catch faultField="faultInfo" id="mf4hmgm5" interrupting="true">
+                              <link id="mf4hmgma" targetId="mf4hmgmb" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="mdfkn3d5">
+                        <title>Set Zendesk Ticket Number</title>
+                        <operation source="formula" to="output.Out_Zendesk_Ticket_Number">
+                           <expression language="XQuery">$output.response/ticket/id</expression>
+                        </operation>
+                        <operation source="constant" to="output.Out_UpdateCreateIndicator">Create</operation>
+                     </assignment>
+                     <link id="mdd2b7j2" targetId="mdd2b7ix" type="containerLink"/>
+                  </flow>
+                  <flow id="mdd2b7j4">
+                     <eventContainer id="mdfkn3qz">
+                        <service id="mdd2b7km">
+                           <title>Search for Zendesk Ticket</title>
+                           <serviceName>ZendeskConnection:Get Objects</serviceName>
+                           <serviceGUID>7SV3vbmluGBiYrnCFJlWGB</serviceGUID>
+                           <serviceInput>
+                              <parameter name="entityType" source="constant">tickets</parameter>
+                              <parameter name="entityId" source="field" updatable="true">temp.Tmp_Zedesk_Ticket_Number</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="mdfkn3r1">
+                           <assignment id="mfpxxuat">
+                              <title>Assignment to In_Email_Body</title>
+                              <operation source="formula" to="input.In_Email_Body">
+                                 <expression language="XQuery">util:iif(fn:contains($input.In_Email_Body , '-----Original Message-----'),fn:substring-before($input.In_Email_Body ,'-----Original Message-----'),$input.In_Email_Body )</expression>
+                              </operation>
+                              <link id="mfpxxuau" targetId="mf4hmgoy"/>
+                           </assignment>
+                           <assignment id="mdfuecx8">
+                              <title>Set Zendesk Ticket Number</title>
+                              <operation source="formula" to="output.Out_Zendesk_Ticket_Number">
+                                 <expression language="XQuery">$output.response/ticket/id</expression>
+                              </operation>
+                              <operation source="constant" to="output.Out_UpdateCreateIndicator">Update</operation>
+                           </assignment>
+                           <eventContainer id="mf4hmgoy">
+                              <service id="mdfuecwq">
+                                 <title>Update Zendesk Ticket</title>
+                                 <serviceName>ZendeskConnection:Update Object</serviceName>
+                                 <serviceGUID>7SV3vbmluGBiYrnCFJlWGB</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="entityType" source="constant">tickets</parameter>
+                                    <parameter name="entityId" source="field" updatable="true">temp.Tmp_Zedesk_Ticket_Number</parameter>
+                                    <parameter name="rawData" source="formula">
+                                       <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt; &lt;ticket&gt;
+&lt;status&gt;open&lt;/status&gt; 
+&lt;subject&gt;{$input.In_Email_Subject } &lt;/subject&gt; 
+&lt;comment&gt; 
+&lt;body&gt;{$input.In_Email_Body }&lt;/body&gt; 
+&lt;/comment&gt; 
+&lt;/ticket&gt; 
+&lt;/root&gt;</expression>
+                                    </parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="mf4hmgp0">
+                                 <link id="mf4hmgp1" targetId="mf4hmgoy" type="containerLink"/>
+                              </flow>
+                              <flow id="mf4hmgp3">
+                                 <subflow id="mf4hmgtf">
+                                    <title>GenericErrorHandlerZendesk</title>
+                                    <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                                    <subflowPath>Generic_Error_Handler</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                                       <parameter name="In_Service" source="constant" updatable="true">Zendesk</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="Out_Retry" type="int">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="mf4hmgww" targetId="mf4hmgwv"/>
+                                 </subflow>
+                                 <assignment id="mf4hmgwv">
+                                    <title>Increment Retry Attempt</title>
+                                    <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                                    <link id="mf4hmhdh" targetId="mf4hmhdf"/>
+                                 </assignment>
+                                 <jumpTo id="mf4hmhdf">
+                                    <link id="mf4hmhdg" targetId="mf4hmgoy"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="mf4hmgoz" targetId="mf4hmgp0" type="containerLink"/>
+                              <link id="mdfuecx9" targetId="mdfuecx8"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="mf4hmgox" interrupting="true">
+                                    <link id="mf4hmgp2" targetId="mf4hmgp3" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="mdfkn3r2" targetId="mdfkn3qz" type="containerLink"/>
+                        </flow>
+                        <flow id="mdfkn3r4">
+                           <container id="mfqoapn2" type="exclusive">
+                              <title>Code</title>
+                              <flow id="mfqoapn5">
+                                 <eventContainer id="mfqoapu7">
+                                    <service id="mfqoapue">
+                                       <title>Create Zendesk Ticket</title>
+                                       <serviceName>ZendeskConnection:Create Object</serviceName>
+                                       <serviceGUID>7SV3vbmluGBiYrnCFJlWGB</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="entityType" source="constant">tickets</parameter>
+                                          <parameter name="rawData" source="formula">
+                                             <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt; &lt;ticket&gt; 
+&lt;subject&gt;{$input.In_Email_Subject } &lt;/subject&gt; 
+&lt;description&gt;{$input.In_Email_Body }&lt;/description&gt; &lt;status&gt;open&lt;/status&gt; 
+&lt;/ticket&gt; 
+&lt;/root&gt;</expression>
+                                          </parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="mfqoapu8">
+                                       <assignment id="mfqoapu9">
+                                          <title>Set Zendesk Ticket Number</title>
+                                          <operation source="formula" to="output.Out_Zendesk_Ticket_Number">
+                                             <expression language="XQuery">$output.response/ticket/id</expression>
+                                          </operation>
+                                          <operation source="constant" to="output.Out_UpdateCreateIndicator">Create</operation>
+                                       </assignment>
+                                       <link id="mfqoapuh" targetId="mfqoapu7" type="containerLink"/>
+                                    </flow>
+                                    <flow id="mfqoapua">
+                                       <subflow id="mfqoapub">
+                                          <title>GenericErrorHandlerZendesk</title>
+                                          <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                                          <subflowPath>Generic_Error_Handler</subflowPath>
+                                          <runForEach>false</runForEach>
+                                          <input>
+                                             <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                             <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                                             <parameter name="In_Service" source="constant" updatable="true">Zendesk</parameter>
+                                          </input>
+                                          <outputDef>
+                                             <field name="Out_Retry" type="int">
+                                                <options>
+                                                   <option name="required">false</option>
+                                                </options>
+                                             </field>
+                                          </outputDef>
+                                          <link id="mfqoapui" targetId="mfqoapuc"/>
+                                       </subflow>
+                                       <assignment id="mfqoapuc">
+                                          <title>Increment Retry Attempt</title>
+                                          <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                                          <link id="mfqoapuj" targetId="mfqoapud"/>
+                                       </assignment>
+                                       <jumpTo id="mfqoapud">
+                                          <link id="mfqoapuk" targetId="mfqoapu7"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="mfqoapuf" targetId="mfqoapu8" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="mf4hmgpl" interrupting="true">
+                                          <link id="mfqoapug" targetId="mfqoapua" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <link id="mfqoapn6" targetId="mfqoapn2" type="containerLink"/>
+                              </flow>
+                              <flow id="mfqoapn8">
+                                 <subflow id="mfqoaq2q">
+                                    <title>GenericErrorHandlerZendesk</title>
+                                    <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                                    <subflowPath>Generic_Error_Handler</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                                       <parameter name="In_Service" source="constant" updatable="true">Zendesk</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="Out_Retry" type="int">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="mfqoaq9l" targetId="mfqoaq9k"/>
+                                 </subflow>
+                                 <assignment id="mfqoaq9k">
+                                    <title>Increment Retry Attempt</title>
+                                    <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                                    <link id="mfqoaqc3" targetId="mfqoaqc1"/>
+                                 </assignment>
+                                 <jumpTo id="mfqoaqc1">
+                                    <link id="mfqoaqc2" targetId="mdfkn3qz"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="mfqoapn4" targetId="mfqoapn5" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                       <arg name="right">HTTP_404</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="mfqoapn7" targetId="mfqoapn8" type="containerLink"/>
+                           </container>
+                           <link id="mdfkn3r5" targetId="mdfkn3qz" type="containerLink"/>
+                        </flow>
+                        <link id="mdfkn3r0" targetId="mdfkn3r1" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="mdfkn3qy" interrupting="true">
+                              <link id="mdfkn3r3" targetId="mdfkn3r4" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="mdfkn37q" targetId="mdd2b7ix" type="containerLink"/>
+                  </flow>
+                  <link id="mdd2b7j0" targetId="mdd2b7j1" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.Tmp_Zedesk_Ticket_Number}</arg>
+                           <arg name="right"/>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="mdd2b7j3" targetId="mdd2b7j4" type="containerLink"/>
+                  <link id="mf4hmhrb" targetId="mf4hmhra"/>
+               </container>
+               <end id="mdfkn37r"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>9c67d654-43ff-4298-bc0c-e4f5c3d7cdf4</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "Email Listener for CAI Platform ticket 49 ",
+	 "In_Email_Body": "Thanks and best regards, Piotr Wojcik ",
+"In_Model_Version": "gemini-2.0-flash-lite"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>a87d677a-3df7-4d26-a23c-2d3df87e9851</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "CAI Email Listener",
+	 "In_Email_Body": "I would like to request adding an email listener feature to the CAI platform. Having this functionality would help us streamline how we handle email communications and improve response times. There is created Zendesk ticket:  #37 .Thanks and best regards, Piotr Wojcik "
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3a81f91a-6637-44a6-b602-22cefd473d18</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "Listener ticket #14",
+	 "In_Email_Body": "I would like to request adding an email listener feature to the CAI platform. This feature would allow the system to automatically monitor incoming emails and process them, triggering workflows or responses without any manual steps. "
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7f3455b0-23ed-47a0-a055-faa3c9ef0446</ns1:Id>
+               <ns1:Name>test3</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "",
+	 "In_Email_Body": "",
+	 "In_Model_Version": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>984cc487-a1b6-4843-9553-4bcb3f1c12bf</ns1:Id>
+               <ns1:Name>test4</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "Email Listener",
+	 "In_Email_Body": "Hi Informatica Team, I would like to request adding an email listener feature to the CAI platform. This feature would allow the system to automatically monitor incoming emails and process them, triggering workflows or responses without any manual steps. Having this functionality would help us streamline how we handle email communications and improve response times.  Piotr Wojcik ",
+	 "In_Model_Version": "gemini-2.0-flash-lite"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>ca9f948c-6bd9-4a9e-8b06-ba403b254e41</ns1:Id>
+               <ns1:Name>testtesttest</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "Email Listener for CAI Platform ticket  14 ",
+	 "In_Email_Body": "Test test test ",
+"In_Model_Version": "gemini-2.0-flash-lite"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>76820af3-f1eb-4671-a786-c6d9458b5385</ns1:Id>
+               <ns1:Name>testtt</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "Email Listener for CAI Platform ticket #10",
+	 "In_Email_Body": "Hi Informatica Team ",
+"In_Model_Version": "gemini-2.0-flash-lite"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5722701b-7382-415c-8003-79795f5508d9</ns1:Id>
+               <ns1:Name>without</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Subject": "Email Listener for CAI Platform",
+	 "In_Email_Body": "Hi Informatica Team, I would like to request adding an email listener feature to the CAI platform. This feature would allow the system to automatically monitor incoming emails and process them, triggering workflows or responses without any manual steps. Having this functionality would help us streamline how we handle email communications and improve response times. Thanks and best regards, Piotr Wojcik"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>it1JptiDruQl5Hw1bYagGA</types1:GUID>
+      <types1:DisplayName>TicketSearchAgent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.472Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "48wXsDTsyCscFr16yxrsen",
+    "name" : "VectorMatchEntry_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6gg8vHWOMzeHbcj-gt-13315453-2026-03-09T12:33:08.793Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that provides all the information from the Pinecone vector matching",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.523Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

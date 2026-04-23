@@ -1,0 +1,51 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>nFKi9zhFtybduaa-gt-7101270-2025-12-23T10:57:47.212Z::conn.xml</types1:EntryId>
+      <types1:Name>APP-upd-Lastrundate</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2025-12-23T10:57:47Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2025-12-23T10:58:55Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2025-12-23T16:57:54Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/APP-upd-Lastrundate/APP-upd-Lastrundate.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="APP-upd-Lastrundate"
+                     label="APP-upd-Lastrundate"
+                     name="APP-upd-Lastrundate">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute name="hostName" value="usw5.dm-us.informaticacloud.com:443"/>
+               <attribute encrypted="false"
+                          name="username"
+                          value="gmotamarri@idmc.axxeltechnologies.com"/>
+               <attribute encrypted="true" name="password" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/SC_Trig_led/SC_Trig_led_svcDef.xml"
+                               guid="1njkhBx6NuEl5mZn5lWjIs"
+                               name="SC_Trig_led"
+                               supportsConnectionTest="false"
+                               uuid="aab05fce-ea85-491b-88fa-54f3874efca4">
+               <description/>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>9tQHmk0czJOfPjr3Vz3cWL</types1:GUID>
+      <types1:DisplayName>APP-upd-Lastrundate</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.372Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,403 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ZWlwUiQLnzYLnzY-gt-13315610-2026-03-09T12:33:10.82Z::pd.xml</types1:EntryId>
+      <types1:Name>EvaluationAgent</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that evaluates the adequacy of the Query Agent’s response to the user’s question based on five criteria—Correctness, Relevance, Clarity, Completeness, and Style and Tone—and returns a confidence level</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="dBTRAOUpJMmlsKiNAaKvyR"
+                  displayName="EvaluationAgent"
+                  name="EvaluationAgent"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that evaluates the adequacy of the Query Agent’s response to the user’s question based on five criteria—Correctness, Relevance, Clarity, Completeness, and Style and Tone—and returns a confidence level</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Planner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="PlannerOut" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AgentPlanner_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5M8C8S3xw3nb8UgFpMf1qm</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description=""
+                      name="Tmp_Generation_Config_Evaluation_LLM"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:GenerationConfig_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">30qf5eDsmAMhdaAX53MiWT</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Evaluation_Instruction" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="Tmp_Request_Body_Evaluation_LLM"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">GeminiConnection:GenerateContentRequestBody</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0BNr3j3wvwukTj4JucgxsM</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_User_Prompt" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_LLM_Response" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+            </extData>
+            <flow id="qb7c6c20e-3183-43e8-95df-486119413855">
+               <start id="w4c75da3a-980f-44c6-a8f2-68955fb4a49e">
+                  <link id="of5f1c6dd-11f5-4f81-92c9-6572b35994fb"
+                        targetId="a144YSYgXPH2ZetBvTvoknIi-md30yoyb"/>
+               </start>
+               <assignment id="a144YSYgXPH2ZetBvTvoknIi-md30yoyb">
+                  <title>Set Flow Configuration</title>
+                  <operation source="formula" to="temp.Tmp_Generation_Config_Evaluation_LLM">
+                     <expression language="XQuery">&lt;generationConfig&gt;
+      &lt;stopSequences&gt;???&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;1&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;500&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;0.5&lt;/temperature&gt;
+      &lt;topP&gt;0.5&lt;/topP&gt;
+      &lt;topK&gt;2&lt;/topK&gt;
+&lt;/generationConfig&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Tmp_Evaluation_Instruction">
+                     <expression language="XQuery">"You are an evaluation agent. Your task is to objectively evaluate LLM-generated responses based on five key criteria: Correctness, Relevance, Clarity, Completeness, and Style and Tone. You will assess how accurate is the LLM Response in relation to user's query. If the AI fails to provide an answer, assign a score of 0 in all criteria. Maintain objectivity in all assessments.
+Evaluation Guidelines
+Correctness (0-100 points)
+Assess factual accuracy and logical consistency.
+90-100: Fully accurate, all claims verifiable, no logical flaws.
+70-89: Mostly accurate, minor errors or unverifiable claims that do not affect meaning.
+50-69: Somewhat accurate, multiple factual inconsistencies but retains core idea.
+30-49: Partially accurate, major errors or misinterpretations.
+10-29: Mostly incorrect, with only a few correct elements.
+0: Completely incorrect, no factual alignment.
+Relevance (0-100 points)
+Evaluate how well the response addresses the prompt and avoids unnecessary details.
+90-100: Fully relevant, directly answers the prompt.
+70-89: Mostly relevant, minor off-topic details.
+50-69: Moderately relevant, some off-topic elements.
+30-49: Minimally relevant, large portions do not address the prompt.
+10-29: Barely relevant, weak connection to the prompt.
+0: Completely irrelevant.
+Clarity (0-100 points)
+Check readability, logical flow, and lack of ambiguity.
+90-100: Perfectly clear, precise language, strong logical flow.
+70-89: Mostly clear, minor ambiguities.
+50-69: Moderately clear, some effort required to interpret.
+30-49: Somewhat unclear, frequent ambiguities or poor structure.
+10-29: Difficult to understand, major readability issues.
+0: Incomprehensible.
+Completeness (0-100 points)
+Verify whether the response fully covers the required aspects.
+90-100: Fully complete, all key aspects addressed in detail.
+70-89: Mostly complete, minor omissions.
+50-69: Moderately complete, noticeable gaps.
+30-49: Minimally complete, critical aspects missing.
+10-29: Barely complete, significant omissions.
+0: Entirely incomplete.
+Style and Tone (0-100 points)
+Assess appropriateness of language, formality, and tone based on context.
+90-100: Ideal tone and style.
+70-89: Mostly appropriate, minor inconsistencies.
+50-69: Some inconsistencies in tone/style.
+30-49: Major tone/style issues.
+10-29: Poorly suited tone/style.
+0: Entirely inappropriate.
+After scoring each criterion between 0 and 100, calculate the average of all five scores (sum of all five scores divided by 5), then round to the nearest integer.
+Return only this single integer value of average score with no additional text, explanation."</expression>
+                  </operation>
+                  <link id="q5a683e32-4f37-4115-a7e7-9f06f96f733b"
+                        targetId="a144YSYgXPH2ZetBvTvoknIi-md30yoyk"/>
+               </assignment>
+               <assignment id="a144YSYgXPH2ZetBvTvoknIi-md30yoyk">
+                  <title>Generate Request Body</title>
+                  <operation source="field" to="temp.Tmp_User_Prompt">input.Planner[1]/Attributes[1]/EmailBody</operation>
+                  <operation source="field" to="temp.Tmp_LLM_Response">input.Planner[1]/Attributes[1]/SummarizerAgentResponse</operation>
+                  <operation source="formula" to="temp.Tmp_Request_Body_Evaluation_LLM">
+                     <expression language="XQuery">&lt;Generate_Content_Request&gt;
+   &lt;contents&gt;
+      &lt;parts&gt;
+         &lt;text&gt;{$temp.Tmp_Evaluation_Instruction}  &lt;/text&gt;
+      &lt;/parts&gt;
+      &lt;role&gt;user&lt;/role&gt;
+   &lt;/contents&gt;
+   &lt;contents&gt;
+    &lt;role&gt;user&lt;/role&gt;
+		&lt;parts&gt;
+			&lt;text&gt;User Prompt:{$temp.Tmp_User_Prompt }; LLM Response:{$temp.Tmp_LLM_Response}; &lt;/text&gt;
+		&lt;/parts&gt;		
+	&lt;/contents&gt;
+ &lt;generationConfig&gt;
+      &lt;stopSequences&gt;{$temp.Tmp_Generation_Config_Evaluation_LLM[1]/stopSequences }&lt;/stopSequences&gt;
+      &lt;candidateCount&gt;{$temp.Tmp_Generation_Config_Evaluation_LLM[1]/candidateCount  }&lt;/candidateCount&gt;
+      &lt;maxOutputTokens&gt;{$temp.Tmp_Generation_Config_Evaluation_LLM[1]/maxOutputTokens  }&lt;/maxOutputTokens&gt;
+      &lt;temperature&gt;{$temp.Tmp_Generation_Config_Evaluation_LLM[1]/temperature  }&lt;/temperature&gt;
+      &lt;topP&gt;{$temp.Tmp_Generation_Config_Evaluation_LLM[1]/topP  }&lt;/topP&gt;
+      &lt;topK&gt;{$temp.Tmp_Generation_Config_Evaluation_LLM[1]/topK  }&lt;/topK&gt;
+   &lt;/generationConfig&gt;
+&lt;/Generate_Content_Request&gt;</expression>
+                  </operation>
+                  <link id="z44d7ad5d-e488-4225-a763-ef2ab029c053" targetId="mev3knpg"/>
+               </assignment>
+               <assignment id="a144YSYgXPH2ZetBvTvoknIi-md30yoz1">
+                  <title>Save Confidence Level</title>
+                  <operation source="formula" to="input.Planner[1]/Attributes[1]/ConfidenceLevel">
+                     <expression language="XQuery">util:toInteger($output.text)</expression>
+                  </operation>
+                  <operation source="field" to="output.PlannerOut">input.Planner</operation>
+                  <link id="n8aaa133d-0596-4186-88ca-0e04d3f07c1a"
+                        targetId="a144YSYgXPH2ZetBvTvoknIi-c"/>
+               </assignment>
+               <eventContainer id="mev3knpg">
+                  <service id="a144YSYgXPH2ZetBvTvoknIi-md30yoyr">
+                     <title>Call LLM</title>
+                     <serviceName>GeminiConnection:Generate Content</serviceName>
+                     <serviceGUID>0BNr3j3wvwukTj4JucgxsM</serviceGUID>
+                     <serviceInput>
+                        <parameter name="model" source="field" updatable="true">input.Planner[1]/Attributes[1]/ModelVersion</parameter>
+                        <parameter name="requestBody" source="field">temp.Tmp_Request_Body_Evaluation_LLM</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mev3knpi">
+                     <link id="mev3knpj" targetId="mev3knpg" type="containerLink"/>
+                  </flow>
+                  <flow id="mev3knpl">
+                     <subflow id="mev3knq3">
+                        <title>GenericErrorHandlerLLM</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">LLM</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mev3kns4" targetId="mev3kns3"/>
+                     </subflow>
+                     <assignment id="mev3kns3">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="mev3knse" targetId="mev3knsc"/>
+                     </assignment>
+                     <jumpTo id="mev3knsc">
+                        <link id="mev3knsd" targetId="mev3knpg"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mev3knph" targetId="mev3knpi" type="containerLink"/>
+                  <link id="vfa880c67-73e6-4f64-8b0e-561f7d0904d1"
+                        targetId="a144YSYgXPH2ZetBvTvoknIi-md30yoz1"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mev3knpf" interrupting="true">
+                        <link id="mev3knpk" targetId="mev3knpl" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="a144YSYgXPH2ZetBvTvoknIi-c">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>b0d7d034-8312-4d4d-8063-db581635978f</ns1:Id>
+               <ns1:Name>1long</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi Informatica Support, We’re running into a major issue with our IDMC setup. After the latest data synchronization, we noticed unexpected discrepancies between the source and target systems. Some records appear missing or incorrect, which is causing confusion and could lead to serious business problems. We’ve double-checked our configurations and logs but can’t figure out why this is happening. What we’ve tried: Verified mappings, checked logs, and reran sync jobs This is urgent because we rely on accurate data for reporting and decision-making. Please help us get this resolved quickly. Thanks for your support, Adam Smith ",
+	 "In_LLM_Response": "Based on your description of data discrepancies after IDMC synchronization, here's a breakdown of potential causes and troubleshooting steps: Data Validation and Reconciliation: The core of resolving this is to compare source and target data to identify discrepancies. Reconcile Data: Run data reconciliation reports to identify the missing or incorrect records. This will help you pinpoint the exact data issues. Data Profiling: Utilize data profiling features to get statistics about the data in both source and target systems. Review Mapping Configurations Filter Conditions: Double-check any filter conditions used in your mappings, as incorrect filters can lead to missing data in the target system. Lookup Transformations: Verify that lookup transformations are functioning correctly. Expression Logic: Carefully examine any complex expressions or custom transformations. Examine Job Logs and Error Handling: Detailed Error Messages: Analyze the job logs for detailed error messages. These messages can provide clues about why records are not being synchronized correctly. Error Handling Strategy: Ensure you have an appropriate error handling strategy in place. Check how the system handles rejected records or transformation errors. Source and Target System Issues: Source Data: Verify that the source data is accurate and complete. Target System: Ensure that the target system is correctly configured to receive and store the synchronized data. Check for any constraints or limitations in the target system. Incremental Synchronization: If you use incremental synchronization, review the following: Change Data Capture (CDC): If using CDC, ensure it's correctly configured and capturing all the necessary changes from the source. Watermark Columns: Check that the watermark columns used for incremental loading are correctly identifying new or updated records. Contact Informatica Support: If the issue persists after you've exhausted these troubleshooting steps, it's recommended to contact Informatica Support. Be prepared to provide details such as: Mapping configuration details Job logs Sample data Source and target system information"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>73e1ef32-bf27-4f29-b62c-df70c4c3e7c4</ns1:Id>
+               <ns1:Name>1short</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi Informatica Support, We’re running into a major issue with our IDMC setup. After the latest data synchronization, we noticed unexpected discrepancies between the source and target systems. Some records appear missing or incorrect, which is causing confusion and could lead to serious business problems. We’ve double-checked our configurations and logs but can’t figure out why this is happening. What we’ve tried: Verified mappings, checked logs, and reran sync jobs This is urgent because we rely on accurate data for reporting and decision-making. Please help us get this resolved quickly. Thanks for your support, Adam Smith ",
+	 "In_LLM_Response": "To address data discrepancies after IDMC synchronization, reconcile data by comparing source and target data, utilize data profiling, review mapping configurations (filter conditions, lookup transformations, expression logic), examine job logs and error handling, check source and target system issues, review incremental synchronization settings (CDC, watermark columns), and contact Informatica Support if the problem persists."
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>aa4108ff-cb21-4e68-9b9a-fc11f513ba04</ns1:Id>
+               <ns1:Name>2long</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi, We have encountered a critical issue following the recent update to our IDMC environment. Since the update, data synchronization jobs are running significantly slower than before, causing delays in downstream processes and impacting our SLA commitments. We’ve reviewed system resources and checked for any obvious bottlenecks but haven’t identified the cause. We also confirmed that network connectivity and configurations remain unchanged. What we’ve tried: Monitored system performance metrics, reviewed job schedules, and restarted services. This performance degradation is affecting our business operations, and we would appreciate urgent assistance to identify and resolve the root cause. Thanks for your time, John Kowalski ",
+	 "In_LLM_Response": "Based on the information provided, I can offer the following general guidance, as I don't have specific details about your environment or the update: Since you're experiencing performance degradation after an IDMC update, here are some troubleshooting steps and areas to investigate: Review the Update Documentation: Carefully review the documentation for the IDMC update. It might contain  information about known performance impacts, required configuration changes, or recommendations for post-update tuning. Check Informatica Status and Known Issues: Visit the Informatica trust site or support portal to see if there are any reported incidents or known issues related to the IDMC update you applied. Analyze Job Logs and Metrics: Examine detailed job logs for errors, warnings, or bottlenecks. Use IDMC monitoring tools to compare performance metrics (e.g., resource utilization, data throughput, transformation times) before and after the update. Identify specific jobs or transformations that are significantly slower. Identify Bottlenecks: Source/Target Systems: Are there any changes in source or target systems that could be contributing to performance issues? Verify network connectivity and resource availability for these systems. Mapping/Transformation Logic: Review the mapping logic. An update could expose inefficiencies in the transformation logic. Check for complex transformations, inefficient data type conversions, or poorly optimized queries. Resource Allocation: Ensure that the IDMC environment has sufficient resources (CPU, memory, disk I/O) allocated. Monitor resource utilization during job execution to identify bottlenecks. Contact Informatica Support: If the issue persists after investigation, contact Informatica Support. Provide detailed information about the update, job logs, performance metrics, and troubleshooting steps taken. I was unable to find specific documentation directly addressing performance degradation after an IDMC update. However, the general troubleshooting steps above are commonly recommended for performance issues within Informatica environments."
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9819451c-45d0-4155-9940-8a1ccba07f3b</ns1:Id>
+               <ns1:Name>2short</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi, We have encountered a critical issue following the recent update to our IDMC environment. Since the update, data synchronization jobs are running significantly slower than before, causing delays in downstream processes and impacting our SLA commitments. We’ve reviewed system resources and checked for any obvious bottlenecks but haven’t identified the cause. We also confirmed that network connectivity and configurations remain unchanged. What we’ve tried: Monitored system performance metrics, reviewed job schedules, and restarted services. This performance degradation is affecting our business operations, and we would appreciate urgent assistance to identify and resolve the root cause. Thanks for your time, John Kowalski ",
+	 "In_LLM_Response": "Based on the text, you should review the update documentation, check Informatica's status for known issues, analyze job logs and metrics, identify bottlenecks in source/target systems and mapping logic, ensure sufficient resource allocation, and if the issue persists, contact Informatica Support."
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>c77b3c16-91fa-4219-9802-90869edbf8d2</ns1:Id>
+               <ns1:Name>3long</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hello Informatica Support Team, I hope you’re doing well. We’ve been facing some frustrating issues with IDMC lately. After completing our latest data sync, a number of records are not transforming correctly—fields are either missing or contain incorrect values. This is throwing off our analytics and reporting, and we’re unsure why this is happening. We’ve already gone through the mapping rules and job logs carefully but haven’t spotted anything unusual. We also restarted the affected pipelines, but the problem persists. This is becoming quite urgent since accurate data is crucial for our operations. Could you please help us figure out what’s causing these transformation errors and how we can fix them? Thanks so much for your help! Best regards, Emily Carter ",
+	 "In_LLM_Response": "Based on your description of data transformation errors in IDMC, here are some troubleshooting steps and areas to investigate: Review the Mapping and Transformations: Since you've already reviewed the mapping rules, double-check the following: Data Type Conversions: Ensure that data type conversions between source and target fields are correct and do not lead to data truncation or loss. Expression Logic: Scrutinize any expressions or custom transformations. Ensure they are correctly implemented and handle potential data variations or null values gracefully.  Lookup Transformations: Verify that lookup transformations are configured correctly, and that lookup data is accurate and up-to-date. Check for performance issues that may be affecting the lookup's results. Examine Job Logs and Error Handling: Detailed Error Messages: Analyze the job logs for detailed error messages. These can provide clues about the specific records or fields causing the issues. Error Handling Strategy: Confirm that you have an appropriate error handling strategy in place. Check how the system handles rejected records or transformation errors. Are error records logged, or are they discarded? Data Validation and Profiling: Data Profiling: Use data profiling tools within IDMC to analyze source data and identify any data quality issues. This can help you understand if the source data contains unexpected values or inconsistencies. Data Validation Rules: Implement data validation rules in your mappings to catch invalid data before it's transformed. Source and Target System Issues: Source Data: Verify that the source data is accurate and complete. Changes in source data (e.g., data format, data type, or data content) can cause transformation errors. Target System: Ensure that the target system is correctly configured to receive and store the transformed data. Check for any constraints or limitations in the target system that might be causing the issue. Pipeline Configuration: Connections: Verify that all connections to the source and target systems are working correctly. Environment: Ensure that you are running the pipelines in the correct environment. Reproduce the Issue: If possible, try to reproduce the issue with a smaller subset of data. This can help you isolate the problem and simplify troubleshooting. Contact Informatica Support: If you have exhausted the troubleshooting steps and are still facing transformation errors, reach out to Informatica Support and provide detailed information about the following: Pipeline configuration Mapping details Job logs (including error messages) Data samples Source and target system information"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>159da3b0-5908-492a-8d27-455ebd2c11ad</ns1:Id>
+               <ns1:Name>3short</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi, We have encountered a critical issue following the recent update to our IDMC environment. Since the update, data synchronization jobs are running significantly slower than before, causing delays in downstream processes and impacting our SLA commitments. We’ve reviewed system resources and checked for any obvious bottlenecks but haven’t identified the cause. We also confirmed that network connectivity and configurations remain unchanged. What we’ve tried: Monitored system performance metrics, reviewed job schedules, and restarted services. This performance degradation is affecting our business operations, and we would appreciate urgent assistance to identify and resolve the root cause. Thanks for your time, John Kowalski ",
+	 "In_LLM_Response": "To troubleshoot data transformation errors in IDMC, you should review the mapping and transformations (data type conversions, expression logic, lookup transformations), examine job logs and error handling, use data validation and profiling, check source and target system issues, verify pipeline configuration, try to reproduce the issue, and if needed, contact Informatica Support with detailed information."}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>090af237-afee-493b-ba44-096cbcdf5fb6</ns1:Id>
+               <ns1:Name>4long</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Informatica Support, We’ve been dealing with repeated sync failures in IDMC, and frankly, this is becoming unacceptable. Every time we schedule a data sync, something breaks—records fail to update or the jobs just stall with no clear error messages. We’ve wasted a lot of time trying to troubleshoot on our own, only to see the same problems again and again. We expect a prompt and thorough investigation because these ongoing issues are severely impacting our business operations. Please provide a solution immediately instead of generic responses. Awaiting your urgent response, James Wilson ",
+	 "In_LLM_Response": "Given the urgency and the repeated sync failures in IDMC, here's a prioritized approach to address the issue: Immediate Actions &amp; Data Gathering: Review Recent Failures: Start by examining the most recent sync failures. Identify the specific jobs that failed, the timestamps of the failures, and the data sources and targets involved. Gather Logs: Collect detailed job logs for the failed sync jobs. Look for specific error messages, warnings, or any clues about the cause of the failure. Also, collect any relevant system logs (e.g., resource usage, network logs). Environment Information: Provide details about your IDMC environment, including the number of agents, the versions of the components, the hardware resources (CPU, memory, storage), and any recent changes made to the environment. Troubleshooting Steps (Prioritized): Identify the Root Cause of the failures: Examine the logs: Carefully examine the logs for specific error messages and patterns. Look for common issues such as connectivity problems, resource constraints, or transformation errors. Check Source/Target Systems: Investigate any potential issues with the source or target systems, such as network connectivity, database availability, or data volume. Review Mapping Configurations: Review the mapping configurations, especially any complex transformations, filters, or lookups. Address the Problem: Resolve Errors: Implement the necessary fixes based on the identified root cause. For example, if a database connection is failing, update the connection details. If there are resource constraints, increase the resources or optimize the jobs. Test the Solution: After applying a fix, test the solution immediately by running a sync job. Escalation and Support: Contact Informatica Support: Given the severity of the issue and the impact on business operations, open a support case with Informatica Support immediately. Provide Detailed Information: When opening the case, provide all the information gathered in step 1 (job logs, environment details, etc.). Describe the troubleshooting steps that have been taken and the results. Request a Senior Engineer: Request that the case be assigned to a senior engineer or a specialist with expertise in data integration and IDMC. Escalate if Needed: If the issue isn't resolved quickly, escalate the support case to ensure that it receives the necessary attention and priority. Proactive Measures (Post-Resolution): Implement Monitoring and Alerting: Set up comprehensive monitoring and alerting for your IDMC environment. Monitor key metrics such as job success rates, resource utilization, and data volumes. Configure alerts to notify you of any potential issues or anomalies. Optimize Job Performance: review and optimize the performance of your sync jobs. This may include optimizing transformations, partitioning data, and tuning database connections. Establish a Change Management Process: Implement a change management process to manage changes to the IDMC environment. This will help minimize the risk of future sync failures caused by unexpected changes. I understand the urgency of this situation. Providing specific solutions requires in-depth information about your setup. However, the above steps are the most effective way to diagnose and resolve the repeated sync failures."
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>80f9d532-0bab-4ba6-ae75-9d5276a9b5d2</ns1:Id>
+               <ns1:Name>4short</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Informatica Support, We’ve been dealing with repeated sync failures in IDMC, and frankly, this is becoming unacceptable. Every time we schedule a data sync, something breaks—records fail to update or the jobs just stall with no clear error messages. We’ve wasted a lot of time trying to troubleshoot on our own, only to see the same problems again and again. We expect a prompt and thorough investigation because these ongoing issues are severely impacting our business operations. Please provide a solution immediately instead of generic responses. Awaiting your urgent response, James Wilson ",
+	 "In_LLM_Response": "To address repeated IDMC sync failures urgently, start by reviewing recent failures and gathering logs and environment information. Then, identify the root cause by examining logs, checking source/target systems, and reviewing mapping configurations. Implement fixes, test, and escalate to Informatica Support, providing detailed information. After resolution, implement monitoring, optimize job performance, and establish a change management process for future prevention."
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5a3775b6-48c5-4654-8a02-590a10130826</ns1:Id>
+               <ns1:Name>5long</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi Team, We’ve noticed some inconsistencies between our source and target systems after the latest IDMC data synchronization. Although we’ve double-checked the configurations and reviewed the logs, we haven’t been able to identify the root cause. We would really appreciate your help in troubleshooting this issue, as accurate data is very important for our reporting processes. Thank you very much in advance for your support! Best regards, Sophia Robinson  ",
+	 "In_LLM_Response": "Given the reported data inconsistencies after IDMC synchronization, here's a structured approach to troubleshoot the problem: Data Comparison and Identification of Discrepancies: Reconcile Data: Compare the data in the source and target systems to pinpoint the specific records or fields with inconsistencies. Tools like data reconciliation reports can help automate this process. Data Profiling: Use data profiling features to analyze data quality issues in both source and target systems. Sample Data: If possible, extract a sample of the inconsistent data for further analysis. Configuration and Mapping Review: Mapping Rules: Re-examine the mapping rules and transformations in your IDMC configuration. Pay close attention to: Data type conversions Expression logic Filter conditions Lookup transformations Connections: Ensure that the connections to the source and target systems are correctly configured and functioning properly. Log Analysis: Job Logs: Review the IDMC job logs for any errors, warnings, or unusual events during the synchronization process. Examine detailed error messages to understand the root cause of the inconsistencies. System Logs: Check system logs for any potential issues, such as resource constraints or network connectivity problems. Source and Target System Checks: Source Data: Verify the accuracy and completeness of the source data. Changes in source data can sometimes lead to inconsistencies. Target System: Confirm that the target system is correctly configured to receive and store the synchronized data. Troubleshooting Steps: Test with a Subset: If feasible, run the synchronization process with a smaller subset of the data to see if the issue persists. This can help isolate the problem. Check for Errors: Examine the log for any transformation errors, data type mismatches, or other issues that might be causing the inconsistencies. Verify Data Transformation: Check if the transformations are correctly implemented to the target system. If the problem persists: Contact Informatica Support, providing the following information: Mapping configuration details Job logs Sample data Source and target system information This structured approach will help you identify the root cause of the data inconsistencies."
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5994464d-1751-4b7c-9e2d-38727f83f70f</ns1:Id>
+               <ns1:Name>5short</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi Team, We’ve noticed some inconsistencies between our source and target systems after the latest IDMC data synchronization. Although we’ve double-checked the configurations and reviewed the logs, we haven’t been able to identify the root cause. We would really appreciate your help in troubleshooting this issue, as accurate data is very important for our reporting processes. Thank you very much in advance for your support! Best regards, Sophia Robinson  ",
+	 "In_LLM_Response": "To troubleshoot data inconsistencies after IDMC synchronization, start by reconciling and profiling the data, and extracting samples. Then, review mapping configurations, including rules, connections, and logs. Check the source and target systems and test with a data subset. If the issue continues, contact Informatica Support with detailed information."
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8699f579-6750-4826-ac20-6a13bfa0b13a</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_User_Prompt": "Hi, We have encountered a critical issue following the recent update to our IDMC environment. Since the update, data synchronization jobs are running significantly slower than before, causing delays in downstream processes and impacting our SLA commitments. We’ve reviewed system resources and checked for any obvious bottlenecks but haven’t identified the cause. We also confirmed that network connectivity and configurations remain unchanged. What we’ve tried: Monitored system performance metrics, reviewed job schedules, and restarted services. This performance degradation is affecting our business operations, and we would appreciate urgent assistance to identify and resolve the root cause. Thanks for your time, John Kowalski ",
+	 "In_LLM_Response": "Based on the text, you should review the update documentation, check Informatica's status for known issues, analyze job logs and metrics, identify bottlenecks in source/target systems and mapping logic, ensure sufficient resource allocation, and if the issue persists, contact Informatica Support."
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>dBTRAOUpJMmlsKiNAaKvyR</types1:GUID>
+      <types1:DisplayName>EvaluationAgent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.694Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

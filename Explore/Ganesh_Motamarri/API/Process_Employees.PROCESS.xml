@@ -1,0 +1,318 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Vyaaaaa-gt-13145958-2026-03-09T10:26:43.764Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Employees-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:GaneshMotamarri</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T10:26:44Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-16T10:18:41Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-04-16T10:18:50Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Employees-1/Process_Employees-1.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="2BHiCjhR5q2idKcH9FcM2A"
+                  displayName="Process_Employees"
+                  name="Process_Employees-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:GaneshMotamarri</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="temp path" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp file exists" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp file" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp content" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="EmployeeTable" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Writer" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">App-File-Writer:FileWriteTask</option>
+                     <option name="guid">9Ckc79CFowdh8PwmBzn2YI</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="EMPID" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="FIRSTNAME" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="LASTNAME" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="FULLNAME" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="EMAILID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="DESIGNATION" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="SALARY" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="MANAGER" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="DATEOFJOINING" type="datetime">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="thirtyMinutesIncrement">true</option>
+                  </options>
+               </field>
+               <field description="" name="ACTIVEFLAG" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="BIRTHDATE" type="datetime">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="thirtyMinutesIncrement">true</option>
+                  </options>
+               </field>
+               <field description="" name="Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>GaneshMotamarri</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="o22de1d89-263a-4fb2-83fc-56fa6a6aa88d">
+               <start id="nc2731267-bc83-458f-8d64-4284cd361f1e">
+                  <link id="hce56ab6f-3356-4f7d-b73e-f7c04d6f793a"
+                        targetId="a12BHiCjhR5q2idKcH9FcM2A-Assignment90161049-e736-4888-9f91-2bae92760599"/>
+               </start>
+               <assignment id="a12BHiCjhR5q2idKcH9FcM2A-Assignment90161049-e736-4888-9f91-2bae92760599">
+                  <title>Assignment to temp file exists, temp path</title>
+                  <operation source="formula" to="temp.temp path">
+                     <expression language="XQuery">'file:///E:/Projects/Training/SrcFiles/CAI/employees.xml'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.temp file exists">
+                     <expression language="XQuery">fn:unparsed-text-available($temp.temppath)</expression>
+                  </operation>
+                  <operation source="constant" to="temp.Counter">1</operation>
+                  <operation source="formula" to="temp.Count">
+                     <expression language="XQuery">let $file:= doc($temp.temppath)
+return count($file/Employees/Employee)</expression>
+                  </operation>
+                  <link id="f5967fb65-d0ea-4661-b90f-fa4445961e7c"
+                        targetId="Loop521bba38-1783-4236-96ce-25c23bb51e65"/>
+               </assignment>
+               <repeat id="Loop521bba38-1783-4236-96ce-25c23bb51e65"
+                       title="Loop 1"
+                       type="Until">
+                  <condition source="formula">
+                     <expression language="XQuery">$temp.Count&lt;0</expression>
+                  </condition>
+                  <flow id="q86838722-5903-49bd-a1dd-db5a44efc94f">
+                     <assignment id="a12BHiCjhR5q2idKcH9FcM2A-Assignment93b17488-0946-431a-ae55-7a5006404149">
+                        <title>Assignment to temp content</title>
+                        <operation source="formula" to="temp.temp content">
+                           <expression language="XQuery">let $doc := doc("file:///E:/Projects/Training/SrcFiles/CAI/Text.xml")
+return 
+concat(
+    'ID,NAME,AGE,JOB,PHONE,ADDRESS',
+    '&amp;#10;',
+    string-join(
+        for $emp in $doc/files/file
+        return concat(
+            $emp/id, ',',
+            $emp/name, ',',
+            $emp/age, ',',
+            $emp/job, ',',
+            $emp/phone, ',',
+            $emp/address
+        ),
+        '&amp;#10;'
+    )
+)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.EMPID">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/EMPID)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.LASTNAME">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/LASTNAME)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.FIRSTNAME">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/FIRSTNAME)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.ACTIVEFLAG">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/ACTIVEFLAG)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.EMAILID">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/EMAILID)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.DESIGNATION">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/DESIGNATION)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.MANAGER">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/MANAGER)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.SALARY">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/SALARY)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.DATEOFJOINING">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/DATEOFJOINING)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.BIRTHDATE">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/BIRTHDATE)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.FULLNAME">
+                           <expression language="XQuery">let $file:= doc($temp.temppath)
+return string($file/Employees/Employee[$temp.Counter]/FULLNAME)</expression>
+                        </operation>
+                        <link id="r2d31dc4a-b690-4fc1-ac7b-d95b282530ed"
+                              targetId="a12BHiCjhR5q2idKcH9FcM2A-Assignment5e9845a6-9d50-4260-a6d2-acbf99d113c8"/>
+                     </assignment>
+                     <assignment id="a12BHiCjhR5q2idKcH9FcM2A-Assignment5e9845a6-9d50-4260-a6d2-acbf99d113c8">
+                        <title>Assignment to EmployeeTable</title>
+                        <operation source="constant" to="temp.File_Writer[1]/fileName">Employee.csv</operation>
+                        <operation source="formula" to="temp.File_Writer[1]/content">
+                           <expression language="XQuery">$temp.tempcontent</expression>
+                        </operation>
+                        <link id="rc6a19104-9aa9-4656-ad53-d673be230e6d"
+                              targetId="Create74055b04-05b7-4a14-acad-793d78facf29"/>
+                     </assignment>
+                     <assignment id="Assignmentaa95482b-a89c-4d9b-991a-cd6e0dd12664">
+                        <title>Assignment to Counter, Count</title>
+                        <operation source="formula" to="temp.Counter">
+                           <expression language="XQuery">$temp.Counter+1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Count">
+                           <expression language="XQuery">fn:sum ( $temp.Count ,-1)</expression>
+                        </operation>
+                     </assignment>
+                     <create id="Create74055b04-05b7-4a14-acad-793d78facf29">
+                        <title>EMPLOYEE_MASTER</title>
+                        <entityName>App-Ganesh-oracle-jdbc-1:EMPLOYEE_MASTER</entityName>
+                        <createInput>
+                           <parameter name="EMPID" source="field" updatable="true">temp.EMPID</parameter>
+                           <parameter name="FIRSTNAME" source="field" updatable="true">temp.FIRSTNAME</parameter>
+                           <parameter name="LASTNAME" source="field" updatable="true">temp.LASTNAME</parameter>
+                           <parameter name="FULLNAME" source="field" updatable="true">temp.FULLNAME</parameter>
+                           <parameter name="EMAILID" source="field" updatable="true">temp.EMAILID</parameter>
+                           <parameter name="DESIGNATION" source="field" updatable="true">temp.DESIGNATION</parameter>
+                           <parameter name="MANAGER" source="field" updatable="true">temp.MANAGER</parameter>
+                           <parameter name="ACTIVEFLAG" source="field" updatable="true">temp.ACTIVEFLAG</parameter>
+                           <parameter name="SALARY" source="field" updatable="true">temp.SALARY</parameter>
+                           <parameter name="DATEOFJOINING" source="field" updatable="true">temp.DATEOFJOINING</parameter>
+                           <parameter name="BIRTHDATE" source="field" updatable="true">temp.BIRTHDATE</parameter>
+                        </createInput>
+                        <link id="i9a32e967-ec9d-402b-847a-0076a4ab2502"
+                              targetId="Assignmentaa95482b-a89c-4d9b-991a-cd6e0dd12664"/>
+                     </create>
+                  </flow>
+                  <link id="q457994f8-2ae7-4061-a501-d8aefce53d7e"
+                        targetId="a12BHiCjhR5q2idKcH9FcM2A-Servicec3670cda-376f-42d2-9c6f-76abcdf3089f"/>
+               </repeat>
+               <service id="a12BHiCjhR5q2idKcH9FcM2A-Servicec3670cda-376f-42d2-9c6f-76abcdf3089f">
+                  <title>FileWriter</title>
+                  <serviceName>App-File-Writer:FileWriter</serviceName>
+                  <serviceGUID>9Ckc79CFowdh8PwmBzn2YI</serviceGUID>
+                  <serviceInput>
+                     <parameter name="fileWriteTask" source="field">temp.File_Writer</parameter>
+                  </serviceInput>
+                  <link id="v0686188c-609a-41fd-a960-f265bd5ce939"
+                        targetId="a12BHiCjhR5q2idKcH9FcM2A-End51a512bb-9fbd-4332-a150-7c54caf2d326"/>
+               </service>
+               <end id="a12BHiCjhR5q2idKcH9FcM2A-End51a512bb-9fbd-4332-a150-7c54caf2d326">
+                  <title>End 1</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>91b1521d-8905-479e-9561-5dd3c3ab5273</ns1:Id>
+               <ns1:Name>SS</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T10:35:55Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T10:35:57Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2BHiCjhR5q2idKcH9FcM2A</types1:GUID>
+      <types1:DisplayName>Process_Employees</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.035Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

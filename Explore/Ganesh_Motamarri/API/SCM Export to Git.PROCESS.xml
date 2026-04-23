@@ -1,0 +1,405 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wVMZlNaaabdvhxi-gt-3184530-2026-03-02T09:25:42.357Z::pd.xml</types1:EntryId>
+      <types1:Name>SCM_Export_to_Git</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This process implements partial Source Code Management. It exports the Cloud Assets using IICS REST API and checks them in Git using Git Contents API.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-02T09:25:42Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-03-02T10:32:23Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-03-02T10:32:29Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.SCM_Export_to_Git/SCM_Export_to_Git.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="31PNfd8dkKZbvR2SLa99AH"
+                  displayName="SCM Export to Git"
+                  name="SCM_Export_to_Git"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>This process implements partial Source Code Management. It exports the Cloud Assets using IICS REST API and checks them in Git using Git Contents API.</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="IICS Username"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="IICS Password"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="IICS Hostname"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Object Path" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Object Type" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="Enable Source Control"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Login Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Export Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="SCM Checkin Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="LoginRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-actions:LoginRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0XdPDguq2LqejlTH2fjUwa</option>
+                  </options>
+               </field>
+               <field description="" name="LookupRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-actions:LookUpRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0XdPDguq2LqejlTH2fjUwa</option>
+                  </options>
+               </field>
+               <field description="" name="StartExportJobRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-actions:StartExportJobRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0XdPDguq2LqejlTH2fjUwa</option>
+                  </options>
+               </field>
+               <field description="" name="UploadImportPackageRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-actions:UploadImportPackageRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0XdPDguq2LqejlTH2fjUwa</option>
+                  </options>
+               </field>
+               <field description="" name="Retry Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="m9442d2a0-fe42-4ce5-a8fe-337b204d218c">
+               <start id="kcec76d0e-e9ad-4d01-aebf-95a3b0682eb5">
+                  <link id="xb7399527-715a-4f9d-8634-342df31d11b5"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-ji5pmu5e"/>
+               </start>
+               <assignment id="a131PNfd8dkKZbvR2SLa99AH-ji5pmu5e">
+                  <title>Create Login Request</title>
+                  <operation source="field" to="temp.LoginRequest[1]/username">input.IICS Username</operation>
+                  <operation source="field" to="temp.LoginRequest[1]/password">input.IICS Password</operation>
+                  <link id="z25071642-1a87-4744-9169-b6b3c35f1a0e"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-ji5pmu56"/>
+               </assignment>
+               <assignment id="a131PNfd8dkKZbvR2SLa99AH-jib6vzjd">
+                  <title>Create Lookup Request</title>
+                  <operation source="field" to="temp.LookupRequest[1]/objects[1]/path">input.Object Path</operation>
+                  <operation source="field" to="temp.LookupRequest[1]/objects[1]/type">input.Object Type</operation>
+                  <link id="t9b62e95a-e9b5-47b0-a945-81c47b732448"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-ji5r8c63"/>
+               </assignment>
+               <assignment id="a131PNfd8dkKZbvR2SLa99AH-jib6vzj4">
+                  <title>Create Export Request</title>
+                  <operation source="field" to="temp.StartExportJobRequest[1]/objects[1]/id">output.LookUpResponse[1]/objects[1]/id</operation>
+                  <link id="i649df105-a3e4-4602-88e1-b6316c593def"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-jibamrwa"/>
+               </assignment>
+               <service id="a131PNfd8dkKZbvR2SLa99AH-ji5pmu56">
+                  <title>Login to IICS</title>
+                  <serviceName>IICS-REST-API-actions:SaasPublicCoreV3LoginPost</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="body" source="formula">
+                        <expression language="XQuery">'{
+"@type": "login",
+"username": "gmotamarri@idmc.axxeltechnologies.com",
+"password": "@xxel@1712"
+}'</expression>
+                     </parameter>
+                     <parameter name="hostName" source="field">input.IICS Hostname</parameter>
+                  </serviceInput>
+                  <link id="nc85252c4-ccc2-4e54-9761-9729dc0096dc"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-jib6vzjd"/>
+               </service>
+               <service id="a131PNfd8dkKZbvR2SLa99AH-ji5r8c63">
+                  <title>Lookup Objects to be Exported</title>
+                  <serviceName>IICS-REST-API-actions:PublicCoreV3LookupPost</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="INFA_SESSION_ID" source="field">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                     <parameter name="body" source="field">temp.LookupRequest</parameter>
+                     <parameter name="hostName" source="field">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                  </serviceInput>
+                  <link id="hc59e01f3-02f6-4da8-b066-e32ad6d6f373"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-jib6vzj4"/>
+               </service>
+               <service id="a131PNfd8dkKZbvR2SLa99AH-jibamrwa">
+                  <title>Start Objects Export</title>
+                  <serviceName>IICS-REST-API-actions:PublicCoreV3ExportPost</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="INFA_SESSION_ID" source="field">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                     <parameter name="body" source="field">temp.StartExportJobRequest</parameter>
+                     <parameter name="hostName" source="field">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                  </serviceInput>
+                  <link id="kebb96b60-5619-4427-9255-dcf643095999"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-jidyy8ol"/>
+               </service>
+               <service id="a131PNfd8dkKZbvR2SLa99AH-jidyy8oq">
+                  <title>Get Export Job Status</title>
+                  <serviceName>IICS-REST-API-actions:PublicCoreV3ExportIdGet</serviceName>
+                  <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostName" source="field">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                     <parameter name="INFA_SESSION_ID" source="field">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                     <parameter name="id" source="field">output.StartExportJobResponse[1]/id</parameter>
+                  </serviceInput>
+                  <link id="v9740b6cb-5773-4380-8c35-d4991177e658"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-jidyy8p4"/>
+               </service>
+               <wait id="a131PNfd8dkKZbvR2SLa99AH-jidyy8ol">
+                  <title>Wait 5 seconds</title>
+                  <duration source="formula">
+                     <function name="duration_expression">
+                        <arg name="value">5</arg>
+                        <arg name="scale">S</arg>
+                        <arg name="businessDays"/>
+                     </function>
+                  </duration>
+                  <link id="m359ab057-419c-4d91-ba9b-0d2fba97a224"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-jidyy8oq"/>
+               </wait>
+               <container id="a131PNfd8dkKZbvR2SLa99AH-jidyy8p4" type="exclusive">
+                  <title>Export Status</title>
+                  <flow id="o31d1a7ad-305b-4208-9418-61c27229261c">
+                     <service id="a131PNfd8dkKZbvR2SLa99AH-jidyy8r5">
+                        <title>Download the Export Package</title>
+                        <serviceName>IICS-REST-API-actions:PublicCoreV3ExportIdPackageGet</serviceName>
+                        <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                        <serviceInput>
+                           <parameter name="hostName" source="field">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                           <parameter name="INFA_SESSION_ID" source="field">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                           <parameter name="id" source="field">output.StartExportJobResponse[1]/id</parameter>
+                        </serviceInput>
+                        <link id="b86469e38-de9f-42b4-b694-043c557cd196"
+                              targetId="a131PNfd8dkKZbvR2SLa99AH-jjiebfjm"/>
+                     </service>
+                     <service id="a131PNfd8dkKZbvR2SLa99AH-jjjhdev6">
+                        <title>Logout of IICS</title>
+                        <serviceName>IICS-REST-API-actions:PublicCoreV3LogoutPost</serviceName>
+                        <serviceGUID>0XdPDguq2LqejlTH2fjUwa</serviceGUID>
+                        <serviceInput>
+                           <parameter name="IDS_SESSION_ID" source="field">output.LoginResponse[1]/userInfo[1]/sessionId</parameter>
+                           <parameter name="hostName" source="field">output.LoginResponse[1]/products[1]/baseApiUrl</parameter>
+                        </serviceInput>
+                     </service>
+                     <container id="a131PNfd8dkKZbvR2SLa99AH-jjiebfjm" type="exclusive">
+                        <title>Enable Source Control</title>
+                        <flow id="h5a5fe068-c0c0-4011-9a9b-c71227cfdc91">
+                           <service id="a131PNfd8dkKZbvR2SLa99AH-jjiebfk9">
+                              <title>Create a file</title>
+                              <serviceName>Git-Contents-API-actions:Create a file</serviceName>
+                              <serviceGUID>2G7wtK7LtVdfRYiOhXGKIH</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="path" source="formula">
+                                    <expression language="XQuery">fn:concat($input.ObjectPath, "-",  fn:current-time(),".zip" )</expression>
+                                 </parameter>
+                                 <parameter name="message" source="formula">
+                                    <expression language="XQuery">fn:concat("Commiting IICS Objects. Time to commit is ",fn:current-time())</expression>
+                                 </parameter>
+                                 <parameter name="content" source="formula">
+                                    <expression language="XQuery">sff:getBase64FromAttachment($output.ExportPackageAsAttachment )</expression>
+                                 </parameter>
+                              </serviceInput>
+                           </service>
+                           <link id="md9a54994-398d-4700-a771-cb8a1a5ccc30"
+                                 targetId="a131PNfd8dkKZbvR2SLa99AH-jjiebfjm"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="x2cdf9150-87b3-4b4d-b9d0-18ea25c8420b">
+                           <link id="f36200766-8cf0-4824-a321-29de7e090871"
+                                 targetId="a131PNfd8dkKZbvR2SLa99AH-jjiebfjm"
+                                 type="containerLink"/>
+                        </flow>
+                        <link id="tee92c9a6-4020-470d-b003-0a0ff132f6b2"
+                              targetId="h5a5fe068-c0c0-4011-9a9b-c71227cfdc91"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$input.EnableSourceControl}</arg>
+                                 <arg name="right">Yes</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="n4d85ac87-381d-48d5-9058-7ae746e36671"
+                              targetId="x2cdf9150-87b3-4b4d-b9d0-18ea25c8420b"
+                              type="containerLink"/>
+                        <link id="fd614b8bd-4ce5-46a1-9fcf-7a2ea52e8e90"
+                              targetId="a131PNfd8dkKZbvR2SLa99AH-jjjgjejq"/>
+                     </container>
+                     <assignment id="a131PNfd8dkKZbvR2SLa99AH-jjjgjejq">
+                        <title>Assignment Status</title>
+                        <operation source="field" to="output.Login Status">output.LoginResponse[1]/userInfo[1]/status</operation>
+                        <operation source="field" to="output.Export Status">output.GetExportJobStatusResponse[1]/status[1]/state</operation>
+                        <operation source="field" to="output.SCM Checkin Status">output.url</operation>
+                        <link id="t17883a6f-4c7e-4bbc-90b0-ce24256bb542"
+                              targetId="a131PNfd8dkKZbvR2SLa99AH-jjjhdev6"/>
+                     </assignment>
+                     <link id="k0823a082-cc5a-4331-b411-b4e40c0d7f52"
+                           targetId="a131PNfd8dkKZbvR2SLa99AH-jidyy8p4"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="r0542c48d-7549-4831-92c4-ed76a3db9687">
+                     <container id="a131PNfd8dkKZbvR2SLa99AH-jn10254m" type="exclusive">
+                        <title>How Many Times Retrying?</title>
+                        <flow id="q39983981-26e0-42aa-83bd-e715f943c806">
+                           <wait id="a131PNfd8dkKZbvR2SLa99AH-jn10255m">
+                              <title>Wait 5 seconds</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">5</arg>
+                                    <arg name="scale">S</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                           </wait>
+                           <link id="i5a725863-34d9-49b1-b36e-a5fd5a5607a9"
+                                 targetId="a131PNfd8dkKZbvR2SLa99AH-jn10254m"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="w64af3f81-8f75-4134-a505-d14ae891cbc3">
+                           <end id="a131PNfd8dkKZbvR2SLa99AH-jn10255z">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="r6d6df500-daea-4305-a694-8324d31c91ec"
+                              targetId="q39983981-26e0-42aa-83bd-e715f943c806"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="less-or-equals">
+                                 <arg name="left">{$temp.RetryCounter}</arg>
+                                 <arg name="right">{3}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="e8a33c33c-0f40-4bb6-88db-5f1e3a26aa43"
+                              targetId="w64af3f81-8f75-4134-a505-d14ae891cbc3"
+                              type="containerLink"/>
+                        <link id="id88ba157-90c7-42b3-8e80-8feb8983e36b"
+                              targetId="a131PNfd8dkKZbvR2SLa99AH-jidyy8px"/>
+                     </container>
+                     <jumpTo id="a131PNfd8dkKZbvR2SLa99AH-jidyy8px">
+                        <link id="tb862585e-ba3a-4552-b77d-56b1f18000ab"
+                              targetId="a131PNfd8dkKZbvR2SLa99AH-jidyy8oq"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="nf519b0e6-df6c-42a4-84f6-eaf66472eda1"
+                        targetId="o31d1a7ad-305b-4208-9418-61c27229261c"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.GetExportJobStatusResponse[1]/status[1]/state}</arg>
+                           <arg name="right">SUCCESSFUL</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="y8bb2d010-3109-46f9-a8eb-639dc4192638"
+                        targetId="r0542c48d-7549-4831-92c4-ed76a3db9687"
+                        type="containerLink"/>
+                  <link id="p8347c93f-b49b-4986-ab2d-046a0b37661d"
+                        targetId="a131PNfd8dkKZbvR2SLa99AH-jjjg6l4s"/>
+               </container>
+               <end id="a131PNfd8dkKZbvR2SLa99AH-jjjg6l4s">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0fd423c2-5bd8-4396-b19c-f8145dd979d5</ns1:Id>
+               <ns1:Name>SA</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-02T10:18:23Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-02T10:19:54Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+"Enable Source Control": "Yes",
+"IICS Hostname": "https://dm-us.informaticacloud.com",
+"IICS Username": "gmotamarri@idmc.axxeltechnologies.com",
+"IICS Password": "@xxel@1712",
+"Object Path": "Ganesh_Motamarri",
+"Object Type": "PROJECT"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>31PNfd8dkKZbvR2SLa99AH</types1:GUID>
+      <types1:DisplayName>SCM Export to Git</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.191Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

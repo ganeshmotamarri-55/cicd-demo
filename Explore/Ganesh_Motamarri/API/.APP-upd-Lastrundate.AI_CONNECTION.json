@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "9tQHmk0czJOfPjr3Vz3cWL",
+    "name" : "APP-upd-Lastrundate",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "nFKi9zhFtybduaa-gt-7101270-2025-12-23T10:57:47.212Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.554Z",
+  "objectRefs" : [ {
+    "id" : "1njkhBx6NuEl5mZn5lWjIs",
+    "name" : "SC_Trig_led",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "abdvhxiQLnzYLnz-gt-7089797-2025-12-23T10:56:02.101Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

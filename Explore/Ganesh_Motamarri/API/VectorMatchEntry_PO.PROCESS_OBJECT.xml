@@ -1,0 +1,61 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>6gg8vHWOMzeHbcj-gt-13315453-2026-03-09T12:33:08.793Z::po.xml</types1:EntryId>
+      <types1:Name>VectorMatchEntry_PO</types1:Name>
+      <types1:ParentFlowIds>BOAPbdutaaabbgd-gt-13315501-2026-03-09T12:33:09.544Z::pd.xml,OYTRgpDqotxGomU-gt-13315574-2026-03-09T12:33:10.654Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that provides all the information from the Pinecone vector matching</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="VectorMatchEntry_PO"
+                        isByCopy="true"
+                        name="VectorMatchEntry_PO">
+            <description>Process object that provides all the information from the Pinecone vector matching</description>
+            <tags/>
+            <detail>
+               <field label="ID"
+                      name="ID"
+                      nullable="false"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Score"
+                      name="Score"
+                      nullable="false"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Text"
+                      name="Text"
+                      nullable="false"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Jira Link"
+                      name="JiraLink"
+                      nullable="false"
+                      required="false"
+                      type="url">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>48wXsDTsyCscFr16yxrsen</types1:GUID>
+      <types1:DisplayName>VectorMatchEntry_PO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.937Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

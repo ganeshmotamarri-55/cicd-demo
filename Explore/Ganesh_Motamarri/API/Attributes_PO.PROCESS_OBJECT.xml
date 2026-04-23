@@ -1,0 +1,197 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fRi1pqrzYLnzYLn-gt-13315437-2026-03-09T12:33:08.708Z::po.xml</types1:EntryId>
+      <types1:Name>Attributes_PO</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Process object that contains email details, information required to create a Jira ticket, Zendesk ticket data, confidence level, and search parameters for querying data in Pinecone. This process object is used by another process object named UberPlanner_PO.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="Attributes_PO"
+                        isByCopy="true"
+                        name="Attributes_PO">
+            <description>Process object that contains email details, information required to create a Jira ticket, Zendesk ticket data, confidence level, and search parameters for querying data in Pinecone. This process object is used by another process object named UberPlanner_PO.</description>
+            <tags/>
+            <detail>
+               <field label="Email Body"
+                      name="EmailBody"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Email Subject"
+                      name="EmailSubject"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Email Address"
+                      name="EmailAddress"
+                      nullable="true"
+                      required="false"
+                      type="email">
+                  <options/>
+               </field>
+               <field label="Zendesk Ticket Number"
+                      name="ZendeskTicketNumber"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Zendesk Ticket Link"
+                      name="ZendeskTicketLink"
+                      nullable="true"
+                      required="false"
+                      type="url">
+                  <options/>
+               </field>
+               <field label="Confidence Level"
+                      name="ConfidenceLevel"
+                      nullable="true"
+                      required="false"
+                      type="int">
+                  <options/>
+               </field>
+               <field label="Summarizer Agent Response"
+                      name="SummarizerAgentResponse"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Assignee Email"
+                      name="AssigneeEmail"
+                      nullable="true"
+                      required="false"
+                      type="email">
+                  <options/>
+               </field>
+               <field label="Model Version"
+                      name="ModelVersion"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Support Company Name"
+                      name="SupportCompanyName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Query Agent Response"
+                      name="QueryAgentResponse"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Output Dimensionality"
+                      name="OutputDimensionality"
+                      nullable="true"
+                      required="false"
+                      type="int">
+                  <options/>
+               </field>
+               <field label="Embedding Model"
+                      name="EmbeddingModel"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Jira Project Key"
+                      name="JiraProjectKey"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Jira Ticket Priority"
+                      name="JiraTicketPriority"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Pinecone RAG Index Host"
+                      name="PineconeRAGIndexHost"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Pinecone Found Articles"
+                      name="PineconeFoundArticles"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label="Pinecone Jira Index Host"
+                      name="PineconeJiraIndexHost"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Jira Ticket Cutoff"
+                      name="JiraTicketCutoff"
+                      nullable="true"
+                      required="false"
+                      type="double">
+                  <options/>
+               </field>
+               <field label="RAG Article Cutoff"
+                      name="RAGArticleCutoff"
+                      nullable="true"
+                      required="false"
+                      type="double">
+                  <options/>
+               </field>
+               <field label="Similar Pinecone Vector Number"
+                      name="SimilarPineconeVectorNumber"
+                      nullable="true"
+                      required="false"
+                      type="int">
+                  <options/>
+               </field>
+               <field label="Conversation History"
+                      name="ConversationHistory"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Update Create Indicator"
+                      name="UpdateCreateIndicator"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>9HJYxfCIsERiOC2zBuTOKm</types1:GUID>
+      <types1:DisplayName>Attributes_PO</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.172Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

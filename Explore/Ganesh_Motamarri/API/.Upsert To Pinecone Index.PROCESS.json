@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "asYn099kG5HgvgOGOFTqUE",
+    "name" : "Upsert To Pinecone Index",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "JUO01huaa-gt-13315556-2026-03-09T12:33:10.572Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that creates vectors using Gemini AI and saves them in an Pinecone index",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.550Z",
+  "objectRefs" : [ {
+    "id" : "3EcNQENJiRecxj4dZNHIm5",
+    "name" : "Get Embeddings",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "abbf5ZK0CYybdsM-gt-13315538-2026-03-09T12:33:10.013Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that generates embedding vectors from the user input using Gemini",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "6z7izhwk5IJjtjeSKmYFuO",
+    "name" : "PineconeConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "4XUxQ2Tp5OjG4ab-gt-13275748-2026-03-09T12:33:08.689Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Pinecone connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "0n6qhvyIVgwlFmCA1wnzEx",
+    "name" : "Generic Error Handler",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "A5tIS7T1cnFKi9z-gt-13315463-2026-03-09T12:33:08.842Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that manages errors, processes different services as input, and returns appropriate error responses based on the service type and the error encountered, ensuring effective error handling and recovery",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

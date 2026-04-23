@@ -1,0 +1,248 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>abbf5ZK0CYybdsM-gt-13315538-2026-03-09T12:33:10.013Z::pd.xml</types1:EntryId>
+      <types1:Name>Get_Embeddings</types1:Name>
+      <types1:ParentFlowIds>JUO01huaa-gt-13315556-2026-03-09T12:33:10.572Z::pd.xml,OYTRgpDqotxGomU-gt-13315574-2026-03-09T12:33:10.654Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that generates embedding vectors from the user input using Gemini</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="3EcNQENJiRecxj4dZNHIm5"
+                  displayName="Get Embeddings"
+                  name="Get_Embeddings"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that generates embedding vectors from the user input using Gemini</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Input" required="true" type="textarea">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="LLM_Model" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Output_Dimensionality" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Operation" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Embeddings" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid"/>
+                  </options>
+               </field>
+               <field description="" name="Text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_Request" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:GenerationConfig_PO</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">30qf5eDsmAMhdaAX53MiWT</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="b7a3ae5e3-530a-420c-890d-6f890d0294cb">
+               <start id="ya4443d0d-62d1-486f-8895-db4d6709f77f">
+                  <link id="mgqd6p6v" targetId="mgqd6p6u"/>
+               </start>
+               <container id="mgqd6p6u" type="exclusive">
+                  <title>Decide the request body based on operation</title>
+                  <flow id="mgqd6p6y">
+                     <assignment id="mgqd6p7c">
+                        <title>Prepare Embeddings Request Read</title>
+                        <operation source="formula" to="temp.Tmp_Request">
+                           <expression language="XQuery">&lt;EmbedContentRequestBody&gt;
+&lt;content&gt;
+&lt;parts&gt;
+&lt;text&gt;{ $input.Input }&lt;/text&gt;
+&lt;/parts&gt;
+&lt;role&gt;user&lt;/role&gt;
+&lt;/content&gt;
+&lt;taskType&gt;RETRIEVAL_DOCUMENT&lt;/taskType&gt;
+&lt;title&gt;forPineCone&lt;/title&gt;
+&lt;/EmbedContentRequestBody&gt;</expression>
+                        </operation>
+                     </assignment>
+                     <link id="mgqd6p6z" targetId="mgqd6p6u" type="containerLink"/>
+                  </flow>
+                  <flow id="mgqd6p71">
+                     <assignment id="mgqd6pbv">
+                        <title>Prepare Embeddings Request Write</title>
+                        <operation source="formula" to="temp.Tmp_Request">
+                           <expression language="XQuery">&lt;EmbedContentRequestBody&gt;
+	&lt;content&gt;
+		&lt;parts&gt;
+			&lt;text&gt; {$input.Input }&lt;/text&gt;
+		&lt;/parts&gt;
+	&lt;/content&gt;
+	&lt;outputDimensionality&gt; {$input.Output_Dimensionality} &lt;/outputDimensionality&gt;
+&lt;/EmbedContentRequestBody&gt;</expression>
+                        </operation>
+                     </assignment>
+                     <link id="mgqd6p72" targetId="mgqd6p6u" type="containerLink"/>
+                  </flow>
+                  <flow id="mgqd6p9d">
+                     <throw id="mgqd6p9p">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">Wrong operation!</parameter>
+                           <parameter name="detail" source="constant" updatable="true"/>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="mgqd6p6x" targetId="mgqd6p6y" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.Operation}</arg>
+                           <arg name="right">Read</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="mgqd6p70" targetId="mgqd6p71" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.Operation}</arg>
+                           <arg name="right">Write</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="mgqd6pbp"
+                        targetId="a16B6iZBCLCQSbLlnJdqptM4-Service8aad9e7a-fc14-4bca-bdbc-622902fa77d6"/>
+                  <link id="mgqd6p9c" targetId="mgqd6p9d" type="containerLink"/>
+               </container>
+               <eventContainer id="a16B6iZBCLCQSbLlnJdqptM4-Service8aad9e7a-fc14-4bca-bdbc-622902fa77d6">
+                  <service id="gf17ca9db-7f32-48dc-b3a9-1b29c4ac3218">
+                     <title>Generate Embeddings Model</title>
+                     <serviceName>GeminiConnection:Embed Content</serviceName>
+                     <serviceGUID>0BNr3j3wvwukTj4JucgxsM</serviceGUID>
+                     <serviceInput>
+                        <parameter name="model" source="field" updatable="true">input.LLM_Model</parameter>
+                        <parameter name="requestBody" source="formula">
+                           <expression language="XQuery">$temp.Tmp_Request </expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="p7427f66a-a815-4ea8-ad5d-92804f7cc9df">
+                     <assignment id="mev3p9v5">
+                        <title>Set Embeddings Model</title>
+                        <operation source="formula" to="output.Embeddings">
+                           <expression language="XQuery">$output.response/embedding</expression>
+                        </operation>
+                        <operation source="formula" to="output.Text">
+                           <expression language="XQuery">$input.Input</expression>
+                        </operation>
+                        <link id="mev3p9ve" targetId="mev3p9vd"/>
+                     </assignment>
+                     <end id="mev3p9vd">
+                        <title>End</title>
+                     </end>
+                  </flow>
+                  <flow id="yaab56ab4-6c64-49ca-8046-027d484117c1">
+                     <subflow id="mf4gxcch">
+                        <title>GenericErrorHandlerLLM</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">LLM</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mf4gxccm" targetId="mf4gxccl"/>
+                     </subflow>
+                     <assignment id="mf4gxccl">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                     </assignment>
+                     <link id="mf4gxcdy"
+                           targetId="a16B6iZBCLCQSbLlnJdqptM4-Service8aad9e7a-fc14-4bca-bdbc-622902fa77d6"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="l0719a7d0-734a-4a84-9c10-1adf5a547159"
+                        targetId="p7427f66a-a815-4ea8-ad5d-92804f7cc9df"
+                        type="containerLink"/>
+                  <link id="mf4gxcdw" targetId="mf4gxcdv"/>
+                  <events>
+                     <catch faultField="faultInfo"
+                            id="ke4b5fef0-0552-4f4d-ac64-a09a19e56e10"
+                            interrupting="true">
+                        <link id="p2bee6d31-8bd8-476d-8d89-f137e214aadb"
+                              targetId="yaab56ab4-6c64-49ca-8046-027d484117c1"
+                              type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <jumpTo id="mf4gxcdv">
+                  <link id="mf4gxcet"
+                        targetId="a16B6iZBCLCQSbLlnJdqptM4-Service8aad9e7a-fc14-4bca-bdbc-622902fa77d6"/>
+               </jumpTo>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>3EcNQENJiRecxj4dZNHIm5</types1:GUID>
+      <types1:DisplayName>Get Embeddings</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.392Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

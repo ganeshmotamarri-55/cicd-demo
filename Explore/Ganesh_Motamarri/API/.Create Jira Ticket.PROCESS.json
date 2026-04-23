@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "hCXtaeZQkSXcDyjVmqXtIe",
+    "name" : "Create Jira Ticket",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eCFmVSciY3AxtPk-gt-13315679-2026-03-09T12:33:12.067Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that creates a new Jira ticket",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.557Z",
+  "objectRefs" : [ {
+    "id" : "0VxfoD7tJAMlReQLax0Miz",
+    "name" : "JiraConnectionTicket",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yD7tyGoQwg74Rpf-gt-13275797-2026-03-09T12:33:09.239Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : " Jira connection",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "0n6qhvyIVgwlFmCA1wnzEx",
+    "name" : "Generic Error Handler",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "A5tIS7T1cnFKi9z-gt-13315463-2026-03-09T12:33:08.842Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that manages errors, processes different services as input, and returns appropriate error responses based on the service type and the error encountered, ensuring effective error handling and recovery",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "asYn099kG5HgvgOGOFTqUE",
+    "name" : "Upsert To Pinecone Index",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "JUO01huaa-gt-13315556-2026-03-09T12:33:10.572Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that creates vectors using Gemini AI and saves them in an Pinecone index",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "2JYTIoDDENeber2GMrAB65",
+    "name" : "Email verification",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BHSCpwNXHS45bfT-gt-5973226-2026-03-04T13:21:50.44Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Supports correlation and a long-running transaction. The process modifies its behavior based on an external event that occurs when the process is still in transit. The process is called by an HTTP request with the email ID as an incoming parameter. The process sends an email to the user for email verification. The transaction remains in its current state until the user approves or rejects the email verification. After the user approves the email verification, the process continues. Otherwise, the email is rejected and further actions are terminated.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.525Z",
+  "objectRefs" : [ {
+    "id" : "7wO2UI0GaGokweOMLm8bKO",
+    "name" : "EmailConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "m9RuuB3uopz4KhP-gt-5948233-2026-03-04T13:21:50.199Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection to send emails",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

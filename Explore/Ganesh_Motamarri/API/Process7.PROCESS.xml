@@ -1,0 +1,81 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ELlBWlD2pHALVYx-gt-5651389-2026-02-19T10:09:09.485Z::pd.xml</types1:EntryId>
+      <types1:Name>Process7</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-19T10:09:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-19T10:09:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process7/Process7.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="07OgfOnuZI1kXlJgju1fmV"
+                  displayName="Process7"
+                  name="Process7"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="TOTAL" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CUSTOMER" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="m440722a5-8f7a-4944-86c0-49a35f70e06b">
+               <start id="e34b02d42-8251-41ac-af0a-e0c8adfeccb0">
+                  <link id="jdd9676d9-e449-4e23-bd1a-42e68afe9431"
+                        targetId="Service31a7473f-7953-4030-9401-8f95b8a87162"/>
+               </start>
+               <service id="Service31a7473f-7953-4030-9401-8f95b8a87162">
+                  <title>Update</title>
+                  <serviceName>AppConnection6:Update</serviceName>
+                  <serviceGUID>12N7jvYEzrHdxN5EvN3j8N</serviceGUID>
+                  <serviceInput>
+                     <parameter name="TOTAL" source="field">input.TOTAL</parameter>
+                     <parameter name="CUSTOMER" source="field">input.CUSTOMER</parameter>
+                  </serviceInput>
+                  <link id="j6dadc961-dbcd-4de2-a1d9-014d2e06ab8f"
+                        targetId="end-uc0dc207a-24c7-42bf-b0f7-50932f1bb5a7"/>
+               </service>
+               <end id="end-uc0dc207a-24c7-42bf-b0f7-50932f1bb5a7">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>07OgfOnuZI1kXlJgju1fmV</types1:GUID>
+      <types1:DisplayName>Process7</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.825Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

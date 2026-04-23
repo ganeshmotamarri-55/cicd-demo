@@ -1,0 +1,99 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>pkeDuYZ06NYcmYs-gt-31319612-2026-01-27T09:57:07.248Z::ht.xml</types1:EntryId>
+      <types1:Name>HumanTask2</types1:Name>
+      <types1:MimeType>application/xml+humantask</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-01-27T09:57:07Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-22T09:28:01Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <HumanTask xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskAsset.xsd"
+                    xmlns:core="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                    xmlns:htc="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                    displayName="HumanTask2"
+                    name="HumanTask2">
+            <description/>
+            <priority source="constant">1</priority>
+            <skippable source="constant">true</skippable>
+            <origin source="constant"/>
+            <interface>
+               <input>
+                  <field label="Workflow" name="Workflow" required="true" type="string"/>
+                  <field label="Executionplan"
+                         name="Executionplan"
+                         required="true"
+                         type="string"/>
+                  <field label="Prune" name="Prune" required="false" type="int"/>
+               </input>
+               <output>
+                  <field label="Workflow1"
+                         name="Workflow1"
+                         required="true"
+                         type="string"/>
+                  <field label="Executionplan1"
+                         name="Executionplan1"
+                         required="true"
+                         type="string"/>
+                  <field label="Prune1" name="Prune1" required="false" type="int"/>
+               </output>
+               <outcomes>
+                  <outcome>
+                     <id>outcomes-1769507624588</id>
+                     <value>Done</value>
+                     <label>Prune2</label>
+                     <description>Nothing</description>
+                  </outcome>
+               </outcomes>
+            </interface>
+            <presentation>
+               <displayName source="constant">Untitled</displayName>
+               <subject source="constant">Untitled</subject>
+            </presentation>
+            <assignments>
+               <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                canOverwrite="true">
+                  <include source="constant">
+                     <user>gmotamarri@idmc.axxeltechnologies.com</user>
+                  </include>
+                  <exclude/>
+               </potentialOwners>
+               <administrators xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                               canOverwrite="true"
+                               source="constant">
+                  <user>gmotamarri@idmc.axxeltechnologies.com</user>
+               </administrators>
+               <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                             canOverwrite="true"
+                             source="constant">
+                  <user>gmotamarri@idmc.axxeltechnologies.com</user>
+               </stakeholders>
+            </assignments>
+            <renderings>
+               <humanTaskRendering xmlns="urn:ht:renderings:internal" xmlns:rend="urn:ht:renderings:internal">
+                  <origin>urn:rendering:CAI</origin>
+                  <id>urn:rendering:CAI:Guide</id>
+                  <metadata>
+                     <guideMetadata>
+                        <guid>18BTrIB5D9Lesg4dDLO18j</guid>
+                        <name>Guide2</name>
+                        <catalogLocation>project:/sf.Guide2/Guide2.xml</catalogLocation>
+                     </guideMetadata>
+                  </metadata>
+               </humanTaskRendering>
+            </renderings>
+         </HumanTask>
+      </types1:Entry>
+      <types1:GUID>8DtydM6rXSCdMQqUrleQmj</types1:GUID>
+      <types1:DisplayName>HumanTask2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:11.501Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

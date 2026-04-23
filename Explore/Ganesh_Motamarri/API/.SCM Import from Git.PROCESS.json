@@ -1,0 +1,67 @@
+{
+  "objectInfo" : {
+    "id" : "9K3ZTPGDEGCfzhSvz9phyg",
+    "name" : "SCM Import from Git",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "oJGD4ARW8UBM7zs-gt-3184520-2026-03-02T09:25:42.236Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process implements partial Source Code Management. It checks out the Cloud Assets Export file from Git using Git Contents API and imports them into IICS using IICS REST API.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.544Z",
+  "objectRefs" : [ {
+    "id" : "0XdPDguq2LqejlTH2fjUwa",
+    "name" : "IICS-REST-API-actions",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "T3WabeAzu2JQhtG-gt-3171838-2026-03-02T09:25:41.727Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/Connections"
+  }, {
+    "id" : "2G7wtK7LtVdfRYiOhXGKIH",
+    "name" : "Git-Contents-API-actions",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "m6kbeJHQjATO9pH-gt-3171848-2026-03-02T09:25:41.98Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/Connections"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

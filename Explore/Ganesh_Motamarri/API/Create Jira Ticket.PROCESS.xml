@@ -1,0 +1,590 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>eCFmVSciY3AxtPk-gt-13315679-2026-03-09T12:33:12.067Z::pd.xml</types1:EntryId>
+      <types1:Name>Create_Jira_Ticket</types1:Name>
+      <types1:ParentFlowIds>ISHCwkNmumf6S3w-gt-13315700-2026-03-09T12:33:12.554Z::pd.xml,W01BchMYeOm6S6f-gt-13315712-2026-03-09T12:33:12.787Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that creates a new Jira ticket</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:12Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="hCXtaeZQkSXcDyjVmqXtIe"
+                  displayName="Create Jira Ticket"
+                  name="Create_Jira_Ticket"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that creates a new Jira ticket</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="In_Assignee_Email"
+                          required="true"
+                          type="email">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Reporter_Email"
+                          required="true"
+                          type="email">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Jira_Ticket_Summary"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Jira_Ticket_Description"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Jira_Project_Key"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Output_Dimensionality"
+                          required="true"
+                          type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Pinecone_Index_Host"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Embeddeding_Model"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Jira_Ticket_Priority"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Out_Jira_Ticket_Link" type="url">
+                  <options>
+                     <option name="urlDisplayReadonlyAs">Link</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Out_Jira_Ticket_Number" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_Jira_Ticket" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Assignee_Account_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Reporter_Account_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+            </extData>
+            <flow id="s94fed37a-9fdf-4c5a-9f97-8b0191449a07">
+               <start id="la8ae8ecc-e417-4c72-bc18-1585b58263c4">
+                  <link id="y5a105184-99c6-4991-957b-ab18835b7bfd" targetId="mf4j3x4q"/>
+               </start>
+               <eventContainer id="mf4j3x4q">
+                  <service id="a194q0u3AFZene0LilFGrPwC-me9rz08g">
+                     <title>Search Assignee</title>
+                     <serviceName>JiraConnectionTicket:Query Objects</serviceName>
+                     <serviceGUID>0VxfoD7tJAMlReQLax0Miz</serviceGUID>
+                     <serviceInput>
+                        <parameter name="entityType" source="constant">user</parameter>
+                        <parameter name="id" source="constant">search</parameter>
+                        <parameter name="queryParams" source="formula">
+                           <expression language="XQuery">&lt;root&gt;
+&lt;queryParam&gt;
+&lt;propertyName&gt;query&lt;/propertyName&gt;
+&lt;value&gt;{$input.In_Assignee_Email }&lt;/value&gt;
+&lt;/queryParam&gt;
+&lt;/root&gt;</expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mf4j3x4s">
+                     <assignment id="mf4j3xam">
+                        <title>Reset retries to 0 if call successful</title>
+                        <operation source="constant" to="temp.Tmp_Retry">0</operation>
+                     </assignment>
+                     <link id="mf4j3x4t" targetId="mf4j3x4q" type="containerLink"/>
+                  </flow>
+                  <flow id="mf4j3x4v">
+                     <subflow id="mf4j3x56">
+                        <title>GenericErrorHandlerJira</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">Jira</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mf4j3x5i" targetId="mf4j3x5h"/>
+                     </subflow>
+                     <assignment id="mf4j3x5h">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="mf4j3x5u" targetId="mf4j3x5s"/>
+                     </assignment>
+                     <jumpTo id="mf4j3x5s">
+                        <link id="mf4j3x5t" targetId="mf4j3x4q"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mf4j3x4r" targetId="mf4j3x4s" type="containerLink"/>
+                  <link id="mf4j3xaj" targetId="a194q0u3AFZene0LilFGrPwC-me9rz092"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mf4j3x4p" interrupting="true">
+                        <link id="mf4j3x4u" targetId="mf4j3x4v" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <eventContainer id="mf4j3xcj">
+                  <service id="a194q0u3AFZene0LilFGrPwC-me9rz09k">
+                     <title>Search Reporter</title>
+                     <serviceName>JiraConnectionTicket:Query Objects</serviceName>
+                     <serviceGUID>0VxfoD7tJAMlReQLax0Miz</serviceGUID>
+                     <serviceInput>
+                        <parameter name="entityType" source="constant">user</parameter>
+                        <parameter name="id" source="constant">search</parameter>
+                        <parameter name="queryParams" source="formula">
+                           <expression language="XQuery">&lt;root&gt;
+&lt;queryParam&gt;
+&lt;propertyName&gt;query&lt;/propertyName&gt;
+&lt;value&gt;{$input.In_Reporter_Email  }&lt;/value&gt;
+&lt;/queryParam&gt;
+&lt;/root&gt;</expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mf4j3xcl">
+                     <assignment id="mf4j3xky">
+                        <title>Reset retries to 0 if call successful</title>
+                        <operation source="constant" to="temp.Tmp_Retry">0</operation>
+                     </assignment>
+                     <link id="mf4j3xcm" targetId="mf4j3xcj" type="containerLink"/>
+                  </flow>
+                  <flow id="mf4j3xco">
+                     <subflow id="mf4j3xeo">
+                        <title>GenericErrorHandlerJira</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">Jira</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mf4j3xgu" targetId="mf4j3xgt"/>
+                     </subflow>
+                     <assignment id="mf4j3xgt">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="mf4j3xit" targetId="mf4j3xir"/>
+                     </assignment>
+                     <jumpTo id="mf4j3xir">
+                        <link id="mf4j3xis" targetId="mf4j3xcj"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mf4j3xck" targetId="mf4j3xcl" type="containerLink"/>
+                  <link id="y99c29a07-21f8-412b-b16e-098722b96ba5"
+                        targetId="a194q0u3AFZene0LilFGrPwC-me9rz0a6"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mf4j3xci" interrupting="true">
+                        <link id="mf4j3xcn" targetId="mf4j3xco" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <eventContainer id="mf4j3xm8">
+                  <service id="a194q0u3AFZene0LilFGrPwC-me9rz0b6">
+                     <title>Create Jira Ticket</title>
+                     <serviceName>JiraConnectionTicket:Create Object</serviceName>
+                     <serviceGUID>0VxfoD7tJAMlReQLax0Miz</serviceGUID>
+                     <serviceInput>
+                        <parameter name="entityType" source="constant">issue</parameter>
+                        <parameter name="object" source="formula">
+                           <expression language="XQuery">$temp.Tmp_Jira_Ticket </expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="mf4j3xma">
+                     <link id="mf4j3xmb" targetId="mf4j3xm8" type="containerLink"/>
+                  </flow>
+                  <flow id="mf4j3xmd">
+                     <subflow id="mf4j3xos">
+                        <title>GenericErrorHandlerJira</title>
+                        <subflowGUID>0n6qhvyIVgwlFmCA1wnzEx</subflowGUID>
+                        <subflowPath>Generic_Error_Handler</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="In_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="In_Retry" source="field" updatable="true">temp.Tmp_Retry</parameter>
+                           <parameter name="In_Service" source="constant" updatable="true">Jira</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="Out_Retry" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="mf4j3xre" targetId="mf4j3xrd"/>
+                     </subflow>
+                     <assignment id="mf4j3xrd">
+                        <title>Increment Retry Attempt</title>
+                        <operation source="field" to="temp.Tmp_Retry">output.Out_Retry</operation>
+                        <link id="mf4j3xtm" targetId="mf4j3xtk"/>
+                     </assignment>
+                     <jumpTo id="mf4j3xtk">
+                        <link id="mf4j3xtl" targetId="mf4j3xm8"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="mf4j3xm9" targetId="mf4j3xma" type="containerLink"/>
+                  <link id="n75ca2c1f-8be0-4d37-8048-07eef52675af"
+                        targetId="a194q0u3AFZene0LilFGrPwC-me9rz0br"/>
+                  <events>
+                     <catch faultField="faultInfo" id="mf4j3xm7" interrupting="true">
+                        <link id="mf4j3xmc" targetId="mf4j3xmd" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <assignment id="a194q0u3AFZene0LilFGrPwC-me9rz092">
+                  <title>Set Assignee</title>
+                  <operation source="formula" to="temp.Tmp_Assignee_Account_ID">
+                     <expression language="XQuery">$output.response/_1/accountId</expression>
+                  </operation>
+                  <link id="mf4j3xeh" targetId="mf4j3xcj"/>
+               </assignment>
+               <assignment id="a194q0u3AFZene0LilFGrPwC-me9rz0a6">
+                  <title>Set Reporter</title>
+                  <operation source="formula" to="temp.Tmp_Reporter_Account_ID">
+                     <expression language="XQuery">$output.response/_1/accountId</expression>
+                  </operation>
+                  <link id="a19c10a8a-0505-41e1-a44f-61b8b5cc84fd"
+                        targetId="a194q0u3AFZene0LilFGrPwC-me9rz0ao"/>
+               </assignment>
+               <assignment id="a194q0u3AFZene0LilFGrPwC-me9rz0ao">
+                  <title>Prepare Jira Feature Request Ticket</title>
+                  <operation source="formula" to="temp.Tmp_Jira_Ticket">
+                     <expression language="XQuery">&lt;root&gt;
+	&lt;fields&gt;
+		&lt;summary&gt;{$input.In_Jira_Ticket_Summary   }&lt;/summary&gt;
+		&lt;description&gt;{$input.In_Jira_Ticket_Description }&lt;/description&gt;
+        &lt;project&gt;
+			&lt;key&gt;{$input.In_Jira_Project_Key }&lt;/key&gt;
+		&lt;/project&gt;
+		&lt;issuetype&gt;
+			&lt;name&gt;New Feature&lt;/name&gt;
+		&lt;/issuetype&gt;
+		&lt;priority&gt;
+            &lt;name&gt;{$input.In_Jira_Ticket_Priority }&lt;/name&gt;
+        &lt;/priority&gt;
+
+        {if(fn:string-length($temp.Tmp_Assignee_Account_ID) != 0)
+    then &lt;assignee&gt;
+       &lt;accountId&gt;{$temp.Tmp_Assignee_Account_ID}&lt;/accountId&gt;
+    &lt;/assignee&gt;
+    else()
+    }
+    {if(fn:string-length($temp.Tmp_Reporter_Account_ID) != 0)
+    then &lt;reporter&gt;
+       &lt;accountId&gt;{$temp.Tmp_Reporter_Account_ID}&lt;/accountId&gt;
+    &lt;/reporter&gt;
+    else &lt;reporter&gt;
+    &lt;/reporter&gt;
+    }
+	&lt;/fields&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <link id="mf4j3xr6" targetId="mf4j3xm8"/>
+               </assignment>
+               <assignment id="a194q0u3AFZene0LilFGrPwC-me9rz0br">
+                  <title>Set Jira Ticket Link and Number</title>
+                  <operation source="formula" to="output.Out_Jira_Ticket_Link">
+                     <expression language="XQuery">let $domain := substring-before($output.response/self/text(), "/rest")
+
+let $issueKey := $output.response/key/text()
+let $projectKey := $input.In_Jira_Project_Key 
+
+let $url := concat(
+  $domain,
+  '/jira/servicedesk/projects/',
+  $projectKey,
+  '/issues/?jql=project=',
+  $projectKey,
+  '%20AND%20issueKey=',
+  $issueKey
+)
+
+return $url
+</expression>
+                  </operation>
+                  <operation source="formula" to="output.Out_Jira_Ticket_Number">
+                     <expression language="XQuery">$output.response/key</expression>
+                  </operation>
+                  <link id="z5ff94d7e-aebe-487a-8c3f-9fe6c77a16b3"
+                        targetId="a194q0u3AFZene0LilFGrPwC-me9rz0c9"/>
+               </assignment>
+               <subflow id="a194q0u3AFZene0LilFGrPwC-me9rz0c9">
+                  <title>Upsert Jira Ticket to Pinecone Index</title>
+                  <subflowGUID>asYn099kG5HgvgOGOFTqUE</subflowGUID>
+                  <subflowPath>Upsert_To_Pinecone_Index</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="Input" source="formula" updatable="true">
+                        <expression language="XQuery">concat("Summary: ", $input.In_Jira_Ticket_Summary , "&amp;#10;", "Description: ", $input.In_Jira_Ticket_Description )</expression>
+                     </parameter>
+                     <parameter name="Output_Dimensionality" source="field" updatable="true">input.In_Output_Dimensionality</parameter>
+                     <parameter name="Model" source="field" updatable="true">input.In_Embeddeding_Model</parameter>
+                     <parameter name="Index_Host" source="field" updatable="true">input.In_Pinecone_Index_Host</parameter>
+                     <parameter name="Metadata" source="formula" updatable="true">
+                        <expression language="XQuery">&lt;jira_link&gt;{$output.Out_Jira_Ticket_Link  }&lt;/jira_link&gt;</expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="yc05721ce-fb08-4fd2-b52d-520b1a390c9a"
+                        targetId="a194q0u3AFZene0LilFGrPwC-md4dluvr"/>
+               </subflow>
+               <end id="a194q0u3AFZene0LilFGrPwC-md4dluvr">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>dd74e777-b96e-4685-870e-ba396f495aa3</ns1:Id>
+               <ns1:Name>test 6</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Hi Informatica Support, We are experiencing a critical problem with our IDMC configuration. Following the most recent data sync, we detected inconsistencies between the source and destination systems. Certain records are either missing or incorrect, which is generating confusion and may result in significant business issues. We have thoroughly reviewed our settings and logs but have not identified the root cause. What we have attempted so far: re-verified mappings, examined logs, and restarted synchronization jobs. This issue is urgent as we depend on reliable data for reporting and strategic decisions. We would appreciate your prompt assistance in resolving this matter.",
+	 "In_Email_Subject": "subject sample",
+	 "In_Zendesk_Ticket_Number": "5",
+	 "In_Confidence_Level": "50",
+	 "In_Summarizer_Agent_Response": "response from agent",
+"In_Assignee_Email": "tholub@informatica.com",
+"In_Zendesk_Ticket_Link": "https://informatica-56724.zendesk.com/agent/tickets/5",
+"In_Model_Version": "gemini-2.0-flash-lite"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9ca8f219-1c64-4a90-b482-561e5cb26190</ns1:Id>
+               <ns1:Name>test 7</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Hi Informatica Support, We are experiencing a critical problem with our IDMC Mappings. They stuck in the source",
+	 "In_Email_Subject": "subject sampleeee",
+	 "In_Zendesk_Ticket_Number": "5",
+	 "In_Confidence_Level": "50",
+	 "In_Summarizer_Agent_Response": "response from agent",
+"In_Assignee_Email": "tholub@informatica.com",
+"In_Zendesk_Ticket_Link": "https://informatica-56724.zendesk.com/agent/tickets/5",
+"In_Model_Version": "gemini-2.0-flash-lite"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5a9177e7-cef6-4558-a033-32c0507388fe</ns1:Id>
+               <ns1:Name>test new</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Assignee_Email": "",
+	 "In_Reporter_Email": "",
+	 "In_Jira_Ticket_Summary": "",
+	 "In_Jira_Ticket_Description": "",
+	 "In_Jira_Project_Key": "",
+	 "In_Output_Dimensionality": "",
+	 "In_Pinecone_Index_Host": "",
+	 "In_Embeddeding_Model": "",
+"In_Jira_Ticket_Priority":""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5dcf2579-bdd5-4cda-ab26-6613c2ea1171</ns1:Id>
+               <ns1:Name>test new 2</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Hi Informatica Support, We’re running into a major issue with our IDMC setup. After the latest data synchronization, we noticed unexpected discrepancies between the source and target systems. Some records appear missing or incorrect, which is causing confusion and could lead to serious business problems. We’ve double-checked our configurations and logs but can’t figure out why this is happening. What we’ve tried: Verified mappings, checked logs, and reran sync jobs. This is urgent because we rely on accurate data for reporting and decision-making. Please help us get this resolved quickly. Thanks for your support, Adam Smith",
+	 "In_Email_Subject": "subject sample",
+	 "In_Zendesk_Ticket_Number": "5",
+	 "In_Confidence_Level": "50",
+	 "In_Summarizer_Agent_Response": "response from agent",
+"In_Assignee_Email": "tholub@informatica.com",
+"In_Zendesk_Ticket_Link": "https://informatica-56724.zendesk.com/agent/tickets/5"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3c5ca244-9b13-4686-8931-982b228cae3b</ns1:Id>
+               <ns1:Name>test10</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Hi Informatica Support, We’re currently facing a serious issue with our IDMC setup. After the latest data synchronization, we’ve noticed discrepancies between the source and target systems — some records are either missing or contain incorrect values. This inconsistency is causing confusion and poses a risk to our business operations. We’ve already taken several steps to investigate, including validating our mappings, reviewing system logs, and restarting the sync jobs. Despite these efforts, the root cause remains unclear. Given the importance of accurate data for our reporting and strategic planning, we kindly ask for your immediate support in diagnosing and resolving this problem. Thank you in advance for your assistance.",
+	 "In_Email_Subject": "subject sample",
+	 "In_Zendesk_Ticket_Number": "5",
+	 "In_Confidence_Level": "50",
+	 "In_Summarizer_Agent_Response": "response from agent",
+"In_Assignee_Email": "tholub@informatica.com",
+"In_Zendesk_Ticket_Link": "https://informatica-56724.zendesk.com/agent/tickets/5",
+"In_Model_Version": "gemini-2.0-flash-lite"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d429f31c-6395-496e-b7c0-9e13fb5d9934</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Intent": "Feedback",
+	 "In_Query_Agent_Response": "",
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Hi Informatica Support,I wanted to share some feedback regarding the error messages in the IDMC platform. While they usually identify that a problem occurred, sometimes the messages are a bit too vague, which makes troubleshooting longer than necessary. Improving the clarity of these messages could help users resolve issues faster.Thanks for your continuous efforts! Best regards, Anna Kowalska",
+	 "In_Email_Subject": "Feedback on Sync Job Error Messages",
+"In_Zendesk_Ticket_Number": "ZENDESK-123"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e33fa10e-ccd3-48e1-86a1-befb04d5aa3e</ns1:Id>
+               <ns1:Name>test3</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Intent": "Feature",
+	 "In_Query_Agent_Response": "",
+	 "In_Email_Address": "t@wp.pl",
+	 "In_Email_Body": "abc",
+	 "In_Email_Subject": "abc"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3bab0df8-02a1-4005-be36-286cf2b610cf</ns1:Id>
+               <ns1:Name>test4</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "In_Email_Address": "tholub@informatica.com",
+	 "In_Email_Body": "Informatica Support,We’ve been dealing with repeated sync failures in IDMC, and frankly, this is becoming unacceptable. Every time we schedule a data sync, something breaks—records fail to update or the jobs just stall with no clear error messages. We’ve wasted a lot of time trying to troubleshoot on our own, only to see the same problems again and again.We expect a prompt and thorough investigation because these ongoing issues are severely impacting our business operations. Please provide a solution immediately instead of generic responses.Awaiting your urgent response, James Wilson",
+	 "In_Email_Subject": "Continuous IDMC Sync Failures",
+	 "In_Zendesk_Ticket_Number": "5",
+	 "In_Confidence_Level": "40",
+	 "In_Summarizer_Agent_Response": "abc",
+	 "In_Assignee_Email": "g@wp.pl",
+	 "In_Zendesk_Ticket_Link": "https://informatica-56724.zendesk.com/agent/tickets/5"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>hCXtaeZQkSXcDyjVmqXtIe</types1:GUID>
+      <types1:DisplayName>Create Jira Ticket</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:14.105Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

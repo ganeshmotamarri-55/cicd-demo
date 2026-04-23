@@ -1,0 +1,67 @@
+{
+  "objectInfo" : {
+    "id" : "31PNfd8dkKZbvR2SLa99AH",
+    "name" : "SCM Export to Git",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "wVMZlNaaabdvhxi-gt-3184530-2026-03-02T09:25:42.357Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process implements partial Source Code Management. It exports the Cloud Assets using IICS REST API and checks them in Git using Git Contents API.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.562Z",
+  "objectRefs" : [ {
+    "id" : "0XdPDguq2LqejlTH2fjUwa",
+    "name" : "IICS-REST-API-actions",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "T3WabeAzu2JQhtG-gt-3171838-2026-03-02T09:25:41.727Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/Connections"
+  }, {
+    "id" : "2G7wtK7LtVdfRYiOhXGKIH",
+    "name" : "Git-Contents-API-actions",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "m6kbeJHQjATO9pH-gt-3171848-2026-03-02T09:25:41.98Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/Connections"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

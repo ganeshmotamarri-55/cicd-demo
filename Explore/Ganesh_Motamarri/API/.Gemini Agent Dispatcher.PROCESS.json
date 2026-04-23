@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "45S0RJRydwzca5hnvdXPoQ",
+    "name" : "Gemini Agent Dispatcher",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "02Fjuz3PI2HBxZm-gt-13315627-2026-03-09T12:33:10.994Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that calls the sub-agents based on the query prompt and dispatches the workflow to the appropriate agent at run time",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.553Z",
+  "objectRefs" : [ {
+    "id" : "5M8C8S3xw3nb8UgFpMf1qm",
+    "name" : "AgentPlanner_PO",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "n0qRi92qBbbeJOS-gt-13315526-2026-03-09T12:33:09.922Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that contains information about the agent's name and attribute references.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "0n6qhvyIVgwlFmCA1wnzEx",
+    "name" : "Generic Error Handler",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "A5tIS7T1cnFKi9z-gt-13315463-2026-03-09T12:33:08.842Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Subprocess that manages errors, processes different services as input, and returns appropriate error responses based on the service type and the error encountered, ensuring effective error handling and recovery",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  }, {
+    "id" : "54HuWnvUxioiHqCguN5Fok",
+    "name" : "AgentDispatcherConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "HBAGE7ppppppppp-gt-13315490-2026-03-09T12:33:09.453Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Agent Dispatcher connection",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

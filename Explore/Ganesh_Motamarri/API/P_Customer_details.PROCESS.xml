@@ -1,0 +1,150 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>TVMTonQYWeIssjq-gt-4213346-2026-02-17T13:41:19.726Z::pd.xml</types1:EntryId>
+      <types1:Name>P_Customer_details</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:GaneshMotamarri</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-02-17T13:41:20Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-19T09:29:28Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-19T09:29:36Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.P_Customer_details/P_Customer_details.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="594SCKdUTCTkni8tgk1t4Y"
+                  displayName="P_Customer_details"
+                  name="P_Customer_details"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:GaneshMotamarri</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="ID" required="true" type="string">
+                  <options>
+                     <option name="required">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="FIRSTNAME" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="LASTNAME" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="CITY" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="COUNTRY" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="TOTAL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Invoice_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="CUSTOMER" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>GaneshMotamarri</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="k93131fbf-4c23-4b22-b0d0-5739f6f46acf">
+               <start id="hee7571af-74fc-4d4a-ade8-b4af07a85f0d">
+                  <link id="yc444dcf5-c237-477a-aab2-da98bda5f78f"
+                        targetId="a1594SCKdUTCTkni8tgk1t4Y-Servicecf731251-923d-477d-8252-d6071a863430"/>
+               </start>
+               <service id="a1594SCKdUTCTkni8tgk1t4Y-Servicecf731251-923d-477d-8252-d6071a863430">
+                  <title>GetInvoice</title>
+                  <serviceName>App-Thomas-Bayer:GetInvoice</serviceName>
+                  <serviceGUID>9EJ4NQKy7gEhYN7OdTD6ac</serviceGUID>
+                  <serviceInput>
+                     <parameter name="ID" source="field">input.ID</parameter>
+                  </serviceInput>
+                  <link id="d26826b6f-334e-4b9b-ad36-a9b72b0ef917"
+                        targetId="a1594SCKdUTCTkni8tgk1t4Y-Servicea2b17c99-5549-4d93-adf0-fe6c3f54d671"/>
+               </service>
+               <service id="a1594SCKdUTCTkni8tgk1t4Y-Servicea2b17c99-5549-4d93-adf0-fe6c3f54d671">
+                  <title>Get_Customer</title>
+                  <serviceName>App-Thomas-Bayer:Get_Customer</serviceName>
+                  <serviceGUID>9EJ4NQKy7gEhYN7OdTD6ac</serviceGUID>
+                  <serviceInput>
+                     <parameter name="ID" source="field">output.CUSTOMER</parameter>
+                  </serviceInput>
+                  <link id="oa3109c1a-d83d-4b6a-8d78-2596e4ade327"
+                        targetId="a1594SCKdUTCTkni8tgk1t4Y-Create2f00f47a-0cc7-4aa7-926c-34f1bb319b4d"/>
+               </service>
+               <create id="a1594SCKdUTCTkni8tgk1t4Y-Create2f00f47a-0cc7-4aa7-926c-34f1bb319b4d">
+                  <title>SUDUKO</title>
+                  <entityName>App-Ganesh-oracle-jdbc:SUDUKO</entityName>
+                  <createInput>
+                     <parameter name="TITULO" source="field" updatable="true">output.CUSTOMER</parameter>
+                     <parameter name="AUTOR" source="field" updatable="true">output.FIRSTNAME</parameter>
+                     <parameter name="IDIOMA" source="field" updatable="true">input.ID</parameter>
+                  </createInput>
+                  <link id="i13ffc106-c077-4586-9d7b-d77c1900fd4e"
+                        targetId="a1594SCKdUTCTkni8tgk1t4Y-end-z35a3baf5-885d-4479-ac50-7b6b3955ce44"/>
+               </create>
+               <end id="a1594SCKdUTCTkni8tgk1t4Y-end-z35a3baf5-885d-4479-ac50-7b6b3955ce44">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>c3c61db3-ebf6-4828-abb7-7faa51a3f379</ns1:Id>
+               <ns1:Name>gg</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-02-19T06:18:18Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-02-19T06:18:19Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "ID": ""
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>594SCKdUTCTkni8tgk1t4Y</types1:GUID>
+      <types1:DisplayName>P_Customer_details</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.717Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

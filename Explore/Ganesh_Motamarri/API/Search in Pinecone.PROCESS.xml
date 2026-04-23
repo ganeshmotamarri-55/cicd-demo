@@ -1,0 +1,215 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>OYTRgpDqotxGomU-gt-13315574-2026-03-09T12:33:10.654Z::pd.xml</types1:EntryId>
+      <types1:Name>Search_in_Pinecone</types1:Name>
+      <types1:ParentFlowIds>4jBvSx0aa-gt-13315664-2026-03-09T12:33:11.895Z::pd.xml,ISHCwkNmumf6S3w-gt-13315700-2026-03-09T12:33:12.554Z::pd.xml,W01BchMYeOm6S6f-gt-13315712-2026-03-09T12:33:12.787Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that generates embedding vectors from user input using Gemini, searches for matching vectors in a specified Pinecone index based on input parameters, and returns the top matches with metadata, limited to the specified number of similar Pinecone vectors</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="2GESBizGweNguaRuw9nH8z"
+                  displayName="Search in Pinecone"
+                  name="Search_in_Pinecone"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that generates embedding vectors from user input using Gemini, searches for matching vectors in a specified Pinecone index based on input parameters, and returns the top matches with metadata, limited to the specified number of similar Pinecone vectors</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="In_Query" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Index_Host"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Embedding_Model"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Score_Cuttoff"
+                          required="true"
+                          type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="In_Similar_Pinecone_Vectors_Number"
+                          required="true"
+                          type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="In_Type" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Out_Embeddings_Model_PO" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:VectorMatchEntry_PO</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48wXsDTsyCscFr16yxrsen</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+            </extData>
+            <flow id="h148d5f05-e541-473d-bc0d-b21a919e1b3a">
+               <start id="jc0628805-b0d7-4356-974a-68ff91c6d3f9">
+                  <link id="s8463da5c-2225-435d-9218-9c16e0d7a578"
+                        targetId="a13J8NRLOzX0WbdPKoMaVwMu-me2o0yz0"/>
+               </start>
+               <subflow id="a13J8NRLOzX0WbdPKoMaVwMu-me2o0yz0">
+                  <title>Get Embeddings</title>
+                  <subflowGUID>3EcNQENJiRecxj4dZNHIm5</subflowGUID>
+                  <subflowPath>Get_Embeddings</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="Input" source="field" updatable="true">input.In_Query</parameter>
+                     <parameter name="LLM_Model" source="field" updatable="true">input.In_Embedding_Model</parameter>
+                     <parameter name="Operation" source="constant" updatable="true">Read</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="Embeddings" type="reference">
+                        <options>
+                           <option name="required">false</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                     <field name="Text" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="ka96ccb10-9645-444d-9f5c-a92fe846f902"
+                        targetId="a13J8NRLOzX0WbdPKoMaVwMu-me2o0z0x"/>
+               </subflow>
+               <subflow id="a13J8NRLOzX0WbdPKoMaVwMu-me2o0z0x">
+                  <title>Query Pinecone</title>
+                  <subflowGUID>3SJLxXYkBehgeZDdxt77a6</subflowGUID>
+                  <subflowPath>Query_Pinecone</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="Vectors_Array" source="field" updatable="true">output.Embeddings</parameter>
+                     <parameter name="Index_Host_Pinecone" source="field" updatable="true">input.In_Index_Host</parameter>
+                     <parameter name="In_Score_Cuttoff" source="field" updatable="true">input.In_Score_Cuttoff</parameter>
+                     <parameter name="In_Type" source="field" updatable="true">input.In_Type</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="Matches_Vectors_Array" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:VectorMatchEntry_PO</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">48wXsDTsyCscFr16yxrsen</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="x8b8ef4fa-082e-40fd-b95d-70ba8aa43005"
+                        targetId="a13J8NRLOzX0WbdPKoMaVwMu-me2o0z4j"/>
+               </subflow>
+               <assignment id="a13J8NRLOzX0WbdPKoMaVwMu-me2o0z4j">
+                  <title>Assignment to Out_Embeddings_Model_PO</title>
+                  <operation source="formula" to="output.Out_Embeddings_Model_PO">
+                     <expression language="XQuery">$output.Matches_Vectors_Array[position() &lt;= $input.In_Similar_Pinecone_Vectors_Number ]</expression>
+                  </operation>
+                  <link id="b1b9ae856-7cc4-4e59-9796-78b4bb20b2c1"
+                        targetId="a13J8NRLOzX0WbdPKoMaVwMu-c"/>
+               </assignment>
+               <end id="a13J8NRLOzX0WbdPKoMaVwMu-c">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>a0956e1e-948c-4e31-81ff-4eb086718b2e</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "In_Query": "Dear Support Team, I’m currently using the Cloud Data Integration (CDI) REST API V2 to monitor Secure Agent services as part of an automation tool. I’m building. While retrieving service statuses, I’ve noticed that services manually stopped by users are not included in the API response. From what I can see, the API returns services in states such as Running, Stopped, Deploying, Error, Need_Running, and Need_Stop. However, services that are manually stopped appear to be assigned a state of User_Stopped, which is not reflected in the API output. This results in an incomplete view of the service landscape and affects the accuracy of our monitoring and reporting. Could you please confirm whether this is expected behavior? If so, is there any workaround or alternative method to retrieve services in the User_Stopped state? We would like to ensure that our automation tool can display a comprehensive status of all services, including those that have been manually stopped. Looking forward to your guidance.",
+    "In_Index_Host": "rag-jr7c6kp.svc.aped-4627-b74a.pinecone.io",
+    "In_Embedding_Model": "text-embedding-004",
+     "In_Score_Cuttoff": 0.2
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>311172bb-e17c-4d14-a8d2-90975e641cd4</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "In_Query": "Dear Support Team, I’m currently using the Cloud Data Integration (CDI) REST API V2 to monitor Secure Agent services as part of an automation tool. I’m building. I cannot see all services. Now I am able to see 10 secure agent services using API with statuses, but in the Administrator service I can see 11 secure agent services. Why can't I see all secure agent services?",
+    "In_Index_Host": "rag-jr7c6kp.svc.aped-4627-b74a.pinecone.io",
+    "In_Embedding_Model": "text-embedding-004",
+     "In_Score_Cuttoff": 0.6
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>baf9e8b4-e49b-4818-bbc5-c0f374292938</ns1:Id>
+               <ns1:Name>test3</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-03-09T12:33:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-03-09T12:33:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "In_Query": "I’d like to trigger a Data Quality job for a Catalog Source in Cloud Data Governance and Catalog (CDGC) using the API. I don’t have access to the API documentation — could you please confirm what the correct request body should look like for this?",
+    "In_Index_Host": "rag-jr7c6kp.svc.aped-4627-b74a.pinecone.io",
+    "In_Embedding_Model": "text-embedding-004",
+     "In_Score_Cuttoff": 0.7
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2GESBizGweNguaRuw9nH8z</types1:GUID>
+      <types1:DisplayName>Search in Pinecone</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.735Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

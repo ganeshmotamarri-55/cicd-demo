@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "54HuWnvUxioiHqCguN5Fok",
+    "name" : "AgentDispatcherConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "HBAGE7ppppppppp-gt-13315490-2026-03-09T12:33:09.453Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Agent Dispatcher connection",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-04-23T09:55:14.561Z",
+  "objectRefs" : [ {
+    "id" : "1QcxzuZP6VDkn9o9bSzv8y",
+    "name" : "Agent Dispatcher Connector",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "TVShsZvPP8KnBQ9-gt-13275764-2026-03-09T12:33:08.773Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Service connector for customer support Agent dispatcher",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Ganesh_Motamarri/API"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

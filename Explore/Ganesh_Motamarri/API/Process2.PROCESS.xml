@@ -1,0 +1,121 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>x2iUFpr1Iw8jIw8-gt-31319729-2026-01-27T09:57:54.385Z::pd.xml</types1:EntryId>
+      <types1:Name>Process2-10</types1:Name>
+      <types1:ParentFlowIds>DKYsGuDoWn2sqeE-gt-31007870-2026-01-27T10:27:53.475Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-01-27T09:57:54Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-22T09:28:22Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-04-22T09:28:25Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process2-10/Process2-10.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="4K3nJWrqbQ1lL9fh2EsQqR"
+                  displayName="Process2"
+                  name="Process2-10"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="untitled1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="untitled2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="ead2d399c-732a-4deb-aad3-44e195ac9e8e">
+               <start id="n76dafc92-dcf0-4d01-a09a-4321e6ef4621">
+                  <link id="f0bdb994b-005a-4eff-b0f5-9880c5f6f76e"
+                        targetId="a14K3nJWrqbQ1lL9fh2EsQqR-HumanTask2e0d58e0-ea6f-483f-bd68-408f41d1c12b"/>
+               </start>
+               <humanTask id="a14K3nJWrqbQ1lL9fh2EsQqR-HumanTask2e0d58e0-ea6f-483f-bd68-408f41d1c12b">
+                  <title>HumanTask2</title>
+                  <subflowGUID>8DtydM6rXSCdMQqUrleQmj</subflowGUID>
+                  <subflowPath>HumanTask2</subflowPath>
+                  <peopleActivityName>HumanTask2</peopleActivityName>
+                  <asset>
+                     <GUID>8DtydM6rXSCdMQqUrleQmj</GUID>
+                     <taskName>HumanTask2</taskName>
+                  </asset>
+                  <input>
+                     <field name="Workflow" source="constant">x</field>
+                     <field name="Executionplan" source="constant">x</field>
+                  </input>
+                  <outputDef>
+                     <field name="Workflow1" type="string"/>
+                     <field name="Executionplan1" type="string"/>
+                     <field name="Prune1" type="int"/>
+                     <field name="taskOutcome" type="string"/>
+                  </outputDef>
+                  <config>
+                     <disableOutcomeLinksGeneration>true</disableOutcomeLinksGeneration>
+                  </config>
+                  <link id="t1c575ed6-fd25-47b9-9da9-236f9f246cd2"
+                        targetId="a14K3nJWrqbQ1lL9fh2EsQqR-Assignment73631ae9-b98c-4d56-bb23-7846d762dbe5"/>
+               </humanTask>
+               <assignment id="a14K3nJWrqbQ1lL9fh2EsQqR-Assignment73631ae9-b98c-4d56-bb23-7846d762dbe5">
+                  <title>Assignment to Task Outcome, Executionplan1, etc,</title>
+                  <operation source="field" to="output.taskOutcome">output.taskOutcome</operation>
+                  <operation source="field" to="output.Executionplan1">output.Executionplan1</operation>
+                  <operation source="field" to="output.Prune1">output.Prune1</operation>
+                  <operation source="field" to="output.Workflow1">output.Workflow1</operation>
+                  <link id="e44f81834-161e-4c02-8774-6b776abd1a28"
+                        targetId="a14K3nJWrqbQ1lL9fh2EsQqR-end-ibf004cca-fbce-4ac5-b4f4-c79376667f36"/>
+               </assignment>
+               <end id="a14K3nJWrqbQ1lL9fh2EsQqR-end-ibf004cca-fbce-4ac5-b4f4-c79376667f36">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>7e74a17e-872a-4e94-8809-b57131734e08</ns1:Id>
+               <ns1:Name>NEW</ns1:Name>
+               <ns1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:CreatedBy>
+               <ns1:CreationDate>2026-01-27T09:58:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-01-27T09:58:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>4K3nJWrqbQ1lL9fh2EsQqR</types1:GUID>
+      <types1:DisplayName>Process2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:13.697Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

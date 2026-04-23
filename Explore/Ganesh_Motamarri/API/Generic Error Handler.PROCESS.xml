@@ -1,0 +1,145 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>A5tIS7T1cnFKi9z-gt-13315463-2026-03-09T12:33:08.842Z::pd.xml</types1:EntryId>
+      <types1:Name>Generic_Error_Handler</types1:Name>
+      <types1:ParentFlowIds>02Fjuz3PI2HBxZm-gt-13315627-2026-03-09T12:33:10.994Z::pd.xml,4jBvSx0aa-gt-13315664-2026-03-09T12:33:11.895Z::pd.xml,abbf5ZK0CYybdsM-gt-13315538-2026-03-09T12:33:10.013Z::pd.xml,BOAPbdutaaabbgd-gt-13315501-2026-03-09T12:33:09.544Z::pd.xml,eCFmVSciY3AxtPk-gt-13315679-2026-03-09T12:33:12.067Z::pd.xml,ISHCwkNmumf6S3w-gt-13315700-2026-03-09T12:33:12.554Z::pd.xml,JUO01huaa-gt-13315556-2026-03-09T12:33:10.572Z::pd.xml,KmabeAzu2JQhtGc-gt-13315562-2026-03-09T12:33:10.593Z::pd.xml,oBL2BX9cjIw8jIw-gt-13315512-2026-03-09T12:33:09.723Z::pd.xml,PXyDQeH2PKDC0hC-gt-13315646-2026-03-09T12:33:11.669Z::pd.xml,RLC64Ky2uI5CUP9-gt-13315587-2026-03-09T12:33:10.704Z::pd.xml,W01BchMYeOm6S6f-gt-13315712-2026-03-09T12:33:12.787Z::pd.xml,ZWlwUiQLnzYLnzY-gt-13315610-2026-03-09T12:33:10.82Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Subprocess that manages errors, processes different services as input, and returns appropriate error responses based on the service type and the error encountered, ensuring effective error handling and recovery</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="0n6qhvyIVgwlFmCA1wnzEx"
+                  displayName="Generic Error Handler"
+                  name="Generic_Error_Handler"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Subprocess that manages errors, processes different services as input, and returns appropriate error responses based on the service type and the error encountered, ensuring effective error handling and recovery</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="In_Code" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="In_Retry" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="In_Service" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Out_Retry" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="meu1g1g6" targetId="meu1g1fp"/>
+               </start>
+               <container id="meu1g1fp" type="exclusive">
+                  <title>Is Error Code 4xx</title>
+                  <flow id="meu1g1fq">
+                     <throw id="meu1g1fr">
+                        <title>Log an Error</title>
+                        <throwInput>
+                           <parameter name="code" source="formula" updatable="true">
+                              <expression language="XQuery">util:iif($input.In_Service="LLM" , "Check LLM Settings", util:iif($input.In_Service="Zendesk" ,"Zendesk returned HTTP 4xx - Client Error", util:iif($input.In_Service="Jira" , "Jira returned HTTP 4xx - Client Error",util:iif($input.In_Service="Pinecone","Pinecone returned HTTP 4xx - client error", util:iif($input.In_Service="Email" ,"Email service returned HTTP 4xx - client error","Other service returned HTTP 4xx - client error")) ) ))</expression>
+                           </parameter>
+                           <parameter name="detail" source="constant" updatable="true"/>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <flow id="meu1g1fs">
+                     <container id="meu1g1ft" type="exclusive">
+                        <title>Retry</title>
+                        <flow id="meu1g1fu">
+                           <throw id="meu1g1fv">
+                              <title>Log Error on Service Unavailability</title>
+                              <throwInput>
+                                 <parameter name="code" source="formula" updatable="true">
+                                    <expression language="XQuery">"The service " || $input.In_Service ||  " is unavailable."</expression>
+                                 </parameter>
+                                 <parameter name="detail" source="constant" updatable="true"/>
+                                 <parameter name="reason" source="constant" updatable="true"/>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <flow id="meu1g1fw">
+                           <wait id="meu1g1fx">
+                              <title>Wait and Retry</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">5</arg>
+                                    <arg name="scale">S</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                              <link id="meu1g1g5" targetId="meu1g1fy"/>
+                           </wait>
+                           <assignment id="meu1g1fy">
+                              <title>Increment Retry Attempt</title>
+                              <operation source="formula" to="output.Out_Retry">
+                                 <expression language="XQuery">$input.In_Retry + 1</expression>
+                              </operation>
+                              <link id="meu1g1gq" targetId="meu1g1gp"/>
+                           </assignment>
+                           <end id="meu1g1gp"/>
+                        </flow>
+                        <link id="meu1g1g2" targetId="meu1g1fu" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$input.In_Retry}</arg>
+                                 <arg name="right">{3}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="meu1g1g3" targetId="meu1g1fw" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="meu1g1fz" targetId="meu1g1fq" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with">
+                           <arg name="left">{$input.In_Code}</arg>
+                           <arg name="right">HTTP_40</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="meu1g1g0" targetId="meu1g1fs" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>0n6qhvyIVgwlFmCA1wnzEx</types1:GUID>
+      <types1:DisplayName>Generic Error Handler</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.969Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

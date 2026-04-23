@@ -1,0 +1,92 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>7OQ4ciQlBWlD2pH-gt-30298969-2026-04-22T14:16:09.4Z::svc.xml</types1:EntryId>
+      <types1:Name>SC_IDMC_Login</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-04-22T14:16:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC_IDMC_Login"
+                            label=""
+                            name="SC_IDMC_Login"
+                            uuid="9c1bbbf3-dd80-4569-9943-bb536eed4b9f">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    label="BaseURL"
+                                    masked="false"
+                                    name="BaseURL"
+                                    required="false"
+                                    testWith="https://dm-us.informaticacloud.com"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Login"
+                       maxRedirects="100"
+                       name="Login"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="Username"
+                                nogen="true"
+                                required="true"
+                                testWith="gmotamarri@idmc.axxeltechnologies.com"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="Password"
+                                nogen="true"
+                                required="true"
+                                testWith="@xxel@1712"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="Body"
+                                required="false"
+                                testWith="{&#xA;        &#34;username&#34; : &#34;gmotamarri@idmc.axxeltechnologies.com&#34;,&#xA;        &#34;password&#34; : &#34;@xxel@1712&#34;&#xA;}"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dm-us.informaticacloud.com/saas/public/core/v3/login"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{$Body}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>9LzuOPWGyhadZWGxwq3gSV</types1:GUID>
+      <types1:DisplayName>SC_IDMC_Login</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.784Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,141 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>KsTSicjumf6S3wO-gt-5301936-2025-12-22T09:14:58.594Z::svc.xml</types1:EntryId>
+      <types1:Name>SC</types1:Name>
+      <types1:ParentFlowIds>Tu0kMVX3cjk91pq-gt-5296855-2025-12-22T09:15:57.37Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2025-12-22T09:14:59Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2025-12-23T10:01:12Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2025-12-23T10:01:15Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SC/SC_svcDef.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC"
+                            label=""
+                            name="SC"
+                            uuid="6af3e59b-8254-4e8e-9635-2398861fb5ad">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="LOGIN"
+                       maxRedirects="100"
+                       name="LOGIN"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label="username"
+                                name="username"
+                                required="true"
+                                testWith="gmotamarri@idmc.axxeltechnologies.com"
+                                type="string"/>
+                     <parameter description=""
+                                label="password"
+                                name="password"
+                                required="true"
+                                testWith="Inflecto@1712"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dm-us.informaticacloud.com/ma/api/v2/user/login"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="icSessionId" type="reference">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                        <xquery>{/root/icSessionId/text()}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Trigger_taskflow"
+                       maxRedirects="100"
+                       name="Trigger_taskflow"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label="IDS_SessionID"
+                                name="IDS_SessionID"
+                                required="true"
+                                testWith="5qkFSNsfqwcdMYFGqrEKIX"
+                                type="string"/>
+                     <parameter description=""
+                                label="Body"
+                                name="Body"
+                                required="false"
+                                testWith="{&#xA;  &#34;@type&#34;: &#34;job&#34;,&#xA;  &#34;taskId&#34;: &#34;01DF810Z00000000010O&#34;,&#xA;  &#34;taskType&#34;: &#34;MTT&#34;,&#xA;  &#34;runtime&#34;: {&#xA;    &#34;@type&#34;: &#34;mtTaskRuntime&#34;,&#xA;    &#34;Src_Object&#34;: &#34;SALES_DATA_T5&#34;,&#xA;    &#34;Trail_IN&#34; : &#34;Sai ram&#34;&#xA;  }&#xA;}"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://usw5.dm-us.informaticacloud.com/saas/api/v2/job"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="icSessionId">{$IDS_SessionID}</header>
+                        </httpHeaders>
+                        <body>{'{
+  "@type": "job",
+  "taskId": "01DF810Z00000000010O",
+  "taskType": "MTT",
+  "runtime": {
+    "@type": "mtTaskRuntime",
+    "Src_Object": "SALES_DATA_T5",
+    "Trail_IN" : "Sai ram"
+  }
+}'}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>aInjHxS0SYefOAOJmIEAa6</types1:GUID>
+      <types1:DisplayName>SC</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.917Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

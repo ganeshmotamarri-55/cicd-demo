@@ -1,0 +1,47 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>q695kchzt1Y6tMF-gt-13275756-2026-03-09T12:33:08.726Z::conn.xml</types1:EntryId>
+      <types1:Name>ZendeskConnection</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Zendesk connection</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-03-09T12:33:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="ZendeskConnection"
+                     label="ZendeskConnection"
+                     name="ZendeskConnection">
+            <description>Zendesk connection</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="Email" value="examplemail@example.com"/>
+               <attribute encrypted="true" name="Api_Token" value=""/>
+               <attribute encrypted="false"
+                          name="Instance_Domain"
+                          value="https://example-12345.zendesk.com - change for your zendesk domain URL"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/INFA_Zendesk/INFA_Zendesk_svcDef.xml"
+                               name="INFA_Zendesk"
+                               supportsConnectionTest="false"
+                               uuid="27f7c71f-214e-4c1b-abc5-35f386a9d6ff">
+               <description>Performs CRUD operations, such as create, read, update, and delete, on existing Zendesk resources, such as Tickets, Organizations, and Custom Objects.</description>
+               <icon>project:/com.informatica.cai.connectors.zendesk/icon.svg</icon>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>7SV3vbmluGBiYrnCFJlWGB</types1:GUID>
+      <types1:DisplayName>ZendeskConnection</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:10.796Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

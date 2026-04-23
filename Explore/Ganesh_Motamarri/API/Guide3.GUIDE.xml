@@ -1,0 +1,115 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>DKYsGuDoWn2sqeE-gt-31007870-2026-01-27T10:27:53.475Z::gt.xml</types1:EntryId>
+      <types1:Name>Guide3</types1:Name>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>gmotamarri@idmc.axxeltechnologies.com</types1:CreatedBy>
+      <types1:CreationDate>2026-01-27T10:27:53Z</types1:CreationDate>
+      <types1:ModifiedBy>gmotamarri@idmc.axxeltechnologies.com</types1:ModifiedBy>
+      <types1:ModificationDate>2026-01-27T10:28:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>gmotamarri@idmc.axxeltechnologies.com</types1:PublishedBy>
+      <types1:PublicationDate>2026-01-27T10:28:53Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.Guide3/Guide3.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         displayName="Guide3"
+                         doneOnEndStep="false"
+                         name="Guide3"
+                         runAsUser="$current">
+            <description/>
+            <appliesTo/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo/>
+            </sendFeedback>
+            <flow>
+               <startScreen id="start-x05dd3816-c4d5-4cfe-803c-ed233a80276b">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null"
+                             id="o2f493573-e65b-4950-983b-5ea28990b04b"
+                             targetScreen="Processd80bb158-4571-487d-a3ab-e3d85b27acc5">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <endScreen id="end-sd7861c4d-c96a-445d-83de-ccc06aaf3580">
+                  <title>End</title>
+                  <actions/>
+                  <redirectTo type="current_object"/>
+               </endScreen>
+               <subflow id="Guidef3865691-b8d1-465d-a34e-6c8090c06e99">
+                  <title>Guide2</title>
+                  <subflowGUID>18BTrIB5D9Lesg4dDLO18j</subflowGUID>
+                  <subflowPath>Guide2</subflowPath>
+                  <appliesTo/>
+                  <runForEach>false</runForEach>
+                  <serviceInput>
+                     <parameter name="Workflow" source="constant">x</parameter>
+                     <parameter name="Executionplan" source="constant">x</parameter>
+                  </serviceInput>
+                  <subflowOutput>
+                     <field description="" name="untitled1" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field description="" name="untitled2" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field description="" name="untitled3" type="int">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </subflowOutput>
+                  <actions>
+                     <action alt="null"
+                             id="m0c8efa5f-59ef-459b-b60b-5c74185fc49c"
+                             targetScreen="end-sd7861c4d-c96a-445d-83de-ccc06aaf3580">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </subflow>
+               <callProcess id="Processd80bb158-4571-487d-a3ab-e3d85b27acc5">
+                  <title>Process2</title>
+                  <subflowGUID>4K3nJWrqbQ1lL9fh2EsQqR</subflowGUID>
+                  <subflowPath>Process2-10</subflowPath>
+                  <appliesTo/>
+                  <runForEach>false</runForEach>
+                  <serviceInput/>
+                  <subflowOutput/>
+                  <actions>
+                     <action alt="null"
+                             id="l4327d690-1d44-4533-9790-c7352cc5970e"
+                             targetScreen="Guidef3865691-b8d1-465d-a34e-6c8090c06e99">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </callProcess>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>au1xpdgmdmmlkEcxiD1jM4</types1:GUID>
+      <types1:DisplayName>Guide3</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-04-23T09:55:14.025Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
