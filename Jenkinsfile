@@ -24,7 +24,7 @@ Build URL  : ${env.BUILD_URL}
 
 Please review and approve the deployment in Jenkins.
 
-Regards,
+Regards ,
 Jenkins
 """
                     )
