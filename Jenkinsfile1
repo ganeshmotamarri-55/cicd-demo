@@ -5,6 +5,8 @@ pipeline {
 
         stage('Checkout DEV') {
             steps {
+                deleteDir()
+
                 git branch: 'dev',
                 credentialsId: 'github-creds',
                 url: 'https://github.com/ganeshmotamarri-55/cicd-demo.git'
@@ -13,11 +15,11 @@ pipeline {
 
         stage('Approval') {
             steps {
-                input message: 'Approve push to QA branch?', ok: 'Approve'
+                input message: 'Approve move to QA?', ok: 'Approve'
             }
         }
 
-        stage('Push to QA') {
+        stage('Push QA') {
             steps {
                 bat '''
                 git config user.name "Jenkins"
