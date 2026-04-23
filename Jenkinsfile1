@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    triggers {
+        githubPush()
+    }
+
+    environment {
+        REPO_URL = 'https://github.com/your-user/your-repo.git'
+        FILE_NAME = 'sample.txt'
+    }
+
+    stages {
+
+        stage('Checkout DEV Branch') {
+            steps {
+                git branch: 'dev',
+                url: "${REPO_URL}"
+            }
+        }
+
+        stage('Approval') {
+            steps {
+                input message: 'Approve moving file from DEV to QA branch?', ok: 'Approve'
+            }
+        }
+
+        stage('Move File To QA Branch') {
+            steps {
+                bat """
+                git config user.name "Jenkins"
+                git config user.email "jenkins@example.com"
+
+                git fetch origin
+
+                git checkout qa
+
+                git checkout dev -- %FILE_NAME%
+
+                git add %FILE_NAME%
+                git commit -m "Moved %FILE_NAME% from dev to qa via Jenkins"
+                git push origin qa
+                """
+            }
+        }
+
+        stage('Success') {
+            steps {
+                echo 'File moved successfully from DEV to QA branch'
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pipeline failed. Check console logs.'
+        }
+    }
+}
