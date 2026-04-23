@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     emailext(
-                        to: 'yourmail@example.com',
+                        to: 'ganeshmotamarri530@gmail.com',
                         subject: "Approval Required: New Commit Triggered - ${env.JOB_NAME}",
                         body: """
 Hello,
