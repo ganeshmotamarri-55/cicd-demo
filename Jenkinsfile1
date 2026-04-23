@@ -16,9 +16,7 @@ pipeline {
         stage('Push QA') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'github-creds',
-                    usernameVariable: 'GIT_USER',
-                    passwordVariable: 'GIT_TOKEN'
+                    credentialsId: 'github-creds'
                 )]) {
 
                     bat '''
