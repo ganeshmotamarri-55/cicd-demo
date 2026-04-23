@@ -6,8 +6,8 @@ pipeline {
     }
 
     environment {
-        REPO_URL = 'https://github.com/your-user/your-repo.git'
-        FILE_NAME = 'sample.txt'
+        REPO_URL = 'https://github.com/ganeshmotamarri-55/cicd-demo.git/'
+        FILE_NAME = 'app.txt'
     }
 
     stages {
