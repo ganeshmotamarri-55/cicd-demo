@@ -14,7 +14,7 @@ pipeline {
 
         stage('Checkout DEV Branch') {
             steps {
-                git branch: 'dev',
+                git branch: 'Dev',
                 url: "${REPO_URL}"
             }
         }
@@ -33,7 +33,7 @@ pipeline {
 
                 git fetch origin
 
-                git checkout qa
+                git checkout QA
 
                 git checkout dev -- %FILE_NAME%
 
