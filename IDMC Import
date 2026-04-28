@@ -1,29 +1,11 @@
-stage('Get Changed Files') {
-    steps {
-        script {
-            def files = sh(
-                script: """
-                git rev-parse HEAD~1 >/dev/null 2>&1 && \
-                git diff --name-only HEAD~1 HEAD | grep '.json' || \
-                git ls-files '*.json'
-                """,
-                returnStdout: true
-            ).trim().split("\n")
+pipeline {
+    agent any
 
-            def validFiles = files.findAll { it?.trim() }
-
-            if (validFiles.isEmpty()) {
-                error "No JSON files found to process"
+    stages {
+        stage('Example') {
+            steps {
+                echo 'Hello'
             }
-
-            echo "Files detected: ${validFiles}"
-
-            def jobNames = validFiles.collect { file ->
-                file.replace(".json", "").replace("/.", "/")
-            }
-
-            env.FILE_LIST = validFiles.join(",")
-            env.JOB_LIST = jobNames.join(",")
         }
     }
 }
