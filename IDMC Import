@@ -1,83 +1,29 @@
-pipeline {
-    agent any
+stage('Get Changed Files') {
+    steps {
+        script {
+            def files = sh(
+                script: """
+                git rev-parse HEAD~1 >/dev/null 2>&1 && \
+                git diff --name-only HEAD~1 HEAD | grep '.json' || \
+                git ls-files '*.json'
+                """,
+                returnStdout: true
+            ).trim().split("\n")
 
-    environment {
-        PROJECT_NAME = "OBI"
-        IDMC_URL = "https://dm-us.informaticacloud.com"
-    }
+            def validFiles = files.findAll { it?.trim() }
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                checkout scm
+            if (validFiles.isEmpty()) {
+                error "No JSON files found to process"
             }
-        }
 
-        stage('Get Changed Files') {
-            steps {
-                script {
-                    def files = sh(
-                        script: "git diff --name-only HEAD~1 HEAD | grep '.json' || true",
-                        returnStdout: true
-                    ).trim().split("\n")
+            echo "Files detected: ${validFiles}"
 
-                    def validFiles = files.findAll { it?.trim() }
-
-                    def jobNames = validFiles.collect { file ->
-                        file.replace(".json", "").replace("/.", "/")
-                    }
-
-                    env.FILE_LIST = validFiles.join(",")
-                    env.JOB_LIST = jobNames.join(",")
-                }
+            def jobNames = validFiles.collect { file ->
+                file.replace(".json", "").replace("/.", "/")
             }
-        }
 
-        stage('Login to IDMC') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(
-                        credentialsId: 'idmc-login',
-                        usernameVariable: 'IDMC_USER',
-                        passwordVariable: 'IDMC_PASS'
-                    )]) {
-
-                        def response = sh(
-                            script: """
-                            curl -s -X POST "${IDMC_URL}/saas/public/core/v3/login" \
-                            -H "Content-Type: application/json" \
-                            -d '{
-                              "username":"${IDMC_USER}",
-                              "password":"${IDMC_PASS}"
-                            }'
-                            """,
-                            returnStdout: true
-                        )
-
-                        def json = readJSON text: response
-                        env.SESSION_ID = json.userInfo.sessionId
-                    }
-                }
-            }
-        }
-
-        stage('Import to OBI') {
-            steps {
-                script {
-                    def files = env.FILE_LIST.split(",")
-
-                    for (file in files) {
-                        sh """
-                        curl -X POST "${IDMC_URL}/saas/public/core/v3/import" \
-                        -H "INFA-SESSION-ID: ${SESSION_ID}" \
-                        -F "file=@${file}" \
-                        -F "projectName=${PROJECT_NAME}" \
-                        -F "overwrite=true"
-                        """
-                    }
-                }
-            }
+            env.FILE_LIST = validFiles.join(",")
+            env.JOB_LIST = jobNames.join(",")
         }
     }
 }
