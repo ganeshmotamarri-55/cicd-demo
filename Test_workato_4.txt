@@ -1,0 +1,4 @@
+firm_id,firm_name,client_id,client_secret,status,created_at
+1a49bd84-9a92-4f5b-8329-ec33f22303d3,Bank of America Corporation,1155552,"",active,2026-03-11T10:25:07.396-07:00
+7e058fc6-0b7d-4940-a221-05dbb5b927cb,Fidelity Investments,1155550,,active,2026-03-11T10:25:07.396-07:00
+d200288b-08cd-462d-b33a-eb4af18136a0,Edward Jones,1155199,"",active,2026-03-11T10:25:07.396-07:00
